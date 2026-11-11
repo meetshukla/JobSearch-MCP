@@ -1,0 +1,574 @@
+/* Menus grow out of their trigger and close faster than they open. */
+.menu-positioner {
+  z-index: 50;
+  outline: none;
+}
+.menu {
+  min-width: 208px;
+  max-height: var(--available-height);
+  overflow-y: auto;
+  padding: 4px;
+  border-radius: var(--r-md);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-pop);
+  outline: none;
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity 160ms var(--ease-out),
+    transform 160ms var(--ease-out);
+}
+.menu[data-starting-style],
+.menu[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.97);
+}
+.menu[data-ending-style] {
+  transition-duration: 120ms;
+}
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  padding-inline: 8px;
+  border-radius: var(--r-sm);
+  outline: none;
+  cursor: default;
+  color: var(--text-1);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.menu-item > svg {
+  color: var(--text-2);
+}
+.menu-item[data-highlighted] {
+  background: var(--fill-2);
+}
+.menu-item[data-disabled] {
+  opacity: 0.45;
+}
+.menu-item-label {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+}
+.menu-item .kbds {
+  margin-inline-start: auto;
+}
+.menu-indicator {
+  display: grid;
+  color: var(--text-2);
+}
+.menu-check {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  color: var(--text-2);
+}
+.menu-hint {
+  font-size: var(--fs-meta);
+  color: var(--text-3);
+}
+.menu-sep {
+  height: 1px;
+  margin: 4px -4px;
+  background: var(--line);
+}
+.menu-label {
+  padding: 6px 8px 4px;
+  font-size: var(--fs-meta);
+  color: var(--text-3);
+}
+.menu-danger,
+.menu-danger > svg {
+  color: var(--red);
+}
+@media (pointer: coarse) {
+  .menu-item {
+    min-height: 44px;
+  }
+}
+
+/* data-instant marks a tooltip opened while another was closing. It skips the transition. */
+.tip-positioner {
+  z-index: 60;
+}
+.tip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: var(--r-sm);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-pop);
+  font-size: var(--fs-meta);
+  line-height: var(--lh-meta);
+  color: var(--text-1);
+  transform-origin: var(--transform-origin);
+  transition:
+    opacity 125ms ease,
+    transform 125ms var(--ease-out);
+}
+.tip[data-starting-style],
+.tip[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.97);
+}
+.tip[data-instant] {
+  transition-duration: 0ms;
+}
+
+.toasts {
+  position: fixed;
+  z-index: 70;
+  bottom: 16px;
+  inset-inline-end: 16px;
+  width: 340px;
+}
+.toast {
+  --gap: 8px;
+  --peek: 6px;
+  --scale: calc(max(0, 1 - (var(--toast-index) * 0.05)));
+  --shrink: calc(1 - var(--scale));
+  --height: var(--toast-frontmost-height, var(--toast-height));
+  --offset-y: calc(var(--toast-offset-y) * -1 + (var(--toast-index) * var(--gap) * -1) + var(--toast-swipe-movement-y));
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  z-index: calc(1000 - var(--toast-index));
+  height: var(--height);
+  border-radius: var(--r-md);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-pop);
+  transform-origin: bottom center;
+  transform: translateX(var(--toast-swipe-movement-x)) translateY(calc(var(--toast-swipe-movement-y) - (var(--toast-index) * var(--peek)) - (var(--shrink) * var(--height)))) scale(var(--scale));
+  transition:
+    transform 240ms var(--ease-out),
+    opacity 240ms var(--ease-out),
+    height 150ms var(--ease-out);
+}
+.toast::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  inset-inline: 0;
+  height: calc(var(--gap) + 1px);
+}
+.toast[data-expanded] {
+  height: var(--toast-height);
+  transform: translateX(var(--toast-swipe-movement-x)) translateY(var(--offset-y));
+}
+.toast[data-starting-style] {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.toast[data-ending-style] {
+  opacity: 0;
+  transition-duration: 150ms;
+}
+.toast[data-ending-style][data-swipe-direction="down"] {
+  transform: translateY(calc(var(--toast-swipe-movement-y) + 150%));
+}
+.toast[data-ending-style][data-swipe-direction="right"] {
+  transform: translateX(calc(var(--toast-swipe-movement-x) + 150%)) translateY(var(--offset-y));
+}
+.toast[data-limited] {
+  opacity: 0;
+}
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 6px 6px 6px 14px;
+  overflow: hidden;
+  transition: opacity 200ms var(--ease-out);
+}
+.toast-content[data-behind] {
+  opacity: 0;
+}
+.toast-content[data-expanded] {
+  opacity: 1;
+}
+.toast-title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: var(--fs-ui);
+  font-weight: 500;
+  color: var(--text-1);
+}
+.toast[data-tone="error"] .toast-title {
+  color: var(--red);
+}
+.toast-action {
+  height: 28px;
+  padding-inline: 10px;
+  border-radius: var(--r-sm);
+  background: var(--fill-2);
+  font-weight: 500;
+}
+.toast-close {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-sm);
+  color: var(--text-3);
+}
+@media (hover: hover) and (pointer: fine) {
+  .toast-action:hover {
+    background: var(--fill-3);
+  }
+  .toast-close:hover {
+    background: var(--fill-1);
+    color: var(--text-1);
+  }
+}
+@media (max-width: 767px) {
+  .toasts {
+    inset-inline: 8px;
+    bottom: calc(64px + var(--safe-bottom));
+    width: auto;
+  }
+}
+
+/* Dialogs scale from their center because they don't belong to a trigger. */
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: var(--scrim);
+  transition: opacity 200ms ease;
+}
+.scrim[data-starting-style],
+.scrim[data-ending-style] {
+  opacity: 0;
+}
+.scrim-palette {
+  background: light-dark(oklch(0 0 0 / 0.12), oklch(0 0 0 / 0.45));
+  transition: none;
+}
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 41;
+  width: min(440px, calc(100vw - 32px));
+  max-height: calc(100dvh - 64px);
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: var(--r-lg);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-dialog);
+  outline: none;
+  translate: -50% -50%;
+  transition:
+    opacity 200ms var(--ease-out),
+    transform 200ms var(--ease-out);
+}
+.dialog[data-starting-style],
+.dialog[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.97);
+}
+.dialog[data-ending-style] {
+  transition-duration: 150ms;
+}
+.dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.dialog-title {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+}
+.dialog-text {
+  margin: 6px 0 20px;
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+
+.shortcuts {
+  width: min(520px, calc(100vw - 32px));
+}
+.shortcut-groups {
+  display: grid;
+  gap: 16px;
+}
+.shortcut-title {
+  margin-bottom: 4px;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  color: var(--text-3);
+}
+.shortcut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 30px;
+  border-bottom: 1px solid var(--line);
+}
+.shortcut:last-child {
+  border-bottom: 0;
+}
+
+/* The command menu has no transition because people open it too often to wait for one. */
+.palette {
+  position: fixed;
+  top: 12vh;
+  left: 50%;
+  z-index: 41;
+  width: min(640px, calc(100vw - 32px));
+  border-radius: var(--r-lg);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-dialog);
+  outline: none;
+  overflow: hidden;
+  translate: -50% 0;
+}
+.palette-input {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+.palette-input input {
+  flex: 1;
+  min-width: 0;
+  height: 52px;
+  padding-inline: 18px;
+  border: 0;
+  background: none;
+  outline: none;
+  font-size: 15px;
+}
+.palette-input input::placeholder {
+  color: var(--text-3);
+}
+.palette-cancel {
+  display: none;
+}
+.palette-error {
+  padding: 8px 18px;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-meta);
+  color: var(--red);
+}
+.palette-list {
+  max-height: min(420px, 60dvh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 4px 6px 6px;
+  scroll-padding-block: 32px 6px;
+}
+.palette-group {
+  padding: 10px 12px 4px;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  color: var(--text-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.palette-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 38px;
+  padding-inline: 12px;
+  border-radius: var(--r-sm);
+  cursor: default;
+  color: var(--text-1);
+}
+.palette-item[aria-selected="true"] {
+  background: var(--fill-2);
+}
+.palette-icon {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  color: var(--text-2);
+}
+.palette-label {
+  flex: 1 1 auto;
+}
+.palette-hint {
+  flex: 0 1 auto;
+  max-width: 45%;
+  font-size: var(--fs-meta);
+  color: var(--text-3);
+}
+.palette-note {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  padding: 12px;
+  font-size: var(--fs-meta);
+  line-height: 18px;
+  color: var(--text-3);
+}
+@media (max-width: 767px) {
+  .palette {
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    border-radius: 0;
+    translate: none;
+    padding-top: var(--safe-top);
+  }
+  .palette-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .palette-input input {
+    height: 52px;
+    padding-inline: 16px 8px;
+    font-size: 16px;
+  }
+  .palette-cancel {
+    display: inline-flex;
+    margin-inline-end: 8px;
+  }
+  .palette-list {
+    flex: 1;
+    max-height: none;
+    padding-bottom: calc(12px + var(--safe-bottom));
+  }
+  .palette-item {
+    height: 48px;
+  }
+}
+
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: var(--scrim);
+  transition: opacity 240ms var(--ease-drawer);
+}
+.sheet-backdrop[data-starting-style],
+.sheet-backdrop[data-ending-style] {
+  opacity: 0;
+}
+.sheet-viewport {
+  position: fixed;
+  inset: 0;
+  z-index: 41;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.sheet {
+  width: 100%;
+  max-width: 560px;
+  max-height: 88dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 8px 0 calc(12px + var(--safe-bottom));
+  border-radius: 14px 14px 0 0;
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-dialog);
+  outline: none;
+  transform: translateY(var(--drawer-swipe-movement-y, 0px));
+  transition: transform 260ms var(--ease-drawer);
+}
+.sheet[data-starting-style],
+.sheet[data-ending-style] {
+  transform: translateY(100%);
+}
+.sheet[data-swiping] {
+  transition-duration: 0ms;
+}
+.sheet[data-ending-style] {
+  transition-duration: calc(var(--drawer-swipe-strength, 1) * 220ms);
+}
+.sheet-handle {
+  width: 36px;
+  height: 4px;
+  margin: 2px auto 6px;
+  border-radius: 2px;
+  background: var(--border-strong);
+}
+.sheet-section {
+  padding: 8px 8px 10px;
+}
+.sheet-section + .sheet-section {
+  border-top: 1px solid var(--line);
+}
+.sheet-heading {
+  padding: 4px 8px 4px;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  color: var(--text-3);
+}
+.sheet-list {
+  display: grid;
+}
+.sheet-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 48px;
+  padding-inline: 8px;
+  border-radius: var(--r-sm);
+  font-size: 15px;
+  color: var(--text-1);
+}
+.sheet-item > svg {
+  color: var(--text-2);
+}
+.sheet-item:active {
+  background: var(--fill-2);
+}
+.sheet-item-label {
+  flex: 1;
+  min-width: 0;
+}
+.sheet-note {
+  padding: 0 8px 6px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--text-2);
+}
+.sheet-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-inline: 8px 16px;
+}
+
+:root[data-input="keyboard"] :is(.menu, .tip, .dialog, .scrim) {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .tip,
+  .dialog,
+  .toast {
+    transition-property: opacity;
+  }
+  .menu[data-starting-style],
+  .menu[data-ending-style],
+  .tip[data-starting-style],
+  .tip[data-ending-style],
+  .dialog[data-starting-style],
+  .dialog[data-ending-style],
+  .toast[data-starting-style] {
+    transform: none;
+  }
+  .sheet {
+    transition: opacity 200ms ease;
+  }
+  .sheet[data-starting-style],
+  .sheet[data-ending-style] {
+    transform: none;
+    opacity: 0;
+  }
+}

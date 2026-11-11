@@ -1,8 +1,11 @@
 import { useSyncExternalStore } from "react";
 
 export type ThemeChoice = "system" | "light" | "dark";
+export const THEMES: ThemeChoice[] = ["system", "light", "dark"];
 const KEY = "hunt-theme";
 const NEXT: Record<ThemeChoice, ThemeChoice> = { system: "light", light: "dark", dark: "system" };
+/** The phone's status bar matches the top bar, which uses the panel color. */
+const BAR = { light: "#ffffff", dark: "#131313" };
 
 function read(): ThemeChoice {
   try {
@@ -30,6 +33,10 @@ function apply() {
   const root = document.documentElement;
   if (choice === "system") delete root.dataset.theme;
   else root.dataset.theme = choice;
+  for (const meta of document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')) {
+    const scheme = meta.media.includes("dark") ? "dark" : "light";
+    meta.content = BAR[choice === "system" ? scheme : choice];
+  }
 }
 
 export function initTheme() {
@@ -37,8 +44,8 @@ export function initTheme() {
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => withoutTransitions(() => {}));
 }
 
-export function cycleTheme() {
-  choice = NEXT[choice];
+export function setTheme(next: ThemeChoice) {
+  choice = next;
   try {
     if (choice === "system") localStorage.removeItem(KEY);
     else localStorage.setItem(KEY, choice);
@@ -48,6 +55,10 @@ export function cycleTheme() {
   withoutTransitions(apply);
   listeners.forEach((l) => l());
 }
+
+export const cycleTheme = () => setTheme(NEXT[choice]);
+
+export const THEME_LABEL: Record<ThemeChoice, string> = { system: "System", light: "Light", dark: "Dark" };
 
 export const useTheme = () =>
   useSyncExternalStore(

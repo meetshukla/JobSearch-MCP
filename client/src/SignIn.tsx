@@ -1,8 +1,20 @@
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { api } from "./api.ts";
-import { Mark } from "./App.tsx";
+import { Mark } from "./glyphs.tsx";
 import { Button, Code } from "./ui.tsx";
+
+function Gate({ title, children, wide }: { title: string; children: ReactNode; wide?: boolean }) {
+  return (
+    <div className="gate">
+      <div className="gate-col" data-wide={wide || undefined}>
+        <Mark size={32} />
+        <h1 className="gate-title">{title}</h1>
+        {children}
+      </div>
+    </div>
+  );
+}
 
 export function SignIn({ onSignedIn }: { onSignedIn: () => void }) {
   const [token, setToken] = useState("");
@@ -25,22 +37,18 @@ export function SignIn({ onSignedIn }: { onSignedIn: () => void }) {
   };
 
   return (
-    <div className="gate">
-      <form className="gate-card" onSubmit={submit} noValidate>
-        <Mark size={32} />
-        <h1>Sign in to Hunt</h1>
-        <p className="muted">Hunt is yours alone. Use the HUNT_TOKEN secret you set when you deployed it. Your agent connects with the same token.</p>
-        <div className="field">
-          <label htmlFor="token" className="label">
-            Token
-          </label>
-          <div className={`input-wrap${error ? " invalid" : ""}`}>
+    <Gate title="Sign in to Hunt">
+      <p className="gate-text">Use the HUNT_TOKEN you set when you deployed Hunt. Your agent connects with the same token.</p>
+      <form className="gate-form" onSubmit={submit} noValidate>
+        <label className="field">
+          <span className="label">Token</span>
+          <span className="input-affix">
             <input
-              id="token"
               className="input"
               type={show ? "text" : "password"}
               autoComplete="current-password"
               spellCheck={false}
+              autoCapitalize="none"
               placeholder="Paste your HUNT_TOKEN"
               value={token}
               onChange={(e) => (setToken(e.target.value), setError(null))}
@@ -48,60 +56,58 @@ export function SignIn({ onSignedIn }: { onSignedIn: () => void }) {
               aria-describedby={error ? "token-error" : undefined}
               autoFocus
             />
-            <button type="button" className="input-affix" onClick={() => setShow(!show)} aria-label={show ? "Hide token" : "Show token"}>
+            <button type="button" className="affix-btn" onClick={() => setShow(!show)} aria-label={show ? "Hide token" : "Show token"}>
               {show ? <EyeOff size={16} strokeWidth={1.75} /> : <Eye size={16} strokeWidth={1.75} />}
             </button>
-          </div>
+          </span>
           {error && (
-            <p className="field-error" id="token-error" role="alert">
+            <span className="field-error" id="token-error" role="alert">
               {error}
-            </p>
+            </span>
           )}
-        </div>
-        <Button type="submit" variant="primary" size="lg" busy={busy} className="gate-submit">
+        </label>
+        <Button type="submit" variant="primary" busy={busy} className="gate-submit">
           Sign in
         </Button>
-        <p className="gate-foot">
-          Lost it? Set a new one with <code className="inline-code">npx wrangler secret put HUNT_TOKEN</code>, then update your agent.
-        </p>
       </form>
-    </div>
+      <p className="gate-foot">
+        Lost it? Set a new one with <code className="inline-code">npx wrangler secret put HUNT_TOKEN</code>, then update your agent.
+      </p>
+    </Gate>
   );
 }
 
 export function NeedsToken({ onCheck }: { onCheck: () => void }) {
   return (
-    <div className="gate">
-      <div className="gate-card gate-wide">
-        <Mark size={32} />
-        <h1>Set a token to finish setup</h1>
-        <p className="muted">This Hunt has no HUNT_TOKEN yet, so nothing can sign in and your agent can't connect. The token is a long random password you keep.</p>
-        <ol className="steps">
-          <li>
-            <span className="step-n">1</span>
-            <div>
-              <p>Make a token and keep it somewhere safe.</p>
-              <Code>openssl rand -hex 24</Code>
-            </div>
-          </li>
-          <li>
-            <span className="step-n">2</span>
-            <div>
-              <p>Save it as a secret on your Worker. Paste the token when asked.</p>
-              <Code>npx wrangler secret put HUNT_TOKEN</Code>
-            </div>
-          </li>
-          <li>
-            <span className="step-n">3</span>
-            <div>
-              <p>Come back here and sign in with it.</p>
-            </div>
-          </li>
-        </ol>
-        <Button variant="primary" size="lg" onClick={onCheck} className="gate-submit">
-          Check again
-        </Button>
-      </div>
-    </div>
+    <Gate title="Set a token to finish setup" wide>
+      <p className="gate-text">This Hunt has no HUNT_TOKEN yet, so nobody can sign in and your agent can't connect. The token is a long random password you keep.</p>
+      <ol className="steps">
+        <li>
+          <p>Make a token and keep it in your password manager.</p>
+          <Code>openssl rand -hex 24</Code>
+        </li>
+        <li>
+          <p>Save it as a secret on your Worker, and paste the token when asked.</p>
+          <Code>npx wrangler secret put HUNT_TOKEN</Code>
+        </li>
+        <li>
+          <p>Come back here and sign in with it.</p>
+        </li>
+      </ol>
+      <Button variant="primary" onClick={onCheck} className="gate-submit">
+        Check again
+      </Button>
+    </Gate>
+  );
+}
+
+export function Offline({ message, onRetry }: { message: string; onRetry: () => void }) {
+  return (
+    <Gate title="Can't reach Hunt">
+      <p className="gate-text">{message}</p>
+      <Button variant="primary" onClick={onRetry} className="gate-submit">
+        Try again
+      </Button>
+    </Gate>
   );
 }

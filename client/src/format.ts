@@ -1,32 +1,3 @@
-import type { Status, View } from "../../shared/types.ts";
-
-export const STATUS: Record<Status, { label: string; action: string; tone: string }> = {
-  new: { label: "New", action: "New", tone: "neutral" },
-  skipped: { label: "Skipped", action: "Skip", tone: "muted" },
-  applied: { label: "Applied", action: "Applied", tone: "blue" },
-  in_process: { label: "In process", action: "In process", tone: "green" },
-  rejected: { label: "Rejected", action: "Rejected", tone: "red" },
-};
-
-export const VIEW_META: Record<View, { label: string; empty: string; hint: string }> = {
-  to_review: {
-    label: "To review",
-    empty: "All caught up",
-    hint: "New jobs that pass your filters land here as Hunt reads your sources.",
-  },
-  shortlist: {
-    label: "Shortlist",
-    empty: "Nothing on the shortlist",
-    hint: "Jobs with a verdict that you haven't acted on yet. Your agent fills this as it reviews.",
-  },
-  applied: { label: "Applied", empty: "No applications yet", hint: "Mark a job Applied or In process and it moves here." },
-  skipped: { label: "Skipped", empty: "Nothing skipped", hint: "Jobs you or your agent pass on end up here." },
-  rejected: { label: "Rejected", empty: "No rejections", hint: "Mark a job Rejected to keep a record of it here." },
-  all: { label: "All", empty: "No jobs yet", hint: "Every job you can see, whatever its status." },
-};
-
-export const scoreTone = (score: number) => (score >= 75 ? "good" : score >= 50 ? "ok" : "low");
-
 const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
 
 /** "3h", "2d", "5w": compact ages for dense rows. */
@@ -76,14 +47,40 @@ export const fullDate = (iso: string) => {
   return Number.isNaN(d.getTime()) ? iso : fullFmt.format(d);
 };
 
+const pad = (n: number) => String(n).padStart(2, "0");
+const ymd = (d: Date) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+
 /** Today's date in the person's timezone, as "YYYY-MM-DD". */
-export function todayIso(offsetDays = 0) {
-  const d = new Date(Date.now() + offsetDays * 86_400_000);
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+export const todayIso = (offsetDays = 0) => ymd(new Date(Date.now() + offsetDays * 86_400_000));
+
+/** The local calendar day of a timestamp, as "YYYY-MM-DD". */
+export function localDay(iso: string) {
+  if (iso.length === 10) return iso;
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? iso.slice(0, 10) : ymd(d);
 }
 
-export const isDue = (followUp: string | null) => followUp != null && followUp.slice(0, 10) <= todayIso();
+/** "Today", "Tomorrow" or "Nov 18", for follow-up dates. */
+export function dueLabel(date: string) {
+  const d = date.slice(0, 10);
+  if (d === todayIso()) return "Today";
+  if (d === todayIso(1)) return "Tomorrow";
+  return day(d);
+}
 
 export const plural = (n: number, one: string, many = `${one}s`) => `${n.toLocaleString()} ${n === 1 ? one : many}`;
 
 export const byLabel = (by: string | null) => (by === "you" ? "You" : by === "agent" ? "Your agent" : "Hunt");
+
+export const isUrl = (s: string) => /^https?:\/\/\S+\.\S+/i.test(s.trim());
+
+const segmenter = typeof Intl.Segmenter === "function" ? new Intl.Segmenter("en", { granularity: "grapheme" }) : null;
+const firstGrapheme = (w: string) => (segmenter ? ([...segmenter.segment(w)][0]?.segment ?? "") : w.charAt(0));
+
+/** First and last word's first letters: "Priya Raman" is "PR", "Jo" is "J". */
+export function initials(name: string) {
+  const words = name.trim().split(/\s+/).filter((w) => /\p{L}/u.test(w));
+  if (!words.length) return "?";
+  const picked = words.length === 1 ? [words[0]] : [words[0], words[words.length - 1]];
+  return picked.map((w) => firstGrapheme(w).toUpperCase()).join("");
+}

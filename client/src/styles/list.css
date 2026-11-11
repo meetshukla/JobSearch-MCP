@@ -1,0 +1,381 @@
+.jobs {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+.jobs[data-split] > .list-pane {
+  flex: 0 0 clamp(360px, 32%, 440px);
+  border-inline-end: 1px solid var(--line);
+}
+.list-pane {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  container: list / inline-size;
+}
+.list-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.view-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: var(--header-h);
+  flex-shrink: 0;
+  padding-inline: 16px 8px;
+  border-bottom: 1px solid var(--line);
+}
+.view-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  font-size: var(--fs-ui);
+  font-weight: 600;
+}
+.view-title > svg {
+  color: var(--text-2);
+}
+.view-count {
+  font-size: var(--fs-meta);
+  font-weight: 400;
+  color: var(--text-3);
+}
+.view-tools {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 220px;
+  height: var(--control-h);
+  border-radius: var(--r-sm);
+  background: var(--fill-1);
+  box-shadow: inset 0 0 0 1px transparent;
+  transition: box-shadow 100ms ease, background-color 100ms ease;
+}
+.search[data-compact] {
+  width: 168px;
+}
+.search:focus-within {
+  background: var(--bg-panel);
+  box-shadow: inset 0 0 0 1px var(--border-strong), 0 0 0 3px var(--accent-soft);
+}
+.search-icon {
+  position: absolute;
+  inset-inline-start: 9px;
+  color: var(--text-3);
+  pointer-events: none;
+}
+.search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding-inline: 28px 30px;
+  border: 0;
+  background: none;
+  outline: none;
+  font-size: var(--fs-input);
+}
+.search input::placeholder {
+  color: var(--text-3);
+}
+.search input::-webkit-search-cancel-button {
+  display: none;
+}
+.search .kbds,
+.search-clear {
+  position: absolute;
+  inset-inline-end: 6px;
+}
+.search-clear {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--r-xs);
+  color: var(--text-3);
+}
+.search-clear::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .search:hover:not(:focus-within) {
+    background: var(--fill-2);
+  }
+  .search-clear:hover {
+    color: var(--text-1);
+  }
+}
+.filter-trigger {
+  position: relative;
+}
+.filter-trigger[data-active] {
+  color: var(--text-1);
+  background: var(--fill-2);
+}
+.filter-dot {
+  position: absolute;
+  top: 9px;
+  inset-inline-end: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-1);
+}
+
+.group-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding-inline: 16px;
+  background: var(--bg-group);
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  color: var(--text-2);
+}
+.group-count {
+  font-weight: 400;
+  color: var(--text-3);
+}
+
+/* Rows default to two lines. Wide lists switch to one line with columns that line up across rows. */
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 16px minmax(0, max-content) minmax(0, 1fr) auto auto;
+  grid-template-areas:
+    "glyph main main main verdict"
+    ". company loc flags age";
+  align-items: center;
+  column-gap: 10px;
+  row-gap: 2px;
+  min-height: 56px;
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-1);
+  outline-offset: -2px;
+  transition: background-color 80ms ease;
+}
+.row-glyph {
+  grid-area: glyph;
+  display: grid;
+  place-items: center;
+  height: 20px;
+}
+.row-title {
+  grid-area: main;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--fs-row);
+  font-weight: 500;
+}
+.row-company,
+.row-loc {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--fs-row-meta);
+}
+.row-company {
+  grid-area: company;
+  color: var(--text-2);
+}
+.row-loc {
+  grid-area: loc;
+  color: var(--text-3);
+}
+.row-flags {
+  grid-area: flags;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  font-size: var(--fs-meta);
+  color: var(--text-3);
+}
+.flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.flag[data-due] {
+  color: var(--accent-text);
+}
+.row-verdict {
+  grid-area: verdict;
+  justify-self: end;
+}
+.row-age {
+  grid-area: age;
+  justify-self: end;
+  font-size: var(--fs-meta);
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.row-age[data-due] {
+  color: var(--accent-text);
+  font-weight: 500;
+}
+.row[data-cursor] {
+  background: var(--fill-1);
+}
+.row[aria-current="page"] {
+  background: var(--fill-2);
+}
+.row:active {
+  background: var(--fill-2);
+}
+@media (hover: hover) and (pointer: fine) {
+  .row:hover {
+    background: var(--fill-1);
+  }
+  .row[aria-current="page"]:hover {
+    background: var(--fill-2);
+  }
+}
+
+/* Two-line rows can't fit company, place and flags at once. The flags win, and the place still shows in the job. */
+@container list (max-width: 899px) {
+  .row:has(.row-flags) .row-loc {
+    display: none;
+  }
+}
+
+/* fr tracks ignore content, so proportional columns still line up across rows. */
+@container list (min-width: 900px) {
+  .row {
+    grid-template-columns: 16px minmax(0, 3fr) minmax(0, 1.1fr) minmax(0, 1.3fr) 96px 60px 40px;
+    grid-template-areas: "glyph main company loc flags verdict age";
+    column-gap: 12px;
+    min-height: var(--row-h);
+    padding-block: 0;
+  }
+  .row-company,
+  .row-loc {
+    font-size: var(--fs-row);
+  }
+}
+
+@media (pointer: coarse) {
+  .row {
+    min-height: 64px;
+    padding-block: 10px;
+  }
+}
+
+.list-end {
+  display: flex;
+  justify-content: center;
+  min-height: 24px;
+  padding: 12px;
+}
+
+.row-skeleton {
+  pointer-events: none;
+}
+.row-skeleton .row-sub {
+  grid-area: company;
+  grid-column: 2 / 4;
+}
+.sk-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+/* Two classes, so generic "x > svg" icon colors never override a glyph. */
+.glyph.glyph-new,
+.glyph.glyph-skipped,
+.glyph.glyph-closed {
+  color: var(--text-3);
+}
+.glyph.glyph-applied {
+  color: var(--blue);
+}
+.glyph.glyph-in_process {
+  color: var(--green);
+}
+.glyph.glyph-rejected {
+  color: var(--red);
+}
+
+/* Only strong matches get the accent, so it marks what needs you. */
+.meter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.meter-track {
+  display: block;
+  width: 24px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--fill-3);
+  overflow: hidden;
+}
+.meter-wide .meter-track {
+  width: 40px;
+}
+.meter-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  background: var(--text-3);
+}
+.meter-num {
+  min-width: 2ch;
+  text-align: end;
+  font-size: var(--fs-meta);
+  color: var(--text-2);
+}
+.meter-strong .meter-fill {
+  background: var(--accent);
+}
+.meter-strong .meter-num {
+  color: var(--text-1);
+  font-weight: 500;
+}
+.meter-weak .meter-fill {
+  background: var(--text-4);
+}
+.meter-weak .meter-num {
+  color: var(--text-3);
+}
+.meter-wide .meter-num {
+  font-size: var(--fs-ui);
+}
+
+@media (max-width: 767px) {
+  .list-pane,
+  .list-scroll {
+    overflow: visible;
+  }
+  .group-head {
+    top: calc(var(--header-h) + var(--safe-top));
+  }
+}

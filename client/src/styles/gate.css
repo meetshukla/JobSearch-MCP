@@ -1,0 +1,103 @@
+.gate {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: calc(48px + var(--safe-top)) 16px calc(48px + var(--safe-bottom));
+  background: var(--bg-panel);
+}
+.gate-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
+  gap: 12px;
+  width: min(360px, 100%);
+}
+.gate-col[data-wide] {
+  width: min(480px, 100%);
+}
+.gate-title {
+  margin-top: 12px;
+  font-size: var(--fs-title);
+  line-height: var(--lh-title);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+.gate-text {
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+.gate-form {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  margin-top: 8px;
+}
+.gate-submit {
+  width: 100%;
+  height: max(36px, var(--control-h));
+  margin-top: 4px;
+}
+.gate-foot {
+  margin-top: 8px;
+  font-size: var(--fs-meta);
+  line-height: 18px;
+  color: var(--text-3);
+  text-wrap: pretty;
+}
+.input-affix {
+  position: relative;
+  display: block;
+}
+.input-affix .input {
+  height: max(36px, var(--control-h));
+  padding-inline-end: 40px;
+}
+.affix-btn {
+  position: absolute;
+  top: 50%;
+  inset-inline-end: 4px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-sm);
+  color: var(--text-3);
+  translate: 0 -50%;
+}
+@media (hover: hover) and (pointer: fine) {
+  .affix-btn:hover {
+    background: var(--fill-1);
+    color: var(--text-1);
+  }
+}
+
+.steps {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  margin-top: 8px;
+  counter-reset: step;
+}
+.steps > li {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  padding-inline-start: 34px;
+  counter-increment: step;
+}
+.steps > li::before {
+  content: counter(step);
+  position: absolute;
+  top: -1px;
+  inset-inline-start: 0;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--fill-2);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  color: var(--text-2);
+}

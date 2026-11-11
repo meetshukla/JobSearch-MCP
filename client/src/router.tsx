@@ -1,50 +1,49 @@
-import { useSyncExternalStore, type AnchorHTMLAttributes, type MouseEvent } from "react";
-import type { View } from "../../shared/types.ts";
-import { VIEWS } from "../../shared/types.ts";
-
-export const SETUP_SECTIONS = ["connect", "profile", "filters", "sources"] as const;
-export type SetupSection = (typeof SETUP_SECTIONS)[number];
+import { forwardRef, useSyncExternalStore, type AnchorHTMLAttributes, type MouseEvent } from "react";
+import { VIEWS, SETTINGS_SECTIONS, viewByPath, type SettingsSection, type ViewId } from "./model.ts";
 
 /** "saved" uses the saved filter window; a number or null (any age) overrides it for the list. */
 export type Posted = "saved" | 1 | 3 | null;
-
-export type ListState = { view: View; q: string; remote: boolean; posted: Posted };
+export type ListQuery = { q: string; remote: boolean; posted: Posted };
 
 export type Route =
-  | { page: "jobs"; jobId: string | null; list: ListState }
-  | { page: "setup"; section: SetupSection }
+  | { page: "jobs"; view: ViewId; jobId: string | null; query: ListQuery }
+  | { page: "settings"; section: SettingsSection | null }
   | { page: "login" };
 
 const POSTED: Record<string, Posted> = { "1": 1, "3": 3, any: null };
+const LEGACY_VIEW: Record<string, ViewId> = { to_review: "review", shortlist: "shortlist", applied: "applied", skipped: "skipped", rejected: "rejected", all: "all" };
+const section = (s: string | undefined) => SETTINGS_SECTIONS.find((x) => x.id === s)?.id ?? null;
 
 function parse(pathname: string, search: string): Route {
-  const parts = pathname.split("/").filter(Boolean);
-  if (parts[0] === "login") return { page: "login" };
-  if (parts[0] === "setup") {
-    const section = SETUP_SECTIONS.find((s) => s === parts[1]) ?? "connect";
-    return { page: "setup", section };
-  }
+  const [head, ...tail] = pathname.split("/").filter(Boolean);
+  const first = head && decodeURIComponent(head);
+  // Workday job ids contain "/", and an encoded "%2F" can reach us decoded, so the rest of the path is the id.
+  const second = tail.length ? decodeURIComponent(tail.join("/")) : undefined;
+  if (first === "login") return { page: "login" };
+  if (first === "settings" || first === "setup") return { page: "settings", section: first === "setup" ? (section(second) ?? "connect") : section(second) };
   const p = new URLSearchParams(search);
-  const view = VIEWS.find((v) => v === p.get("view")) ?? "to_review";
   const posted = p.get("posted");
-  return {
-    page: "jobs",
-    jobId: parts[0] === "jobs" && parts[1] ? decodeURIComponent(parts[1]) : null,
-    list: { view, q: p.get("q") ?? "", remote: p.get("remote") === "1", posted: posted && posted in POSTED ? POSTED[posted] : "saved" },
-  };
+  const query: ListQuery = { q: p.get("q") ?? "", remote: p.get("remote") === "1", posted: posted && posted in POSTED ? POSTED[posted] : "saved" };
+  if (first === "jobs") return { page: "jobs", view: "all", jobId: second ?? null, query };
+  const view = viewByPath(first) ?? LEGACY_VIEW[p.get("view") ?? ""] ?? "review";
+  return { page: "jobs", view, jobId: viewByPath(first) ? (second ?? null) : null, query };
 }
 
-export function listSearch(l: ListState) {
+function querySearch(q: ListQuery) {
   const p = new URLSearchParams();
-  if (l.view !== "to_review") p.set("view", l.view);
-  if (l.q) p.set("q", l.q);
-  if (l.remote) p.set("remote", "1");
-  if (l.posted !== "saved") p.set("posted", l.posted === null ? "any" : String(l.posted));
+  if (q.q) p.set("q", q.q);
+  if (q.remote) p.set("remote", "1");
+  if (q.posted !== "saved") p.set("posted", q.posted === null ? "any" : String(q.posted));
   const s = p.toString();
   return s ? `?${s}` : "";
 }
 
-export const jobPath = (id: string | null, l: ListState) => `${id ? `/jobs/${encodeURIComponent(id)}` : "/"}${listSearch(l)}`;
+const EMPTY_QUERY: ListQuery = { q: "", remote: false, posted: "saved" };
+
+export const jobsPath = (view: ViewId, jobId: string | null = null, query: ListQuery = EMPTY_QUERY) =>
+  `/${VIEWS[view].path}${jobId ? `/${encodeURIComponent(jobId)}` : ""}${querySearch(query)}`;
+
+export const settingsPath = (s: SettingsSection | null = null) => (s ? `/settings/${s}` : "/settings");
 
 const listeners = new Set<() => void>();
 let current = parse(location.pathname, location.search);
@@ -75,12 +74,14 @@ export function useRoute() {
   );
 }
 
-export function Link({ to, replace, onClick, ...rest }: AnchorHTMLAttributes<HTMLAnchorElement> & { to: string; replace?: boolean }) {
+type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { to: string; replace?: boolean };
+
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link({ to, replace, onClick, ...rest }, ref) {
   const handle = (e: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(e);
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
     navigate(to, { replace });
   };
-  return <a href={to} onClick={handle} {...rest} />;
-}
+  return <a ref={ref} href={to} onClick={handle} {...rest} />;
+});

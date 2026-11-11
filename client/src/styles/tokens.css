@@ -1,0 +1,107 @@
+/* Design tokens. client/DESIGN.md has the roles and the contrast table.
+   Each color is light-dark(light, dark). color-scheme picks the side, so the system setting and the toggle share one table. */
+:root {
+  color-scheme: light dark;
+
+  --bg-window: light-dark(#f4f4f4, #0f0f0f);
+  --bg-panel: light-dark(#ffffff, #131313);
+  --bg-raised: light-dark(#ffffff, #1c1c1c);
+  --bg-inset: light-dark(#f7f7f7, #0f0f0f);
+  --bg-group: light-dark(#fafafa, #171717);
+  --fill-1: light-dark(oklch(0 0 0 / 0.035), oklch(1 0 0 / 0.04));
+  --fill-2: light-dark(oklch(0 0 0 / 0.06), oklch(1 0 0 / 0.07));
+  --fill-3: light-dark(oklch(0 0 0 / 0.09), oklch(1 0 0 / 0.1));
+  --line: light-dark(#efefef, #1f1f1f);
+  --border: light-dark(#e4e4e4, #292929);
+  --border-strong: light-dark(#d1d1d1, #3a3a3a);
+
+  --text-1: light-dark(#1a1a1a, #f5f5f5);
+  --text-2: light-dark(#5c5c5c, #ababab);
+  --text-3: light-dark(#6b6b6b, #858585);
+  --text-4: light-dark(#a3a3a3, #5e5e5e);
+  --text-prose: light-dark(#262626, #e0e0e0);
+  --on-accent: light-dark(#ffffff, #1a0e05);
+
+  --accent: light-dark(oklch(56% 0.17 45), oklch(72% 0.16 50));
+  --accent-text: light-dark(oklch(52% 0.16 45), oklch(76% 0.14 55));
+  --accent-soft: light-dark(oklch(56% 0.17 45 / 0.1), oklch(72% 0.16 50 / 0.14));
+  --blue: light-dark(oklch(54% 0.15 255), oklch(72% 0.12 250));
+  --green: light-dark(oklch(52% 0.13 155), oklch(75% 0.14 155));
+  --red: light-dark(oklch(54% 0.19 27), oklch(68% 0.16 25));
+  --red-soft: light-dark(oklch(54% 0.19 27 / 0.09), oklch(68% 0.16 25 / 0.13));
+
+  --scrim: light-dark(oklch(0 0 0 / 0.2), oklch(0 0 0 / 0.6));
+  --shadow-pop:
+    0 0 0 1px light-dark(oklch(0 0 0 / 0.08), #2c2c2c), 0 4px 12px -2px light-dark(oklch(0 0 0 / 0.08), oklch(0 0 0 / 0.5)),
+    0 12px 32px -8px light-dark(oklch(0 0 0 / 0.12), oklch(0 0 0 / 0.6));
+  --shadow-dialog:
+    0 0 0 1px light-dark(oklch(0 0 0 / 0.08), #2c2c2c), 0 8px 24px -4px light-dark(oklch(0 0 0 / 0.12), oklch(0 0 0 / 0.55)),
+    0 24px 64px -12px light-dark(oklch(0 0 0 / 0.18), oklch(0 0 0 / 0.7));
+  --material: light-dark(oklch(1 0 0 / 0.82), oklch(0.19 0 0 / 0.82));
+
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+
+  --fs-meta: 12px;
+  --lh-meta: 16px;
+  --fs-ui: 13px;
+  --lh-ui: 20px;
+  --fs-read: 14px;
+  --lh-read: 22px;
+  --fs-title: 20px;
+  --lh-title: 28px;
+  --fs-row: 13px;
+  --fs-row-meta: 12px;
+  --fs-input: 13px;
+
+  --control-h: 28px;
+  --nav-h: 28px;
+  --row-h: 40px;
+  --header-h: 44px;
+  --sidebar-w: 232px;
+  --gutter: 16px;
+
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 12px;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --press: 0.97;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Touch screens get bigger type and 44px targets, whatever the width. */
+@media (pointer: coarse) {
+  :root {
+    --fs-ui: 15px;
+    --lh-ui: 22px;
+    --fs-read: 15px;
+    --lh-read: 24px;
+    --fs-row: 15px;
+    --fs-row-meta: 13px;
+    --fs-input: 16px;
+    --control-h: 44px;
+    --nav-h: 44px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: 16px;
+    --header-h: 48px;
+  }
+}
