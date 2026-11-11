@@ -1,4 +1,4 @@
-import { CalendarClock, CircleSlash, CircleX, Inbox, Layers, Send, Star, type LucideIcon } from "lucide-react";
+import { CircleSlash, Inbox, Send, type LucideIcon } from "lucide-react";
 import type { JobRow, Status, Today, View, ViewCounts } from "../../shared/types.ts";
 import { localDay, todayIso } from "./format.ts";
 
@@ -19,7 +19,7 @@ export const isDue = (followUp: string | null) => followUp != null && followUp.s
 
 export type JobGroup = { key: string; label: string; status?: Status; rows: JobRow[] };
 
-export type ViewId = "review" | "shortlist" | "applied" | "follow_ups" | "skipped" | "rejected" | "all";
+export type ViewId = View;
 
 export type ViewDef = {
   id: ViewId;
@@ -63,26 +63,21 @@ function groupBy(rows: JobRow[], pick: (j: JobRow) => { key: string; label: stri
 }
 
 export const VIEWS: Record<ViewId, ViewDef> = {
-  review: {
-    id: "review",
-    path: "review",
-    label: "To review",
-    short: "Review",
+  jobs: {
+    id: "jobs",
+    path: "jobs",
+    label: "Jobs",
+    short: "Jobs",
     icon: Inbox,
-    server: "to_review",
-    group: (rows) => groupBy(rows, (j) => postedGroup(j.posted_at)),
-    count: (c) => c?.to_review,
+    server: "jobs",
+    // The server sends scored jobs first, best first, then the rest newest first.
+    group: (rows) => {
+      const scored = rows.filter((j) => j.verdict);
+      const rest = rows.filter((j) => !j.verdict);
+      return [...(scored.length ? [{ key: "scored", label: "Scored", rows: scored }] : []), ...groupBy(rest, (j) => postedGroup(j.posted_at))];
+    },
+    count: (c) => c?.jobs,
     empty: { title: "All caught up", text: "New jobs that pass your filters land here as Hunt reads your sources." },
-  },
-  shortlist: {
-    id: "shortlist",
-    path: "shortlist",
-    label: "Shortlist",
-    short: "Shortlist",
-    icon: Star,
-    server: "shortlist",
-    count: (c) => c?.shortlist,
-    empty: { title: "Nothing on the shortlist", text: "Jobs with a verdict that you haven't acted on yet. Your agent fills this as it reviews." },
   },
   applied: {
     id: "applied",
@@ -94,22 +89,18 @@ export const VIEWS: Record<ViewId, ViewDef> = {
     group: (rows) =>
       groupBy(
         rows,
-        (j) => (j.status === "in_process" ? { key: "in_process", label: "In process", status: "in_process" } : { key: "applied", label: "Applied", status: "applied" }),
-        ["in_process", "applied"],
+        (j) =>
+          isDue(j.follow_up_at) && j.status !== "rejected"
+            ? { key: "due", label: "Follow up" }
+            : j.status === "in_process"
+              ? { key: "in_process", label: "In process", status: "in_process" }
+              : j.status === "rejected"
+                ? { key: "rejected", label: "Rejected", status: "rejected" }
+                : { key: "applied", label: "Applied", status: "applied" },
+        ["due", "in_process", "applied", "rejected"],
       ),
     count: (c) => c?.applied,
-    empty: { title: "No applications yet", text: "Mark a job Applied or In process and it moves here." },
-  },
-  follow_ups: {
-    id: "follow_ups",
-    path: "follow-ups",
-    label: "Follow-ups",
-    short: "Follow-ups",
-    icon: CalendarClock,
-    server: "follow_ups",
-    group: (rows) => groupBy(rows, (j) => (isDue(j.follow_up_at) ? { key: "due", label: "Due" } : { key: "later", label: "Later" }), ["due", "later"]),
-    count: (_c, t) => t?.follow_ups_due.length,
-    empty: { title: "No follow-ups set", text: "Give an application a follow-up date and it shows up here when it's due." },
+    empty: { title: "No applications yet", text: "Mark a job Applied and it moves here, out of Jobs." },
   },
   skipped: {
     id: "skipped",
@@ -119,41 +110,20 @@ export const VIEWS: Record<ViewId, ViewDef> = {
     icon: CircleSlash,
     server: "skipped",
     count: (c) => c?.skipped,
-    empty: { title: "Nothing skipped", text: "Jobs you or your agent pass on end up here." },
-  },
-  rejected: {
-    id: "rejected",
-    path: "rejected",
-    label: "Rejected",
-    short: "Rejected",
-    icon: CircleX,
-    server: "rejected",
-    count: (c) => c?.rejected,
-    empty: { title: "No rejections", text: "Mark a job Rejected to keep a record of it here." },
-  },
-  all: {
-    id: "all",
-    path: "all",
-    label: "All jobs",
-    short: "All",
-    icon: Layers,
-    server: "all",
-    count: (c) => c?.all,
-    empty: { title: "No jobs yet", text: "Every job you can see, whatever its status." },
+    empty: { title: "Nothing skipped", text: "Jobs you or your agent pass on go here, so they never come back to Jobs." },
   },
 };
 
-export const VIEW_ORDER: ViewId[] = ["review", "shortlist", "applied", "follow_ups", "skipped", "rejected", "all"];
-/** The four views in the phone tab bar; the rest live in the More sheet. */
-export const TAB_VIEWS: ViewId[] = ["review", "shortlist", "applied", "follow_ups"];
+export const VIEW_ORDER: ViewId[] = ["jobs", "applied", "skipped"];
+export const TAB_VIEWS: ViewId[] = VIEW_ORDER;
 
 export const viewByPath = (path: string | undefined) => VIEW_ORDER.find((v) => VIEWS[v].path === path);
 
-/** The view a job lives in, given its status and whether it has a verdict. */
-export function viewForStatus(status: Status, hasVerdict: boolean): ViewId {
-  if (status === "new") return hasVerdict ? "shortlist" : "review";
-  if (status === "in_process") return "applied";
-  return status;
+/** The view a job lives in. */
+export function viewForStatus(status: Status): ViewId {
+  if (status === "new") return "jobs";
+  if (status === "skipped") return "skipped";
+  return "applied";
 }
 
 export type SettingsSection = "connect" | "profile" | "filters" | "sources";

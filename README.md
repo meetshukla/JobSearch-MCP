@@ -50,10 +50,10 @@ Then ask it: "Use Hunt. Start with today."
 
 | Tool | What it does |
 |---|---|
-| `today` | What's missing from setup, jobs waiting for review, the shortlist, applications, follow-ups due, source health |
+| `today` | What's missing from setup, new jobs your agent hasn't scored, scored ones waiting for a decision, applications by stage, follow-ups due, source health |
 | `get_settings`, `update_settings` | Your profile (resume and what you want, plain text) and your filters, with a preview of how many jobs a change would show |
 | `add_sources`, `list_sources`, `update_sources` | Company names, careers pages, job board URLs, RSS feeds, remote boards, or a starter list. Pause, resume, remove, read now. |
-| `list_jobs`, `get_job` | Short rows to triage, the full job to read |
+| `list_jobs`, `get_job` | Three views: **jobs** (new only, what agents read), **applied** (applied, in process, rejected) and **skipped**. Short rows to triage, the full job to read. |
 | `add_job` | Track any job from a link, whatever the filters say |
 | `update_job` | Verdict (score and why), status, notes, contacts, follow-up date |
 

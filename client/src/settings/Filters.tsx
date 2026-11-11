@@ -121,12 +121,12 @@ export function Filters({ saved, defaults }: { saved: FilterSet; defaults: Filte
           {preview.data &&
             (dirty ? (
               <span>
-                <span className="tnum">{plural(preview.data.to_review_now, "job")}</span> to review now,{" "}
-                <strong className="tnum">{preview.data.to_review_with_these_filters.toLocaleString()}</strong> with these filters
+                <span className="tnum">{plural(preview.data.jobs_now, "new job")}</span> now,{" "}
+                <strong className="tnum">{preview.data.jobs_with_these_filters.toLocaleString()}</strong> with these filters
               </span>
             ) : (
               <span>
-                <span className="tnum">{plural(preview.data.to_review_now, "job")}</span> to review with these filters
+                <span className="tnum">{plural(preview.data.jobs_now, "new job")}</span> with these filters
               </span>
             ))}
         </p>

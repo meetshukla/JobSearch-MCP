@@ -66,7 +66,7 @@ function Palette({ mode, input, onMode }: { mode: PaletteMode; input: React.RefO
           const j = await tool("add_job", { url: q });
           bump(["jobs"]);
           toast(`Tracking ${j.title} at ${j.company}`);
-          navigate(jobsPath(viewForStatus(j.status, Boolean(j.verdict)), j.id));
+          navigate(jobsPath(viewForStatus(j.status), j.id));
         },
       });
     }
@@ -79,7 +79,7 @@ function Palette({ mode, input, onMode }: { mode: PaletteMode; input: React.RefO
         label: j.title,
         hint: j.company,
         icon: <StatusGlyph status={j.status} closed={j.closed} />,
-        run: () => navigate(jobsPath(viewForStatus(j.status, Boolean(j.verdict)), j.id)),
+        run: () => navigate(jobsPath(viewForStatus(j.status), j.id)),
       });
     }
     if (job) {
@@ -282,8 +282,8 @@ function useJobSearch(query: string) {
     if (q.length < 2) return setJobs([]);
     let live = true;
     const t = setTimeout(() => {
-      tool("list_jobs", { view: "all", query: q, limit: 6 }).then(
-        (r) => live && setJobs(r.jobs),
+      Promise.all(VIEW_ORDER.map((view) => tool("list_jobs", { view, query: q, limit: 4 }))).then(
+        (rs) => live && setJobs(rs.flatMap((r) => r.jobs).slice(0, 8)),
         () => live && setJobs([]),
       );
     }, 120);

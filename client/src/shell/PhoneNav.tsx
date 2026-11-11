@@ -32,7 +32,7 @@ export function TabBar({ route }: { route: Route }) {
         {TAB_VIEWS.map((id) => {
           const v = VIEWS[id];
           const active = route.page === "jobs" && route.view === id;
-          const n = id === "follow_ups" ? due : 0;
+          const n = id === "applied" ? due : 0;
           return (
             <Link key={id} to={jobsPath(id)} className="tab" aria-current={active ? "page" : undefined} aria-label={`${v.label}${v.count(counts, today) ? `, ${v.count(counts, today)}` : ""}`}>
               <span className="tab-icon">
@@ -61,24 +61,6 @@ function MoreSheet({ open, onOpenChange }: { open: boolean; onOpenChange: (o: bo
   const close = () => onOpenChange(false);
   return (
     <Sheet open={open} onOpenChange={onOpenChange} title="More">
-      <section className="sheet-section">
-        <h2 className="sheet-heading">Views</h2>
-        <ul className="sheet-list">
-          {VIEW_ORDER.filter((id) => !TAB_VIEWS.includes(id)).map((id) => {
-            const v = VIEWS[id];
-            const n = v.count(counts, today);
-            return (
-              <li key={id}>
-                <Link to={jobsPath(id)} className="sheet-item" onClick={close}>
-                  <v.icon size={18} strokeWidth={1.75} />
-                  <span className="sheet-item-label">{v.label}</span>
-                  {n ? <span className="t3 tnum">{n.toLocaleString()}</span> : null}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
       {today && (
         <section className="sheet-section">
           <h2 className="sheet-heading">Today</h2>

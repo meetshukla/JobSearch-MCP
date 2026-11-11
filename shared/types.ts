@@ -3,8 +3,12 @@
 export const STATUSES = ["new", "skipped", "applied", "in_process", "rejected"] as const;
 export type Status = (typeof STATUSES)[number];
 
-/** follow_ups overlaps applied: applications with a follow-up date, soonest first. */
-export const VIEWS = ["to_review", "shortlist", "applied", "follow_ups", "skipped", "rejected", "all"] as const;
+/**
+ * jobs: new jobs only, the ones scored by your agent first. What agents read.
+ * applied: applied, in process and rejected, with due follow-ups first.
+ * skipped: jobs passed on, so they never come back to jobs.
+ */
+export const VIEWS = ["jobs", "applied", "skipped"] as const;
 export type View = (typeof VIEWS)[number];
 
 /** What to keep. Every field has a default and every one can be changed or emptied. */
@@ -144,10 +148,13 @@ export type Today = {
   setup: { ready: boolean; missing: { id: "profile" | "sources" | "where"; text: string }[] };
   jobs: {
     new_24h: number;
-    to_review: number;
-    shortlist: number;
+    /** New jobs your agent hasn't scored yet: its review queue. */
+    unscored: number;
+    /** New jobs with a score, not yet applied to or skipped. */
+    scored: number;
     applied: number;
     in_process: number;
+    rejected: number;
   };
   /** Every view's size, the same numbers list_jobs returns. */
   counts: ViewCounts;

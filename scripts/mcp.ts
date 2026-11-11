@@ -1,7 +1,7 @@
 /**
  * Call a Hunt tool over MCP from the terminal:
  *   HUNT_TOKEN=... node scripts/mcp.ts https://hunt.example.workers.dev today
- *   node scripts/mcp.ts http://localhost:8787 list_jobs '{"view":"to_review","limit":5}'
+ *   node scripts/mcp.ts http://localhost:8787 list_jobs '{"unscored_only":true,"limit":5}'
  * With no tool name it prints the tool list.
  */
 const [base, tool, args] = process.argv.slice(2);

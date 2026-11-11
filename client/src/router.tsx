@@ -11,7 +11,8 @@ export type Route =
   | { page: "login" };
 
 const POSTED: Record<string, Posted> = { "1": 1, "3": 3, any: null };
-const LEGACY_VIEW: Record<string, ViewId> = { to_review: "review", shortlist: "shortlist", applied: "applied", skipped: "skipped", rejected: "rejected", all: "all" };
+/** Views from earlier versions, so old links still land somewhere sensible. */
+const LEGACY_VIEW: Record<string, ViewId> = { to_review: "jobs", review: "jobs", shortlist: "jobs", all: "jobs", "follow-ups": "applied", follow_ups: "applied", rejected: "applied" };
 const section = (s: string | undefined) => SETTINGS_SECTIONS.find((x) => x.id === s)?.id ?? null;
 
 function parse(pathname: string, search: string): Route {
@@ -24,9 +25,9 @@ function parse(pathname: string, search: string): Route {
   const p = new URLSearchParams(search);
   const posted = p.get("posted");
   const query: ListQuery = { q: p.get("q") ?? "", remote: p.get("remote") === "1", posted: posted && posted in POSTED ? POSTED[posted] : "saved" };
-  if (first === "jobs") return { page: "jobs", view: "all", jobId: second ?? null, query };
-  const view = viewByPath(first) ?? LEGACY_VIEW[p.get("view") ?? ""] ?? "review";
-  return { page: "jobs", view, jobId: viewByPath(first) ? (second ?? null) : null, query };
+  const known = viewByPath(first) ?? (first ? LEGACY_VIEW[first] : undefined);
+  const view = known ?? LEGACY_VIEW[p.get("view") ?? ""] ?? "jobs";
+  return { page: "jobs", view, jobId: known ? (second ?? null) : null, query };
 }
 
 function querySearch(q: ListQuery) {

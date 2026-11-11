@@ -8,13 +8,13 @@ import { StatusGlyph, VerdictMeter } from "../glyphs.tsx";
 /** One job as one link: glyph, title, company, place, flags, verdict and age, in columns that line up down the list. */
 export function JobRowLink({ job: j, view, query, open, cursor, onFocus }: { job: JobRow; view: ViewId; query: ListQuery; open: boolean; cursor: boolean; onFocus: () => void }) {
   const due = isDue(j.follow_up_at);
-  const followUps = view === "follow_ups";
   const place = j.location || (j.remote ? "Remote" : "");
   return (
     <Link
       to={jobsPath(view, j.id, query)}
       className="row"
       data-job={j.id}
+      data-dim={j.status === "rejected" || undefined}
       data-cursor={cursor || undefined}
       aria-current={open ? "page" : undefined}
       onFocus={onFocus}
@@ -27,10 +27,10 @@ export function JobRowLink({ job: j, view, query, open, cursor, onFocus }: { job
       <span className="row-title">{j.title.trim()}</span>
       <span className="row-company">{j.company}</span>
       <span className="row-loc">{place}</span>
-      {(j.closed && j.status !== "new") || j.contacts > 0 || (j.follow_up_at && !followUps) ? (
+      {(j.closed && j.status !== "new") || j.contacts > 0 || j.follow_up_at ? (
         <span className="row-flags">
           {j.closed && j.status !== "new" && <span className="flag">Closed</span>}
-          {j.follow_up_at && !followUps && (
+          {j.follow_up_at && (
             <span className="flag" data-due={due || undefined} title={`Follow up ${day(j.follow_up_at.slice(0, 10))}`}>
               <CalendarClock size={12} strokeWidth={1.75} aria-hidden />
               {dueLabel(j.follow_up_at)}
@@ -45,12 +45,8 @@ export function JobRowLink({ job: j, view, query, open, cursor, onFocus }: { job
         </span>
       ) : null}
       <span className="row-verdict">{j.verdict && <VerdictMeter score={j.verdict.score} />}</span>
-      {followUps && j.follow_up_at ? (
-        <span className="row-age tnum" data-due={due || undefined} title={`Follow up ${day(j.follow_up_at.slice(0, 10))}`}>
-          {dueLabel(j.follow_up_at)}
-        </span>
-      ) : view === "applied" && j.status_at ? (
-        <span className="row-age tnum" title={`${j.status === "in_process" ? "In process since" : "Applied"} ${day(j.status_at)}`}>
+      {view === "applied" && j.status_at ? (
+        <span className="row-age tnum" title={`${STATUS_LABEL[j.status]} ${day(j.status_at)}`}>
           {shortAge(j.status_at) ?? "–"}
         </span>
       ) : (

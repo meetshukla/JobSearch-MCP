@@ -207,6 +207,15 @@
   grid-area: loc;
   color: var(--text-3);
 }
+/* Rejected applications stay on record, a step quieter than live ones. */
+.row[data-dim] .row-title {
+  color: var(--text-3);
+  font-weight: 400;
+}
+.row[data-dim] .row-company,
+.row[data-dim] .row-loc {
+  color: var(--text-4);
+}
 .row-flags {
   grid-area: flags;
   display: flex;

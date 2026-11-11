@@ -20,7 +20,7 @@ function AppNav({ route }: { route: Route }) {
   return (
     <>
       <div className="sidebar-head">
-        <Link to={jobsPath("review")} className="brand">
+        <Link to={jobsPath("jobs")} className="brand">
           <Mark />
           <span>Hunt</span>
         </Link>
@@ -38,7 +38,7 @@ function AppNav({ route }: { route: Route }) {
                 <v.icon size={16} strokeWidth={1.75} />
                 <span className="nav-label">{v.label}</span>
                 {n ? (
-                  <span className="nav-count tnum" data-due={id === "follow_ups" && due > 0 ? "" : undefined}>
+                  <span className="nav-count tnum" data-due={id === "applied" && due > 0 ? "" : undefined} title={id === "applied" && due > 0 ? `${due} follow-up${due === 1 ? "" : "s"} due` : undefined}>
                     {n.toLocaleString()}
                   </span>
                 ) : null}
@@ -108,7 +108,7 @@ function SettingsNav({ route }: { route: Extract<Route, { page: "settings" }> })
   return (
     <>
       <div className="sidebar-head">
-        <Link to={jobsPath("review")} className="back-link">
+        <Link to={jobsPath("jobs")} className="back-link">
           <ArrowLeft size={16} strokeWidth={1.75} />
           Back to jobs
         </Link>

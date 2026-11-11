@@ -13,10 +13,10 @@ const LIGHT = `id, company, company_domain, title, location, remote, department,
 
 export const STATUS_LABEL: Record<Status, string> = { new: "new", skipped: "skipped", applied: "applied", in_process: "in process", rejected: "rejected" };
 
-function viewOf(j: { status: Status; verdict_score: number | null }): View {
-  if (j.status === "new") return j.verdict_score == null ? "to_review" : "shortlist";
-  if (j.status === "in_process") return "applied";
-  return j.status;
+function viewOf(j: { status: Status }): View {
+  if (j.status === "new") return "jobs";
+  if (j.status === "skipped") return "skipped";
+  return "applied";
 }
 
 function toRow(j: any): JobRow {
@@ -62,17 +62,15 @@ function visible(f: Filters, ignoreFilters = false) {
 }
 
 const emptyCounts = (): ViewCounts => Object.fromEntries(VIEWS.map((v) => [v, 0])) as ViewCounts;
-const hasFollowUp = (j: any) => Boolean(j.follow_up_at) && (j.status === "applied" || j.status === "in_process");
-
 function countViews(rows: { j: any; view: View }[]) {
   const counts = emptyCounts();
-  for (const { j, view } of rows) {
-    counts[view]++;
-    counts.all++;
-    if (hasFollowUp(j)) counts.follow_ups++;
-  }
+  for (const { view } of rows) counts[view]++;
   return counts;
 }
+
+/** Applied: follow-ups that are due, then in process, then applied, then rejected; newest change first within each. */
+const STAGE: Record<string, number> = { in_process: 1, applied: 2, rejected: 3 };
+const appliedRank = (j: any, today: string) => (j.follow_up_at && j.follow_up_at <= today && j.status !== "rejected" ? 0 : STAGE[j.status] ?? 4);
 
 export type ListQuery = {
   view?: View;
@@ -82,13 +80,17 @@ export type ListQuery = {
   /** Replaces the saved "posted within" for this list only. null = any age. */
   posted_within_days?: number | null;
   ignore_filters?: boolean;
+  /** Jobs view: only jobs without a score, the agent's review queue. */
+  unscored_only?: boolean;
+  /** The person's local date, for which follow-ups are due. */
+  date?: string;
   sort?: "posted" | "verdict" | "seen" | "updated";
   limit?: number;
   offset?: number;
 };
 
 export function listJobs(q: ListQuery = {}, filters?: Filters): ListJobsResult {
-  const view = q.view ?? "to_review";
+  const view = q.view ?? "jobs";
   let f = filters ?? getSettings().filters;
   if (q.posted_within_days !== undefined) f = { ...f, posted_within_days: q.posted_within_days };
   const rows = visible(f, q.ignore_filters);
@@ -97,16 +99,18 @@ export function listJobs(q: ListQuery = {}, filters?: Filters): ListJobsResult {
   const company = q.company?.trim().toLowerCase();
   const picked: any[] = [];
   for (const { j, view: v } of rows) {
-    if (view === "follow_ups" ? !hasFollowUp(j) : view !== "all" && v !== view) continue;
+    if (v !== view) continue;
+    if (q.unscored_only && j.verdict_score != null) continue;
     if (text && !`${j.title} ${j.company} ${j.location}`.toLowerCase().includes(text)) continue;
     if (company && !j.company.toLowerCase().includes(company)) continue;
     if (q.remote_only && !j.remote && !/remote/i.test(j.location)) continue;
     picked.push(j);
   }
-  const sort = q.sort ?? (view === "shortlist" ? "verdict" : view === "applied" || view === "rejected" || view === "skipped" ? "updated" : "posted");
+  const sort = q.sort ?? (view === "jobs" ? "verdict" : "updated");
   const time = (s: string | null) => (s ? Date.parse(s) || 0 : 0);
+  const today = q.date ?? nowIso().slice(0, 10);
   picked.sort((a, b) => {
-    if (view === "follow_ups" && !q.sort) return String(a.follow_up_at).localeCompare(String(b.follow_up_at));
+    if (view === "applied" && !q.sort) return appliedRank(a, today) - appliedRank(b, today) || time(b.status_at) - time(a.status_at);
     if (sort === "verdict") return (b.verdict_score ?? -1) - (a.verdict_score ?? -1) || time(b.posted_at) - time(a.posted_at);
     if (sort === "seen") return time(b.first_seen_at) - time(a.first_seen_at);
     if (sort === "updated") return time(b.status_at ?? b.first_seen_at) - time(a.status_at ?? a.first_seen_at);
@@ -275,10 +279,11 @@ export function today(date?: string): Today {
     counts,
     jobs: {
       new_24h: new24h,
-      to_review: counts.to_review,
-      shortlist: counts.shortlist,
+      unscored: rows.filter((r) => r.view === "jobs" && r.j.verdict_score == null).length,
+      scored: rows.filter((r) => r.view === "jobs" && r.j.verdict_score != null).length,
       applied: rows.filter((r) => r.j.status === "applied").length,
       in_process: rows.filter((r) => r.j.status === "in_process").length,
+      rejected: rows.filter((r) => r.j.status === "rejected").length,
     },
     follow_ups_due: all<any>(
       "SELECT id, title, company, status, follow_up_at FROM jobs WHERE follow_up_at IS NOT NULL AND follow_up_at <= ? AND status IN ('applied','in_process') ORDER BY follow_up_at",

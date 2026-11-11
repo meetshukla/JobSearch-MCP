@@ -13,13 +13,13 @@ Call `get_settings` and read `profile`: their resume, what they want, and what t
 
 ## 2. Triage from the list
 
-Call `list_jobs` with `view: "to_review"` (50 at a time). Each row has the title, company, location, posting date and a short excerpt. Skip the obvious misses without opening them:
+Call `list_jobs` with `unscored_only: true` (50 at a time): new jobs you haven't reviewed. Applied and skipped jobs never appear. Each row has the title, company, location, posting date and a short excerpt. Skip the obvious misses without opening them:
 
 ```json
 { "job_id": "<id>", "status": "skipped", "note": "Staff level, they're mid-level" }
 ```
 
-Keep the note to one line with the deciding fact.
+Keep the note to one line with the deciding fact. A skipped job never comes back.
 
 ## 3. Read the promising ones
 
@@ -42,9 +42,9 @@ Weigh skills overlap, level, domain interest and logistics, roughly in that orde
 
 The note cites the deciding facts, not adjectives.
 
-## 4. Bring the shortlist to the person
+## 4. Bring the best ones to the person
 
-`list_jobs` with `view: "shortlist"` gives your scored jobs, best first. Show the top ones with links and your notes, and let the person choose. Apply only with their go-ahead, or their standing rule (for example "apply to anything 85+").
+`list_jobs` with no options gives the new jobs with your scores first, best first. Show the top ones with links and your notes, and let the person choose. Apply only with their go-ahead, or their standing rule (for example "apply to anything 85+").
 
 ## 5. After applying
 

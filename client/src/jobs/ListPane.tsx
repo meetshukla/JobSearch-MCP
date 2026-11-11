@@ -75,7 +75,7 @@ function PhoneHeader({ def, total, query, setQuery, searchRef }: Props) {
   return (
     <PhoneBar
       start={
-        <Link to={jobsPath("review")} className="phone-mark" aria-label="Hunt, to review">
+        <Link to={jobsPath("jobs")} className="phone-mark" aria-label="Hunt, jobs">
           <Mark size={24} />
         </Link>
       }
@@ -261,7 +261,8 @@ function ListEmpty({ def, query, setQuery }: Props) {
       </Empty>
     );
   const noSources = today?.setup.missing.some((m) => m.id === "sources");
-  if (counts?.all === 0 && noSources)
+  const total = counts ? counts.jobs + counts.applied + counts.skipped : undefined;
+  if (total === 0 && noSources)
     return (
       <Empty
         icon={<Inbox size={20} strokeWidth={1.5} />}
@@ -275,25 +276,14 @@ function ListEmpty({ def, query, setQuery }: Props) {
         Hunt reads company job boards, remote job boards and RSS feeds you pick. Add a few companies, or import a starter list.
       </Empty>
     );
-  if (counts?.all === 0)
+  if (total === 0)
     return (
       <Empty icon={<Spinner />} title="Reading your sources">
         Hunt reads each source about every {today?.sources.pass_minutes ?? 60} minutes. Jobs that pass your filters land here.
       </Empty>
     );
-  const shortlist = counts?.shortlist ?? 0;
   return (
-    <Empty
-      icon={<def.icon size={20} strokeWidth={1.5} />}
-      title={def.empty.title}
-      action={
-        def.id === "review" && shortlist > 0 ? (
-          <Link to={jobsPath("shortlist")} className="btn btn-secondary">
-            Open the shortlist ({shortlist})
-          </Link>
-        ) : undefined
-      }
-    >
+    <Empty icon={<def.icon size={20} strokeWidth={1.5} />} title={def.empty.title}>
       {def.empty.text}
     </Empty>
   );

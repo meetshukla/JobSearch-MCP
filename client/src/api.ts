@@ -39,7 +39,7 @@ export type ListJobsArgs = {
 };
 
 export type SettingsResult = Settings & { default_filters: Filters; lists: { id: string; label: string; companies: number }[] };
-export type FiltersPreview = { to_review_now: number; to_review_with_these_filters: number; note: string };
+export type FiltersPreview = { jobs_now: number; jobs_with_these_filters: number; note: string };
 export type SourceAction = "pause" | "resume" | "remove" | "read_now";
 export type ToolInfo = { name: string; title: string; description: string };
 

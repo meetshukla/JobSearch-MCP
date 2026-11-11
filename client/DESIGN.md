@@ -111,15 +111,14 @@ Motion explains a change or confirms a press. It never decorates, and it never r
 
 ```
 ┌────────────────────┬──────────────────────────────────────────────────────────────────┐
-│ ◉ Hunt        ⌕  + │ ▢ To review  30                [⌕ Search  /] [Remote] [7 days ▾] │
+│ ◉ Hunt        ⌕  + │ ▢ Jobs       30                [⌕ Search  /] [Remote] [7 days ▾] │
 │                    ├──────────────────────────────────────────────────────────────────┤
-│ ▢ To review     30 │ Today  12                                                         │
-│ ☆ Shortlist      3 │ ○  Staff Software Engineer, Browser   Mozilla    Remote Canada ▰▰▱ 82  19h │
-│ ➚ Applied        2 │ ○  Senior Software Engineer           Vannevar   Remote               22h │
-│ ◷ Follow-ups     1 │ Yesterday  8                                                      │
-│ ⊘ Skipped        1 │ ○  Software Developer (Backend SaaS)  Canonical  Remote, LATAM     1d │
-│ ⊗ Rejected       1 │ …                                                                 │
-│ ≡ All           37 │                                                                   │
+│ ▢ Jobs          30 │ Scored  2                                                         │
+│ ➚ Applied        3 │ ○  Staff Software Engineer, Browser   Mozilla    Remote Canada ▰▰▱ 82  19h │
+│ ⊘ Skipped        1 │ ○  Senior Software Engineer           Vannevar   Remote        ▰▱▱ 64  22h │
+│                    │ Today  12                                                         │
+│                    │ ○  Software Developer (Backend SaaS)  Canonical  Remote, LATAM     1d │
+│                    │ …                                                                 │
 │                    │                                                                   │
 │ ● 1,009 sources    │                                                                   │
 │   5 failing        │                                                                   │
@@ -127,13 +126,13 @@ Motion explains a change or confirms a press. It never decorates, and it never r
 └────────────────────┴───────────────────────────────────────────────────────────────────┘
 ```
 
-The sidebar sits on the window color. The main panel is inset 8px from the window edges, with a 12px radius and a 1px border. When the list is at least 900px wide, rows are 40px and single line, in columns: glyph, title, company, location, flags, verdict, age. The column tracks use `fr` units and fixed widths, never `auto`, so they line up across rows. Narrower lists use two-line rows, and a row with flags drops its location there. The list groups by posting day in To review and by status in Applied. Group headers stick to the top while you scroll.
+The sidebar sits on the window color. The main panel is inset 8px from the window edges, with a 12px radius and a 1px border. When the list is at least 900px wide, rows are 40px and single line, in columns: glyph, title, company, location, flags, verdict, age. The column tracks use `fr` units and fixed widths, never `auto`, so they line up across rows. Narrower lists use two-line rows, and a row with flags drops its location there. The list puts scored jobs first in Jobs, then groups the rest by posting day; Applied groups by stage. Group headers stick to the top while you scroll.
 
 ### Desktop, list and job side by side (1240px and wider)
 
 ```
 ┌──────────┬────────────────────────┬─────────────────────────────────────────────────┐
-│ sidebar  │ ▢ To review 30   ⌕ ▾   │ Mozilla › Staff Software Engineer…    ↑ ↓  ↗  ✕ │
+│ sidebar  │ ▢ Jobs      30   ⌕ ▾   │ Mozilla › Staff Software Engineer…    ↑ ↓  ↗  ✕ │
 │          ├────────────────────────┼─────────────────────────────────────────────────┤
 │          │ Today                  │ Mozilla                       │ Status   ○ New  │
 │          │ ○ Staff Software Eng…  │ Staff Software Engineer,      │ Verdict  ▰▰▱ 82 │
@@ -153,7 +152,7 @@ The list pane narrows to between 360 and 440px and its rows switch to two lines 
 
 ```
 ┌───────────────────────────┐      ┌───────────────────────────┐      ┌───────────────────────────┐
-│ ◉  To review 30      ⌕  + │      │ ‹ To review          ↑ ↓ ⋯│      │ ───                       │
+│ ◉  Jobs      30      ⌕  + │      │ ‹ Jobs               ↑ ↓ ⋯│      │ ───                       │
 ├───────────────────────────┤      ├───────────────────────────┤      │ Views                     │
 │ Today                  12 │      │ Mozilla                   │      │ ⊘ Skipped               1 │
 │ ○ Staff Software Engineer │      │ Staff Software Engineer,  │      │ ⊗ Rejected              1 │
@@ -167,11 +166,11 @@ The list pane narrows to between 360 and 440px and its rows switch to two lines 
 │                           │      │ Description               │      │ Filters                 › │
 ├───────────────────────────┤      ├───────────────────────────┤      │ Sources                 › │
 │ ▢     ☆     ➚     ◷    ⋯  │      │ [ ○ New ▾ ] [Open posting]│      │ Theme [System|Light|Dark] │
-│Review Short Applied Due More│    └───────────────────────────┘      └───────────────────────────┘
+│ Jobs   Applied  Skipped  More│    └───────────────────────────┘      └───────────────────────────┘
 └───────────────────────────┘
 ```
 
-Phones get their own layout, not a squeezed desktop. A compact top bar holds the view name, search and track. A bottom tab bar holds the four daily views and More, in thumb reach. More opens a sheet with the other views, the day's summary, settings and the theme. A job opens full screen with a back button. Its status and the posting link sit in a sticky bottom bar. Rows are at least 56px tall, and every target is at least 44px. Bars pad themselves with `env(safe-area-inset-*)`, and they use a translucent material because content scrolls under them.
+Phones get their own layout, not a squeezed desktop. A compact top bar holds the view name, search and track. A bottom tab bar holds the three views and More, in thumb reach. More opens a sheet with the day's summary, settings and the theme. A job opens full screen with a back button. Its status and the posting link sit in a sticky bottom bar. Rows are at least 56px tall, and every target is at least 44px. Bars pad themselves with `env(safe-area-inset-*)`, and they use a translucent material because content scrolls under them.
 
 ### Settings
 
@@ -187,7 +186,7 @@ Phones get their own layout, not a squeezed desktop. A compact top bar holds the
 │                    │            Where you can work                             │
 │                    │            On-site and hybrid                   [on ]    │
 │                    │            …                                              │
-│                    │            30 to review now, 21 with these   Reset  Save │
+│                    │            30 new jobs now, 21 with these    Reset  Save │
 └────────────────────┴──────────────────────────────────────────────────────────┘
 ```
 
@@ -210,17 +209,15 @@ A job that is new and closed shows the closed glyph. A job you acted on keeps it
 
 ## Views
 
-`src/model.ts` defines every view in one table: its path, label, icon, which server view feeds it, an optional client filter, and how it groups.
+`src/model.ts` defines every view in one table: its path, label, icon, which server view feeds it, and how it groups. There are three, and that's deliberate: a job is new, applied to, or skipped. Agents only read Jobs, so anything applied or skipped never comes back to them.
 
 | View | Path | Source | Groups |
 | --- | --- | --- | --- |
-| To review | `/review` | `to_review` | Posting day |
-| Shortlist | `/shortlist` | `shortlist` | None, best verdict first |
-| Applied | `/applied` | `applied` | In process, then Applied |
-| Follow-ups | `/follow-ups` | `applied`, follow-up date set | Due, then Later |
+| Jobs | `/jobs` | `jobs` | Scored (best first), then posting day |
+| Applied | `/applied` | `applied` | Follow up (due), In process, Applied, Rejected (quieter) |
 | Skipped | `/skipped` | `skipped` | None |
-| Rejected | `/rejected` | `rejected` | None |
-| All jobs | `/all` | `all` | None |
+
+Old paths (`/review`, `/shortlist`, `/follow-ups`, `/rejected`, `/all`) still open the view that replaced them. The Applied count turns accent when a follow-up is due.
 
 A job opens at `/<view>/<job id>`, so the list beside it keeps its context. Search, Remote and Posted live in the query string.
 
@@ -264,7 +261,7 @@ A job opens at `/<view>/<job id>`, so the list beside it keeps its context. Sear
 The first draft of this plan went through the brief and the AI-default lists in the Anthropic, Impeccable and ibelick skills. These parts changed:
 
 - Primary buttons were accent orange. That repeated the "loud orange button" the brief rejected and leaned toward the near-black-plus-one-bright-accent default. They are now neutral, and the accent only marks what needs you.
-- The sidebar had a 14-day sparkline for "today". It was a chart standing in for content. The posting-day groups in To review carry the same information, so it was cut.
+- The sidebar had a 14-day sparkline for "today". It was a chart standing in for content. The posting-day groups in Jobs carry the same information, so it was cut.
 - Row meta read "Company · Location" with middle dots. Wide rows now use columns and narrow rows use spacing and two text levels.
 - The status glyphs were pie wedges, which is Linear's own language. They now grow out of Hunt's ring-and-dot mark.
 - Phone navigation was a row of tabs at the top. It moved to a bottom tab bar in thumb reach, with a sheet for the rest.

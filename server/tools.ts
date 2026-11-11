@@ -32,8 +32,8 @@ Setup, once:
 3. add_sources: company names, careers page URLs, job board URLs ("greenhouse:stripe" works too), RSS feeds, or list: "north-america-tech" for a starter list of 1,000 companies. Pick companies that fit the person; nothing is required.
 
 Every day:
-1. list_jobs view "to_review": new jobs that pass the filters. Rows are short; open the promising ones with get_job.
-2. For each job you review, call update_job with a verdict (score 0-100 and one line why), or status "skipped" with a note.
+1. list_jobs with unscored_only: true: new jobs you haven't reviewed. Applied and skipped jobs never appear here. Rows are short; open the promising ones with get_job.
+2. For each job you review, call update_job with a verdict (score 0-100 and one line why), or status "skipped" with a note. Skipped jobs never come back.
 3. Before applying, open the posting and check it's still open. Write the tailored resume on your side; Hunt doesn't make documents.
 4. After applying: update_job status "applied" with a note of what was sent, and a follow_up_at date. Then "in_process" when they reply, or "rejected".
 5. People to contact: save them with update_job.contacts (name, title, linkedin_url, email, email_verified, contacted_at). The find-job-contacts skill in Hunt's repo shows one way to find them.
@@ -73,7 +73,7 @@ export const TOOLS: Tool[] = [
   {
     name: "today",
     title: "Today",
-    description: "Start here. What's missing from setup, how many jobs wait for review, jobs on the shortlist, applications, follow-ups due, every view's size, and whether the sources are being read.",
+    description: "Start here. What's missing from setup, how many new jobs you haven't scored, scored ones waiting for a decision, applications by stage, follow-ups due, and whether the sources are being read.",
     input: z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().describe("The person's local date, so follow-ups are due at their midnight. Defaults to UTC.") }),
     readOnly: true,
     run: (a) => today(a.date),
@@ -100,9 +100,9 @@ export const TOOLS: Tool[] = [
       const cur = getSettings();
       const filters = a.filters ? normalizeFilters(a.filters, cur.filters) : cur.filters;
       if (a.preview) {
-        const before = listJobs({ limit: 1 }).counts.to_review;
-        const after = listJobs({ limit: 1 }, filters).counts.to_review;
-        return { to_review_now: before, to_review_with_these_filters: after, note: "Counts jobs already collected. Saving also re-reads every source, which can bring in more." };
+        const before = listJobs({ limit: 1 }).counts.jobs;
+        const after = listJobs({ limit: 1 }, filters).counts.jobs;
+        return { jobs_now: before, jobs_with_these_filters: after, note: "New jobs already collected. Saving also re-reads every source, which can bring in more." };
       }
       const changed = JSON.stringify(filters) !== JSON.stringify(cur.filters);
       saveSettings({ profile: a.profile ?? cur.profile, filters });
@@ -162,7 +162,7 @@ export const TOOLS: Tool[] = [
     name: "list_jobs",
     title: "List jobs",
     description:
-      "Jobs as short rows (title, company, location, posted, verdict, status, a 240-character excerpt). Views: to_review (new, passes the filters, no verdict yet; default), shortlist (new with your verdict, best first), applied (applied and in process), follow_ups (applications with a follow-up date, soonest first), skipped, rejected, all. counts gives every view's size. posted_within_days overrides the saved window for this call (null = any age); ignore_filters shows every stored job.",
+      "Jobs as short rows (title, company, location, posted, verdict, status, a 240-character excerpt). Views: jobs (default): new jobs that pass the filters, scored ones first, best first; never applied or skipped ones. unscored_only: true narrows it to jobs you haven't reviewed. applied: applied, in process and rejected, with due follow-ups first. skipped: jobs passed on. counts gives each view's size. posted_within_days overrides the saved window for this call (null = any age); ignore_filters shows every stored new job.",
     input: z.object({
       view: z.enum(VIEWS).optional(),
       query: z.string().optional().describe("Text in the title, company or location"),
@@ -170,6 +170,8 @@ export const TOOLS: Tool[] = [
       remote_only: z.boolean().optional(),
       posted_within_days: z.number().int().min(1).nullable().optional(),
       ignore_filters: z.boolean().optional(),
+      unscored_only: z.boolean().optional(),
+      date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().describe("The person's local date, for which follow-ups are due"),
       sort: z.enum(["posted", "verdict", "seen", "updated"]).optional(),
       limit: z.number().int().min(1).max(200).optional().describe("Default 50"),
       offset: z.number().int().min(0).optional(),
