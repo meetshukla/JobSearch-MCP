@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS sources (
   listings INTEGER NOT NULL DEFAULT 0,
   created_at TEXT NOT NULL DEFAULT ${NOW}
 );
-CREATE INDEX IF NOT EXISTS sources_due ON sources(state, last_read_at);
+CREATE INDEX IF NOT EXISTS sources_kind ON sources(kind, state);
 
 CREATE TABLE IF NOT EXISTS board_queries (
   board TEXT NOT NULL,
@@ -47,6 +47,8 @@ CREATE TABLE IF NOT EXISTS jobs (
   description_html TEXT,
   description_text TEXT,
   details TEXT NOT NULL DEFAULT 'pending',
+  detail_attempts INTEGER NOT NULL DEFAULT 0,
+  listing_sig TEXT,
   dedupe_key TEXT NOT NULL,
   pinned INTEGER NOT NULL DEFAULT 0,
   first_seen_at TEXT NOT NULL DEFAULT ${NOW},
@@ -62,7 +64,7 @@ CREATE TABLE IF NOT EXISTS jobs (
 CREATE INDEX IF NOT EXISTS jobs_status ON jobs(status, closed_at);
 CREATE INDEX IF NOT EXISTS jobs_source ON jobs(source_id, closed_at);
 CREATE INDEX IF NOT EXISTS jobs_dedupe ON jobs(dedupe_key);
-CREATE INDEX IF NOT EXISTS jobs_details ON jobs(details, closed_at);
+CREATE INDEX IF NOT EXISTS jobs_details ON jobs(details, closed_at, detail_attempts);
 
 CREATE TABLE IF NOT EXISTS contacts (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

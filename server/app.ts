@@ -71,9 +71,10 @@ export function createApp(deps: AppDeps) {
   app.use("/api/*", async (c, next) => {
     if (!deps.dev() && !hasToken()) return c.json({ error: NEEDS_TOKEN }, 503);
     if (!(await authed(c.req.raw, true))) return c.json({ error: "Sign in first." }, 401);
-    // Cookie-authenticated writes must be same-origin JSON (no form posts from other sites).
-    if (c.req.method !== "GET" && !bearer(c.req.raw) && !(c.req.header("content-type") || "").includes("application/json")) {
-      return c.json({ error: "Send JSON." }, 415);
+    // Cookie-authenticated writes must come from this site, as JSON.
+    if (c.req.method !== "GET" && !bearer(c.req.raw) && !deps.dev()) {
+      if (c.req.header("origin") !== new URL(c.req.url).origin) return c.json({ error: "Cross-site request refused." }, 403);
+      if ((c.req.header("content-type") || "").split(";")[0].trim().toLowerCase() !== "application/json") return c.json({ error: "Send JSON." }, 415);
     }
     await next();
   });

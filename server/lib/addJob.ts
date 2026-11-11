@@ -68,6 +68,14 @@ function findJobPosting(node: any): any {
   return node["@graph"] ? findJobPosting(node["@graph"]) : null;
 }
 
+/** The link without its fragment and tracking parameters; other parameters often identify the job. */
+function canonicalLink(url: string) {
+  const u = new URL(url);
+  u.hash = "";
+  for (const k of [...u.searchParams.keys()]) if (/^(utm_|ref$|source$|src$|gh_src$|lever-source|trk)/i.test(k)) u.searchParams.delete(k);
+  return u.toString();
+}
+
 async function fromPage(url: string): Promise<Found> {
   const res = await fetch(url, { headers: { "User-Agent": UA, Accept: "text/html" }, redirect: "follow" });
   if (!res.ok) throw new Error(`Couldn't open that page (HTTP ${res.status}).`);
@@ -87,7 +95,7 @@ async function fromPage(url: string): Promise<Found> {
       .join(" / ");
     const remote = jp.jobLocationType === "TELECOMMUTE";
     return {
-      id: `link:${url.replace(/[?#].*$/, "")}`,
+      id: `link:${canonicalLink(url)}`,
       company: decodeEntities(jp.hiringOrganization?.name || new URL(url).hostname),
       sourceId: null,
       source: "link",

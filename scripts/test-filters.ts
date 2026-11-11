@@ -40,6 +40,10 @@ assert.equal(ok(job({ description_text: "Must have US citizenship." }), cit), fa
 assert.equal(ok(job({ company: "Acme Corp" }), f({ ...ottawa, skip_companies: ["acme"] })), false, "company skip");
 assert.equal(ok(job({ title: "Barista", pinned: true }), ottawa), true, "pinned always shows");
 
+const canadaOnly = f({ ...ottawa, onsite: false, remote_unclear: false });
+assert.equal(ok(job({ location: "Remote · Worldwide", remote: true }), canadaOnly), true, "worldwide remote passes a country filter");
+assert.equal(ok(job({ location: "Remote · Anywhere in the World", remote: true }), canadaOnly), true, "anywhere in the world passes");
+assert.equal(ok(job({ location: "Remote · EMEA", remote: true }), canadaOnly), false, "another region still fails");
 assert.equal(remoteIsUnclear("Remote"), true);
 assert.equal(remoteIsUnclear("Remote (Anywhere)"), true);
 assert.equal(remoteIsUnclear("Remote - EMEA"), false);

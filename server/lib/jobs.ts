@@ -45,12 +45,16 @@ function toRow(j: any): JobRow {
 
 const asListing = (j: any) => ({ ...j, remote: Boolean(j.remote), pinned: Boolean(j.pinned) });
 
-/** Every job you can see: tracked jobs always, untouched open jobs only when they pass the filters. */
+/**
+ * Every job you can see. Jobs you or your agent acted on (a status, a verdict, contacts, a follow-up, added
+ * by hand) always show, closed or not. Untouched jobs show while open and passing the filters.
+ */
 function visible(f: Filters, ignoreFilters = false) {
   const desc = f.skip_if_description.length > 0;
   const out: { j: any; view: View }[] = [];
   for (const j of all<any>(`SELECT ${LIGHT}${desc ? ", description_text" : ""} FROM jobs`)) {
-    if (j.status === "new" && (j.closed_at || (!ignoreFilters && !matches(asListing(j), f).ok))) continue;
+    const tracked = j.status !== "new" || j.verdict_score != null || j.pinned || j.follow_up_at || j.contacts_n > 0;
+    if (!tracked && !ignoreFilters && (j.closed_at || !matches(asListing(j), f).ok)) continue;
     out.push({ j, view: viewOf(j) });
   }
   return out;

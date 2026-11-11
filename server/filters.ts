@@ -44,7 +44,9 @@ function found(text: string, phrases: string[]) {
 }
 
 const REMOTE_WORDS = ["remote", "anywhere", "worldwide", "global", "globally", "distributed", "work from home", "wfh", "telecommute", "virtual", "home based"];
-const FILLER = /\b(remote|anywhere|worldwide|global|globally|distributed|work from home|wfh|telecommute|virtual|home based|first|friendly|only|based|or|and|in|from|hybrid|flexible|position|role|location|locations|multiple|various|tbd|n a)\b/g;
+const FILLER = /\b(remote|anywhere|worldwide|global|globally|distributed|work from home|wfh|telecommute|virtual|home based|first|friendly|only|based|or|and|in|from|the|world|hybrid|flexible|position|role|location|locations|multiple|various|tbd|n a)\b/g;
+/** Listings that say they're open everywhere pass any region. */
+const OPEN_WORLD = ["worldwide", "anywhere", "global", "globally", "anywhere in the world", "international"];
 
 export function isRemote(l: Pick<Listing, "remote" | "location">) {
   return l.remote || found(words(l.location), REMOTE_WORDS) != null;
@@ -66,7 +68,7 @@ function locationMatch(l: Listing, f: Filters): Match {
   if (isRemote(l)) {
     if (f.remote) {
       if (!f.remote_regions.length) return pass;
-      if (found(where, f.remote_regions)) return pass;
+      if (found(where, f.remote_regions) || found(where, OPEN_WORLD)) return pass;
       if (remoteIsUnclear(l.location)) return f.remote_unclear ? pass : fail("Remote, but doesn't say where it's open to");
     }
     // A remote listing can also name an office ("Remote - US / Toronto").

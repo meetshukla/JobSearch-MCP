@@ -11,6 +11,7 @@ import { getSettings } from "../settings.ts";
 import { matches } from "../filters.ts";
 import { broadcast } from "./events.ts";
 import { nowIso } from "../schema.ts";
+import { UNTOUCHED, sourcesChanged } from "./keep.ts";
 import { LISTS } from "./lists.ts";
 import type { AddSourceResult, ListSourcesResult, SourceKind, SourceRow, SourceState } from "../../shared/types.ts";
 
@@ -51,7 +52,11 @@ const BOARD_HOME: Record<string, string> = {
 function insert(s: { key: string; kind: SourceKind; name: string; ats?: string | null; slug?: string | null; url?: string | null; tags?: string[]; state: SourceState }) {
   const ex = get<{ id: number; state: SourceState }>("SELECT id, state FROM sources WHERE key = ?", s.key);
   if (ex) {
-    if (ex.state === "paused") run("UPDATE sources SET state = 'active' WHERE id = ?", ex.id);
+    // Adding it again brings back a paused source, and retries one that failed to resolve.
+    const pending = s.key.startsWith("pending:");
+    if (ex.state === "paused" || (pending && ex.state === "error")) {
+      run("UPDATE sources SET state = ?, last_error = NULL, last_read_at = NULL WHERE id = ?", pending ? "queued" : "active", ex.id);
+    }
     return { id: ex.id, existed: true };
   }
   const id = Number(
@@ -89,6 +94,7 @@ export function addSources(input: { items?: string[]; list?: string }): AddSourc
     }
     for (const raw of input.items ?? []) results.push(addOne(raw));
   });
+  sourcesChanged();
   broadcast("sources");
   return results;
 }
@@ -163,6 +169,7 @@ export async function resolveQueued(s: SourceDb) {
   } catch (e: any) {
     failWith(String(e?.message || e).slice(0, 300));
   } finally {
+    sourcesChanged();
     broadcast("sources");
   }
 }
@@ -231,22 +238,23 @@ export function updateSources(ids: number[], action: "pause" | "resume" | "remov
       const s = get<SourceDb>("SELECT * FROM sources WHERE id = ?", id);
       if (!s) continue;
       changed++;
+      // A remote board is searched per title; its searches have their own clocks.
+      if ((action === "resume" || action === "read_now") && s.kind === "board") run("DELETE FROM board_queries WHERE board = ?", s.ats);
       if (action === "pause") run("UPDATE sources SET state = 'paused' WHERE id = ?", id);
       if (action === "resume") run("UPDATE sources SET state = ?, last_read_at = NULL WHERE id = ?", s.key.startsWith("pending:") ? "queued" : "active", id);
       if (action === "read_now") run("UPDATE sources SET last_read_at = NULL, state = CASE WHEN state = 'error' AND key NOT LIKE 'pending:%' THEN 'active' WHEN state = 'error' THEN 'queued' ELSE state END WHERE id = ?", id);
       if (action === "remove") {
         // Jobs you or your agent acted on stay; untouched ones go with the source.
-        const gone = all<{ id: string }>("SELECT id FROM jobs WHERE source_id = ? AND status = 'new' AND verdict_score IS NULL AND pinned = 0", id).map((j) => j.id);
-        for (const jid of gone) {
-          run("DELETE FROM contacts WHERE job_id = ?", jid);
-          run("DELETE FROM events WHERE job_id = ?", jid);
-          run("DELETE FROM jobs WHERE id = ?", jid);
+        for (const j of all<{ id: string }>(`SELECT id FROM jobs WHERE source_id = ? AND ${UNTOUCHED}`, id)) {
+          run("DELETE FROM events WHERE job_id = ?", j.id);
+          run("DELETE FROM jobs WHERE id = ?", j.id);
         }
         run("UPDATE jobs SET source_id = NULL WHERE source_id = ?", id);
         run("DELETE FROM sources WHERE id = ?", id);
       }
     }
   });
+  sourcesChanged();
   broadcast("sources");
   if (action === "remove") broadcast("jobs");
   return { changed };
@@ -254,6 +262,7 @@ export function updateSources(ids: number[], action: "pause" | "resume" | "remov
 
 /** Read every source again soon (after the filters change, so newly matching jobs come in). */
 export function markAllDue() {
-  run("UPDATE sources SET last_read_at = NULL WHERE state = 'active'");
+  run("UPDATE sources SET last_read_at = NULL WHERE state IN ('active', 'error') AND key NOT LIKE 'pending:%'");
   run("DELETE FROM board_queries");
+  sourcesChanged();
 }
