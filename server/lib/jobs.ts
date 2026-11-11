@@ -247,7 +247,19 @@ export function updateJob(u: UpdateJob, by: "you" | "agent") {
   return getJob(j.id, { maxChars: 0 });
 }
 
-/** `date` is the person's local date (YYYY-MM-DD), so "due" flips at their midnight. Defaults to UTC. */
+/** What setup still needs, for the website's checklist and for agents through get_settings. */
+export function setupStatus(): Today["setup"] {
+  const { profile, filters: f } = getSettings();
+  const readable = get<{ n: number }>("SELECT COUNT(*) n FROM sources WHERE kind IN ('company','feed') AND state <> 'paused'")!.n;
+  const missing: Today["setup"]["missing"] = [];
+  if (!profile.trim()) missing.push({ id: "profile", text: "Add the person's profile (resume, and what they want and won't accept) with update_settings.profile." });
+  if (!readable) missing.push({ id: "sources", text: "Add company job boards with add_sources (company names, careers page URLs, or the starter list)." });
+  if ((f.onsite && !f.places.length) || (f.remote && !f.remote_regions.length))
+    missing.push({ id: "where", text: "Say where the person can work: filters.places for on-site or hybrid, filters.remote_regions for remote. Empty keeps every place." });
+  return { ready: missing.length === 0, missing };
+}
+
+/** The website's summary: counts, follow-ups due, source health. `date` is the person's local date, so "due" flips at their midnight. */
 export function today(date?: string): Today {
   const s = getSettings();
   const f = s.filters;
@@ -268,14 +280,8 @@ export function today(date?: string): Today {
     days.push({ day, jobs: dayCounts.get(day) ?? 0 });
   }
   const st = Object.fromEntries(all<any>("SELECT state, COUNT(*) n FROM sources GROUP BY state").map((r) => [r.state, r.n]));
-  const readable = get<{ n: number }>("SELECT COUNT(*) n FROM sources WHERE kind IN ('company','feed') AND state <> 'paused'")!.n;
-  const missing: Today["setup"]["missing"] = [];
-  if (!s.profile.trim()) missing.push({ id: "profile", text: "Add the person's profile (resume, and what they want and won't accept) with update_settings.profile." });
-  if (!readable) missing.push({ id: "sources", text: "Add company job boards with add_sources (company names, careers page URLs, or the starter list)." });
-  if ((f.onsite && !f.places.length) || (f.remote && !f.remote_regions.length))
-    missing.push({ id: "where", text: "Say where the person can work: filters.places for on-site or hybrid, filters.remote_regions for remote. Empty keeps every place." });
   return {
-    setup: { ready: missing.length === 0, missing },
+    setup: setupStatus(),
     counts,
     jobs: {
       new_24h: new24h,

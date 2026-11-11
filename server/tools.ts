@@ -4,7 +4,7 @@
  */
 import { z } from "zod";
 import { getSettings, saveSettings, normalizeFilters, DEFAULT_FILTERS } from "./settings.ts";
-import { listJobs, getJob, updateJob, today } from "./lib/jobs.ts";
+import { listJobs, getJob, updateJob, setupStatus } from "./lib/jobs.ts";
 import { addJob } from "./lib/addJob.ts";
 import { addSources, listSources, updateSources, markAllDue } from "./lib/sources.ts";
 import { LISTS } from "./lib/lists.ts";
@@ -24,7 +24,7 @@ export type Tool = {
 
 export const INSTRUCTIONS = `Hunt collects job postings for one person from the company job boards, remote job boards and RSS feeds you add, keeps the ones that pass their filters, and tracks what happens next. It has no opinion on fit: you judge each job.
 
-Start every session with today. It lists what's missing from setup, how many jobs wait for review, and follow-ups that are due.
+If get_settings shows setup isn't ready, finish setup first.
 
 Setup, once:
 1. update_settings.profile: the person's resume and what they want and won't accept, as plain text. Read it back with get_settings before judging jobs.
@@ -71,20 +71,17 @@ export class ToolError extends Error {}
 
 export const TOOLS: Tool[] = [
   {
-    name: "today",
-    title: "Today",
-    description: "Start here. What's missing from setup, how many new jobs you haven't scored, scored ones waiting for a decision, applications by stage, follow-ups due, and whether the sources are being read.",
-    input: z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().describe("The person's local date, so follow-ups are due at their midnight. Defaults to UTC.") }),
-    readOnly: true,
-    run: (a) => today(a.date),
-  },
-  {
     name: "get_settings",
     title: "Get settings",
-    description: "The person's profile (resume and what they want, as plain text) and the filters that decide which jobs are kept. Also the default filters and the starter lists, for reference.",
+    description: "The person's profile (resume and what they want, as plain text), the filters that decide which jobs are kept, and what's still missing from setup. Also the default filters and the starter lists, for reference.",
     input: z.object({}),
     readOnly: true,
-    run: () => ({ ...getSettings(), default_filters: DEFAULT_FILTERS, lists: Object.entries(LISTS).map(([id, l]) => ({ id, label: l.label, companies: l.companies.length })) }),
+    run: () => ({
+      setup: setupStatus(),
+      ...getSettings(),
+      default_filters: DEFAULT_FILTERS,
+      lists: Object.entries(LISTS).map(([id, l]) => ({ id, label: l.label, companies: l.companies.length })),
+    }),
   },
   {
     name: "update_settings",

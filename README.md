@@ -44,13 +44,12 @@ codex mcp add hunt --url https://hunt.<you>.workers.dev/mcp --bearer-token-env-v
 claude mcp add --transport http hunt https://hunt.<you>.workers.dev/mcp --header "Authorization: Bearer $HUNT_TOKEN"
 ```
 
-Then ask it: "Use Hunt. Start with today."
+Then ask it: "Use Hunt. Review my new jobs."
 
 ## Tools
 
 | Tool | What it does |
 |---|---|
-| `today` | What's missing from setup, new jobs your agent hasn't scored, scored ones waiting for a decision, applications by stage, follow-ups due, source health |
 | `get_settings`, `update_settings` | Your profile (resume and what you want, plain text) and your filters, with a preview of how many jobs a change would show |
 | `add_sources`, `list_sources`, `update_sources` | Company names, careers pages, job board URLs, RSS feeds, remote boards, or a starter list. Pause, resume, remove, read now. |
 | `list_jobs`, `get_job` | Three views: **jobs** (new only, what agents read), **applied** (applied, in process, rejected) and **skipped**. Short rows to triage, the full job to read. |
@@ -83,7 +82,7 @@ Cloudflare's free plan allows 50 outside requests per run, so Hunt works in smal
 ```bash
 npm run dev                                                      # http://localhost:8787, no sign-in
 node scripts/mcp.ts http://localhost:8787                        # list the tools
-node scripts/mcp.ts http://localhost:8787 today                  # call one
+node scripts/mcp.ts http://localhost:8787 list_jobs              # call one
 npm test                                                         # filter tests
 npm run typecheck
 ```

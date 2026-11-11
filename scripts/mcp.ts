@@ -1,6 +1,6 @@
 /**
  * Call a Hunt tool over MCP from the terminal:
- *   HUNT_TOKEN=... node scripts/mcp.ts https://hunt.example.workers.dev today
+ *   HUNT_TOKEN=... node scripts/mcp.ts https://hunt.example.workers.dev get_settings
  *   node scripts/mcp.ts http://localhost:8787 list_jobs '{"unscored_only":true,"limit":5}'
  * With no tool name it prints the tool list.
  */

@@ -45,7 +45,6 @@ export type ToolInfo = { name: string; title: string; description: string };
 
 /** Every tool the website calls, with its arguments and result. One table, so a call can't drift from the server. */
 type Tools = {
-  today: [{ date?: string }, Today];
   get_settings: [Record<string, never>, SettingsResult];
   update_settings: [{ profile?: string; filters?: Partial<Filters> }, { saved: true; filters: Filters; profile_chars: number; rereading_sources: boolean }];
   add_sources: [{ items?: string[]; list?: string }, { results: AddSourceResult[] }];
@@ -94,6 +93,7 @@ export const api = {
   login: (token: string) => request<{ ok: true }>("/api/login", { token }),
   logout: () => request<{ ok: true }>("/api/logout", {}),
   tools: () => request<{ tools: ToolInfo[] }>("/api/tools"),
+  summary: (date: string) => request<Today>(`/api/summary?date=${date}`),
   previewFilters: (filters: Filters) => request<FiltersPreview>("/api/tools/update_settings", { filters, preview: true }),
   pulse: (since: number, instance: string) =>
     request<{ instance: string; version: number; reset: boolean; changes: Topic[] }>(`/api/pulse?since=${since}&instance=${encodeURIComponent(instance)}`),

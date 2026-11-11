@@ -3,6 +3,7 @@ import { Hono } from "hono";
 import { handleMcp, VERSION } from "./mcp.ts";
 import { callTool, toolList, ToolError } from "./tools.ts";
 import { pulse } from "./lib/events.ts";
+import { today } from "./lib/jobs.ts";
 import { starterLists } from "./lib/lists.ts";
 import { COOKIE, bearer, hasSession, hasToken, sessionValue, tokenMatches } from "./lib/auth.ts";
 import type { Me } from "../shared/types.ts";
@@ -83,6 +84,11 @@ export function createApp(deps: AppDeps) {
   app.post("/api/tools/:name", async (c) => {
     const args = await c.req.json().catch(() => ({}));
     return c.json((await callTool(c.req.param("name"), args, { by: "you", wake: deps.wake })) as any);
+  });
+  // The website's summary (sidebar counts, follow-ups due, source health). Agents get the same facts from their tools.
+  app.get("/api/summary", (c) => {
+    const date = c.req.query("date");
+    return c.json(today(date && /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : undefined));
   });
   app.get("/api/pulse", (c) => c.json(pulse(Number(c.req.query("since") || 0), c.req.query("instance") || undefined)));
 

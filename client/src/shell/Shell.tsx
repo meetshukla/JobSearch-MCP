@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Me } from "../../../shared/types.ts";
-import { tool } from "../api.ts";
+import { api, tool } from "../api.ts";
 import { useLoad } from "../live.ts";
 import { todayIso } from "../format.ts";
 import { useRoute, navigate, settingsPath } from "../router.tsx";
@@ -16,7 +16,7 @@ import { ShortcutsDialog } from "./Shortcuts.tsx";
 export function Shell({ me, onSignOut }: { me: Me; onSignOut: () => void }) {
   const route = useRoute();
   const phone = useMedia(PHONE);
-  const today = useLoad(() => tool("today", { date: todayIso() }), "today", ["jobs", "sources", "settings"]);
+  const today = useLoad(() => api.summary(todayIso()), "today", ["jobs", "sources", "settings"]);
   const settings = useLoad(() => tool("get_settings", {}), "settings", ["settings"]);
   const [palette, setPalette] = useState<PaletteMode | null>(null);
   const [help, setHelp] = useState(false);

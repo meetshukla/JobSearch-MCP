@@ -26,7 +26,7 @@ codex mcp add hunt --url https://hunt.example.workers.dev/mcp --bearer-token-env
 claude mcp add --transport http hunt https://hunt.example.workers.dev/mcp --header "Authorization: Bearer $HUNT_TOKEN"
 ```
 
-Call `today`. It lists what's missing from setup.
+Call `get_settings`. Its `setup` field lists what's missing.
 
 ## 3. Ask the person
 
@@ -76,7 +76,7 @@ Names and unknown URLs are queued. After a few minutes, `list_sources` with `sta
 
 ## 7. Check and hand over
 
-After an hour, call `today` and `list_jobs`. If there are too many or too few jobs, adjust the filters with the person. Then give them the website URL and explain the daily routine: you review new jobs and they decide where to apply.
+After an hour, call `list_jobs` and `list_sources`. If there are too many or too few jobs, adjust the filters with the person. Then give them the website URL and explain the daily routine: you review new jobs and they decide where to apply.
 
 ## Every day
 
