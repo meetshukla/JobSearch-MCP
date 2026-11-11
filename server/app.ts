@@ -5,7 +5,7 @@ import { callTool, toolList, ToolError } from "./tools.ts";
 import { pulse } from "./lib/events.ts";
 import { today } from "./lib/jobs.ts";
 import { starterLists } from "./lib/lists.ts";
-import { COOKIE, bearer, hasSession, hasToken, sessionValue, tokenMatches } from "./lib/auth.ts";
+import { COOKIE, TOO_MANY, bearer, blocked, hasSession, hasToken, recordFailure, sessionValue, tokenMatches } from "./lib/auth.ts";
 import type { Me } from "../shared/types.ts";
 
 export type AppDeps = { wake: () => void; dev: () => boolean };
@@ -26,7 +26,9 @@ export function createApp(deps: AppDeps) {
 
   app.post("/mcp", async (c) => {
     if (!deps.dev() && !hasToken()) return c.json({ jsonrpc: "2.0", id: null, error: { code: -32001, message: NEEDS_TOKEN } }, 503);
+    if (blocked(c.req.raw)) return c.json({ jsonrpc: "2.0", id: null, error: { code: -32001, message: TOO_MANY } }, 429);
     if (!(await authed(c.req.raw, false))) {
+      if (bearer(c.req.raw)) recordFailure(c.req.raw);
       return c.json({ jsonrpc: "2.0", id: null, error: { code: -32001, message: "Unauthorized. Send Authorization: Bearer <HUNT_TOKEN>." } }, 401, {
         "WWW-Authenticate": 'Bearer realm="hunt"',
       });
@@ -44,8 +46,12 @@ export function createApp(deps: AppDeps) {
 
   app.post("/api/login", async (c) => {
     if (!hasToken()) return c.json({ error: NEEDS_TOKEN }, 503);
+    if (blocked(c.req.raw)) return c.json({ error: TOO_MANY }, 429);
     const { token } = await c.req.json<{ token?: string }>().catch(() => ({ token: undefined }));
-    if (!tokenMatches(token)) return c.json({ error: "That token doesn't match HUNT_TOKEN." }, 401);
+    if (!tokenMatches(token)) {
+      recordFailure(c.req.raw);
+      return c.json({ error: "That token doesn't match HUNT_TOKEN." }, 401);
+    }
     const secure = new URL(c.req.url).protocol === "https:" ? "; Secure" : "";
     c.header("Set-Cookie", `${COOKIE}=${await sessionValue()}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${60 * 60 * 24 * 180}${secure}`);
     return c.json({ ok: true });
@@ -71,7 +77,11 @@ export function createApp(deps: AppDeps) {
   // Everything below needs the cookie (website) or the token (scripts).
   app.use("/api/*", async (c, next) => {
     if (!deps.dev() && !hasToken()) return c.json({ error: NEEDS_TOKEN }, 503);
-    if (!(await authed(c.req.raw, true))) return c.json({ error: "Sign in first." }, 401);
+    if (blocked(c.req.raw)) return c.json({ error: TOO_MANY }, 429);
+    if (!(await authed(c.req.raw, true))) {
+      if (bearer(c.req.raw)) recordFailure(c.req.raw);
+      return c.json({ error: "Sign in first." }, 401);
+    }
     // Cookie-authenticated writes must come from this site, as JSON.
     if (c.req.method !== "GET" && !bearer(c.req.raw) && !deps.dev()) {
       if (c.req.header("origin") !== new URL(c.req.url).origin) return c.json({ error: "Cross-site request refused." }, 403);

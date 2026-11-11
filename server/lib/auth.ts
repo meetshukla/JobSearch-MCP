@@ -44,3 +44,28 @@ export async function hasSession(req: Request) {
   const c = cookie(req, COOKIE);
   return Boolean(hasToken() && c && sameText(c, await sessionValue()));
 }
+
+/**
+ * Wrong tokens per address: after 10 in 15 minutes, that address is refused until the window ends.
+ * Kept in the Durable Object's memory, which is one instance for the whole app.
+ */
+const WINDOW_MS = 15 * 60_000;
+const MAX_FAILURES = 10;
+const failures = new Map<string, { n: number; until: number }>();
+const clientIp = (req: Request) => req.headers.get("cf-connecting-ip") || "local";
+
+export function blocked(req: Request) {
+  const f = failures.get(clientIp(req));
+  return Boolean(f && f.n >= MAX_FAILURES && Date.now() < f.until);
+}
+
+export function recordFailure(req: Request) {
+  const ip = clientIp(req);
+  const now = Date.now();
+  const f = failures.get(ip);
+  if (!f || now >= f.until) failures.set(ip, { n: 1, until: now + WINDOW_MS });
+  else f.n++;
+  if (failures.size > 10_000) failures.clear();
+}
+
+export const TOO_MANY = "Too many wrong tokens from this address. Try again in 15 minutes.";
