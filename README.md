@@ -31,7 +31,7 @@ npx wrangler secret put HUNT_TOKEN    # paste the token
 
 Open the URL, sign in with the token, and follow Setup. Or hand this repo to your agent: [AGENTS.md](AGENTS.md) walks it through the whole setup.
 
-To use your own domain, add a `routes` entry to `wrangler.jsonc` (there is a commented example) and deploy again.
+To use your own domain: `npm run build && npx wrangler deploy --domain jobs.example.com`.
 
 ## Connect your agent
 

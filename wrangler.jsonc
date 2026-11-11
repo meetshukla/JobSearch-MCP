@@ -17,5 +17,5 @@
   // Wakes the collector if its alarm was ever lost.
   "triggers": { "crons": ["*/10 * * * *"] },
   "observability": { "enabled": true }
-  // Your own domain: "routes": [{ "pattern": "jobs.example.com", "custom_domain": true }]
+  // Your own domain: npx wrangler deploy --domain jobs.example.com
 }

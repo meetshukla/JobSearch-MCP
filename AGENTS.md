@@ -15,7 +15,7 @@ openssl rand -hex 24        # the token; give it to the person to keep in their 
 npx wrangler secret put HUNT_TOKEN   # paste the token
 ```
 
-The website is at the printed URL. The person signs in once with the token. To use their own domain, add a `routes` entry to `wrangler.jsonc` (there is a commented example) and deploy again.
+The website is at the printed URL. The person signs in once with the token. To use their own domain: `npm run build && npx wrangler deploy --domain jobs.example.com`.
 
 ## 2. Connect yourself
 

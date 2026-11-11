@@ -4,7 +4,7 @@
 import type { Env } from "./hunt-do.ts";
 export { Hunt } from "./hunt-do.ts";
 
-const hunt = (env: Env) => env.HUNT.get(env.HUNT.idFromName("main"));
+const hunt = (env: Env) => env.HUNT.get(env.HUNT.idFromName("hunt"));
 const DYNAMIC = /^\/(mcp$|api\/|\.well-known\/)/;
 
 export default {
