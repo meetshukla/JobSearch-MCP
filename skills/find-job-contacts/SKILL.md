@@ -55,13 +55,18 @@ Keep the email only when `_treg.verification.verdict` is `valid` and `_treg.doma
 
 ## 5. Record it in Hunt
 
-Call `update_job` with the job's id and a `note` listing each person on one line:
+Call `update_job` with the job's id and the people as `contacts`. Hunt merges them by LinkedIn link or name, so saving again only updates.
 
-```
-Contacts: Jane Doe, Engineering Manager, Payments (Toronto) https://www.linkedin.com/in/janedoe jane@acme.com verified
+```json
+{
+  "job_id": "<id>",
+  "contacts": [
+    { "name": "Jane Doe", "title": "Engineering Manager, Payments", "linkedin_url": "https://www.linkedin.com/in/janedoe", "email": "jane@acme.com", "email_verified": true }
+  ]
+}
 ```
 
-After a message goes out, call `log_outreach` with the channel, `status: "sent"`, the person's name in `message` and a `follow_up_at` date. Hunt never sends anything. Writing to someone is the person's decision. Cold-email rules differ by country (CASL in Canada, GDPR in the EU).
+After a message goes out, save the same person again with `contacted_at` (the date) and set the job's `follow_up_at`. Hunt never sends anything. Writing to someone is the person's decision. Cold-email rules differ by country (CASL in Canada, GDPR in the EU).
 
 ## 6. Report
 
