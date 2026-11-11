@@ -12,7 +12,7 @@ It runs on your own Cloudflare account on the free plan. No AI inside, no API ke
 | Filter | Keeps jobs that pass your filters: titles, places, remote regions, how recent, words to skip | Sets the filters with you |
 | Judge | | Reads each new job against your profile and writes a score and a one-line reason |
 | Apply | | Writes the tailored resume and applies |
-| Track | Status, notes, contacts, follow-up dates, a timeline per job | Records everything as it goes |
+| Track | Status, notes, contacts, a timeline per job | Records everything as it goes |
 
 Hunt has opinions (posted in the last 7 days, no internships, a starter list of companies) and every one of them is a setting you can change or turn off.
 
@@ -54,7 +54,7 @@ Then ask it: "Use Hunt. Review my new jobs."
 | `add_sources`, `list_sources`, `update_sources` | Company names, careers pages, job board URLs, RSS feeds, remote boards, or a starter list. Pause, resume, remove, read now. |
 | `list_jobs`, `get_job` | Three views: **jobs** (new only, what agents read), **applied** (applied, in process, rejected) and **skipped**. Short rows to triage, the full job to read. |
 | `add_job` | Track any job from a link, whatever the filters say |
-| `update_job` | Verdict (score and why), status, notes, contacts, follow-up date |
+| `update_job` | Verdict (score and why), status, notes, contacts |
 
 The website calls the same tools, so what your agent sees and what you see never differ. Definitions: [`server/tools.ts`](server/tools.ts).
 

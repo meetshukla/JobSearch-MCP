@@ -5,7 +5,7 @@ export type Status = (typeof STATUSES)[number];
 
 /**
  * jobs: new jobs only, the ones scored by your agent first. What agents read.
- * applied: applied, in process and rejected, with due follow-ups first.
+ * applied: in process, applied, then rejected.
  * skipped: jobs passed on, so they never come back to jobs.
  */
 export const VIEWS = ["jobs", "applied", "skipped"] as const;
@@ -75,14 +75,12 @@ export type JobRow = {
   /** When the status last changed (for applied jobs, when they applied). */
   status_at: string | null;
   verdict: Verdict | null;
-  /** A date, YYYY-MM-DD. */
-  follow_up_at: string | null;
   contacts: number;
   /** Start of the description, for a quick read. */
   excerpt: string;
 };
 
-/** One line of a job's activity. `data` carries the facts behind `text` for status, verdict, follow_up and contact lines. */
+/** One line of a job's activity. `data` carries the facts behind `text` for status, verdict and contact lines. */
 export type TimelineItem = {
   kind: string;
   text: string;
@@ -143,22 +141,14 @@ export type AddSourceResult = {
   source?: { id: number; name: string; kind: SourceKind; system: string | null };
 };
 
+/** The website's summary: setup checklist, view counts, new jobs today, source health. */
 export type Today = {
   /** What setup still needs. `id` names the part; `text` says what to do, written for agents. */
   setup: { ready: boolean; missing: { id: "profile" | "sources" | "where"; text: string }[] };
-  jobs: {
-    new_24h: number;
-    /** New jobs your agent hasn't scored yet: its review queue. */
-    unscored: number;
-    /** New jobs with a score, not yet applied to or skipped. */
-    scored: number;
-    applied: number;
-    in_process: number;
-    rejected: number;
-  };
   /** Every view's size, the same numbers list_jobs returns. */
   counts: ViewCounts;
-  follow_ups_due: { id: string; title: string; company: string; status: Status; follow_up_at: string }[];
+  /** New jobs first seen in the last 24 hours. */
+  new_24h: number;
   sources: {
     active: number;
     queued: number;
@@ -168,8 +158,6 @@ export type Today = {
     /** Minutes for one full pass over every active source. */
     pass_minutes: number;
   };
-  /** Jobs first seen per day, last 14 days (only jobs that pass your filters now). */
-  days: { day: string; jobs: number }[];
 };
 
 export type StarterList = { id: string; label: string; description: string; companies: number };

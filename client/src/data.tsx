@@ -30,9 +30,7 @@ type ActiveJob = {
   company: string;
   status: Status;
   applyUrl: string;
-  followUp: string | null;
   setStatus: (s: Status) => void;
-  setFollowUp: (date: string | null) => void;
   focusNote: () => void;
 };
 

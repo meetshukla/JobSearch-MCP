@@ -20,11 +20,10 @@ export function PhoneBar({ start, title, end, center }: { start?: ReactNode; tit
   );
 }
 
-/** The four daily views in thumb reach, and More for everything else. */
+/** The three views in thumb reach, and More for settings. */
 export function TabBar({ route }: { route: Route }) {
   const { counts, today } = useAppData();
   const [more, setMore] = useState(false);
-  const due = today?.follow_ups_due.length ?? 0;
   const inMore = route.page === "settings" || (route.page === "jobs" && !TAB_VIEWS.includes(route.view));
   return (
     <>
@@ -32,12 +31,10 @@ export function TabBar({ route }: { route: Route }) {
         {TAB_VIEWS.map((id) => {
           const v = VIEWS[id];
           const active = route.page === "jobs" && route.view === id;
-          const n = id === "applied" ? due : 0;
           return (
             <Link key={id} to={jobsPath(id)} className="tab" aria-current={active ? "page" : undefined} aria-label={`${v.label}${v.count(counts, today) ? `, ${v.count(counts, today)}` : ""}`}>
               <span className="tab-icon">
                 <v.icon size={20} strokeWidth={1.75} />
-                {n > 0 && <span className="tab-badge tnum">{n}</span>}
               </span>
               <span className="tab-label">{v.short}</span>
             </Link>
@@ -65,8 +62,7 @@ function MoreSheet({ open, onOpenChange }: { open: boolean; onOpenChange: (o: bo
         <section className="sheet-section">
           <h2 className="sheet-heading">Today</h2>
           <p className="sheet-note">
-            {today.jobs.new_24h ? `${plural(today.jobs.new_24h, "new job")} in the last day.` : "No new jobs in the last day."}{" "}
-            {today.follow_ups_due.length ? `${plural(today.follow_ups_due.length, "follow-up")} due.` : ""}
+            {today.new_24h ? `${plural(today.new_24h, "new job")} in the last day.` : "No new jobs in the last day."}
           </p>
           <div onClick={close}>
             <SourceHealth sources={today.sources} />

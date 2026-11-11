@@ -60,7 +60,6 @@ type Tools = {
       verdict?: { score: number; note: string } | null;
       note?: string;
       contacts?: ContactInput[];
-      follow_up_at?: string | null;
     },
     JobDetail,
   ];
@@ -93,7 +92,7 @@ export const api = {
   login: (token: string) => request<{ ok: true }>("/api/login", { token }),
   logout: () => request<{ ok: true }>("/api/logout", {}),
   tools: () => request<{ tools: ToolInfo[] }>("/api/tools"),
-  summary: (date: string) => request<Today>(`/api/summary?date=${date}`),
+  summary: () => request<Today>("/api/summary"),
   previewFilters: (filters: Filters) => request<FiltersPreview>("/api/tools/update_settings", { filters, preview: true }),
   pulse: (since: number, instance: string) =>
     request<{ instance: string; version: number; reset: boolean; changes: Topic[] }>(`/api/pulse?since=${since}&instance=${encodeURIComponent(instance)}`),

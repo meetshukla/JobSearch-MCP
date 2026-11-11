@@ -8,7 +8,7 @@ import { passMinutes } from "./collect.ts";
 import { VIEWS, type Contact, type Filters, type JobDetail, type JobRow, type ListJobsResult, type Status, type Today, type View, type ViewCounts } from "../../shared/types.ts";
 
 const LIGHT = `id, company, company_domain, title, location, remote, department, salary, url, apply_url, source, posted_at, first_seen_at,
-  closed_at, status, status_at, verdict_score, verdict_note, verdict_at, verdict_by, follow_up_at, pinned, substr(description_text, 1, 400) AS head,
+  closed_at, status, status_at, verdict_score, verdict_note, verdict_at, verdict_by, pinned, substr(description_text, 1, 400) AS head,
   (SELECT COUNT(*) FROM contacts c WHERE c.job_id = jobs.id) AS contacts_n`;
 
 export const STATUS_LABEL: Record<Status, string> = { new: "new", skipped: "skipped", applied: "applied", in_process: "in process", rejected: "rejected" };
@@ -38,7 +38,6 @@ function toRow(j: any): JobRow {
     status: j.status,
     status_at: j.status_at ?? null,
     verdict: j.verdict_score == null ? null : { score: j.verdict_score, note: j.verdict_note ?? "", at: j.verdict_at, by: j.verdict_by ?? null },
-    follow_up_at: j.follow_up_at ?? null,
     contacts: j.contacts_n ?? 0,
     excerpt: String(j.head ?? "").replace(/\s+/g, " ").trim().slice(0, 240),
   };
@@ -47,14 +46,14 @@ function toRow(j: any): JobRow {
 const asListing = (j: any) => ({ ...j, remote: Boolean(j.remote), pinned: Boolean(j.pinned) });
 
 /**
- * Every job you can see. Jobs you or your agent acted on (a status, a verdict, contacts, a follow-up, added
+ * Every job you can see. Jobs you or your agent acted on (a status, a verdict, contacts, added
  * by hand) always show, closed or not. Untouched jobs show while open and passing the filters.
  */
 function visible(f: Filters, ignoreFilters = false) {
   const desc = f.skip_if_description.length > 0;
   const out: { j: any; view: View }[] = [];
   for (const j of all<any>(`SELECT ${LIGHT}${desc ? ", description_text" : ""} FROM jobs`)) {
-    const tracked = j.status !== "new" || j.verdict_score != null || j.pinned || j.follow_up_at || j.contacts_n > 0;
+    const tracked = j.status !== "new" || j.verdict_score != null || j.pinned || j.contacts_n > 0;
     if (!tracked && !ignoreFilters && (j.closed_at || !matches(asListing(j), f).ok)) continue;
     out.push({ j, view: viewOf(j) });
   }
@@ -68,9 +67,8 @@ function countViews(rows: { j: any; view: View }[]) {
   return counts;
 }
 
-/** Applied: follow-ups that are due, then in process, then applied, then rejected; newest change first within each. */
+/** Applied: in process, then applied, then rejected; newest change first within each. */
 const STAGE: Record<string, number> = { in_process: 1, applied: 2, rejected: 3 };
-const appliedRank = (j: any, today: string) => (j.follow_up_at && j.follow_up_at <= today && j.status !== "rejected" ? 0 : STAGE[j.status] ?? 4);
 
 export type ListQuery = {
   view?: View;
@@ -82,8 +80,6 @@ export type ListQuery = {
   ignore_filters?: boolean;
   /** Jobs view: only jobs without a score, the agent's review queue. */
   unscored_only?: boolean;
-  /** The person's local date, for which follow-ups are due. */
-  date?: string;
   sort?: "posted" | "verdict" | "seen" | "updated";
   limit?: number;
   offset?: number;
@@ -108,9 +104,8 @@ export function listJobs(q: ListQuery = {}, filters?: Filters): ListJobsResult {
   }
   const sort = q.sort ?? (view === "jobs" ? "verdict" : "updated");
   const time = (s: string | null) => (s ? Date.parse(s) || 0 : 0);
-  const today = q.date ?? nowIso().slice(0, 10);
   picked.sort((a, b) => {
-    if (view === "applied" && !q.sort) return appliedRank(a, today) - appliedRank(b, today) || time(b.status_at) - time(a.status_at);
+    if (view === "applied" && !q.sort) return (STAGE[a.status] ?? 4) - (STAGE[b.status] ?? 4) || time(b.status_at) - time(a.status_at);
     if (sort === "verdict") return (b.verdict_score ?? -1) - (a.verdict_score ?? -1) || time(b.posted_at) - time(a.posted_at);
     if (sort === "seen") return time(b.first_seen_at) - time(a.first_seen_at);
     if (sort === "updated") return time(b.status_at ?? b.first_seen_at) - time(a.status_at ?? a.first_seen_at);
@@ -173,7 +168,6 @@ export type UpdateJob = {
   verdict?: { score: number; note: string } | null;
   note?: string;
   contacts?: ContactInput[];
-  follow_up_at?: string | null;
 };
 
 function linkedin(u?: string | null) {
@@ -184,7 +178,7 @@ function linkedin(u?: string | null) {
   return `https://www.linkedin.com/in/${v.replace(/^@/, "")}`;
 }
 
-/** Dates the person picks (follow-ups, contacted) are days, not instants, so no time zone shifts them. */
+/** A contacted date is a day, not an instant, so no time zone shifts it. */
 function dayOrThrow(v: string, what: string) {
   const m = v.trim().match(/^(\d{4}-\d{2}-\d{2})/);
   if (m && !Number.isNaN(Date.parse(m[1]))) return m[1];
@@ -210,11 +204,6 @@ export function updateJob(u: UpdateJob, by: "you" | "agent") {
       const score = Math.max(0, Math.min(100, Math.round(u.verdict.score)));
       run("UPDATE jobs SET verdict_score = ?, verdict_note = ?, verdict_at = ?, verdict_by = ? WHERE id = ?", score, u.verdict.note.trim(), now, by, j.id);
       addEvent(j.id, "verdict", `${score}/100. ${u.verdict.note.trim()}`, by, { score });
-    }
-    if (u.follow_up_at !== undefined) {
-      const at = u.follow_up_at ? dayOrThrow(u.follow_up_at, "follow_up_at") : null;
-      run("UPDATE jobs SET follow_up_at = ? WHERE id = ?", at, j.id);
-      addEvent(j.id, "follow_up", at ? `Follow up on ${at}` : "Follow-up cleared", by, { date: at });
     }
     for (const c of u.contacts ?? []) {
       const name = c.name?.trim();
@@ -259,42 +248,15 @@ export function setupStatus(): Today["setup"] {
   return { ready: missing.length === 0, missing };
 }
 
-/** The website's summary: counts, follow-ups due, source health. `date` is the person's local date, so "due" flips at their midnight. */
-export function today(date?: string): Today {
-  const s = getSettings();
-  const f = s.filters;
-  const rows = visible(f);
-  const counts = countViews(rows);
-  const dayCounts = new Map<string, number>();
+/** The website's summary: counts and source health. */
+export function today(): Today {
+  const rows = visible(getSettings().filters);
   const since24h = isoAt(Date.now() - 86_400_000);
-  const since14d = isoAt(Date.now() - 13 * 86_400_000).slice(0, 10);
-  let new24h = 0;
-  for (const { j } of rows) {
-    if (j.status === "new" && j.first_seen_at >= since24h) new24h++;
-    const day = String(j.first_seen_at).slice(0, 10);
-    if (day >= since14d) dayCounts.set(day, (dayCounts.get(day) ?? 0) + 1);
-  }
-  const days: Today["days"] = [];
-  for (let i = 13; i >= 0; i--) {
-    const day = isoAt(Date.now() - i * 86_400_000).slice(0, 10);
-    days.push({ day, jobs: dayCounts.get(day) ?? 0 });
-  }
   const st = Object.fromEntries(all<any>("SELECT state, COUNT(*) n FROM sources GROUP BY state").map((r) => [r.state, r.n]));
   return {
     setup: setupStatus(),
-    counts,
-    jobs: {
-      new_24h: new24h,
-      unscored: rows.filter((r) => r.view === "jobs" && r.j.verdict_score == null).length,
-      scored: rows.filter((r) => r.view === "jobs" && r.j.verdict_score != null).length,
-      applied: rows.filter((r) => r.j.status === "applied").length,
-      in_process: rows.filter((r) => r.j.status === "in_process").length,
-      rejected: rows.filter((r) => r.j.status === "rejected").length,
-    },
-    follow_ups_due: all<any>(
-      "SELECT id, title, company, status, follow_up_at FROM jobs WHERE follow_up_at IS NOT NULL AND follow_up_at <= ? AND status IN ('applied','in_process') ORDER BY follow_up_at",
-      date ?? nowIso().slice(0, 10),
-    ),
+    counts: countViews(rows),
+    new_24h: rows.filter(({ j }) => j.status === "new" && j.first_seen_at >= since24h).length,
     sources: {
       active: st.active ?? 0,
       queued: st.queued ?? 0,
@@ -303,6 +265,5 @@ export function today(date?: string): Today {
       last_read_at: get<{ t: string | null }>("SELECT MAX(last_read_at) t FROM sources")?.t ?? null,
       pass_minutes: passMinutes(),
     },
-    days,
   };
 }

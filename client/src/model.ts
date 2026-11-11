@@ -15,7 +15,6 @@ export const STATUS_LABEL: Record<Status, string> = {
 type VerdictBand = "strong" | "fair" | "weak";
 export const verdictBand = (score: number): VerdictBand => (score >= 75 ? "strong" : score >= 50 ? "fair" : "weak");
 
-export const isDue = (followUp: string | null) => followUp != null && followUp.slice(0, 10) <= todayIso();
 
 export type JobGroup = { key: string; label: string; status?: Status; rows: JobRow[] };
 
@@ -90,14 +89,12 @@ export const VIEWS: Record<ViewId, ViewDef> = {
       groupBy(
         rows,
         (j) =>
-          isDue(j.follow_up_at) && j.status !== "rejected"
-            ? { key: "due", label: "Follow up" }
-            : j.status === "in_process"
-              ? { key: "in_process", label: "In process", status: "in_process" }
-              : j.status === "rejected"
-                ? { key: "rejected", label: "Rejected", status: "rejected" }
-                : { key: "applied", label: "Applied", status: "applied" },
-        ["due", "in_process", "applied", "rejected"],
+          j.status === "in_process"
+            ? { key: "in_process", label: "In process", status: "in_process" }
+            : j.status === "rejected"
+              ? { key: "rejected", label: "Rejected", status: "rejected" }
+              : { key: "applied", label: "Applied", status: "applied" },
+        ["in_process", "applied", "rejected"],
       ),
     count: (c) => c?.applied,
     empty: { title: "No applications yet", text: "Mark a job Applied and it moves here, out of Jobs." },

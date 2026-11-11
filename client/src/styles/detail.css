@@ -156,12 +156,6 @@
 .prop-value > svg {
   color: var(--text-3);
 }
-.prop-value[data-due] {
-  color: var(--accent-text);
-}
-.prop-value[data-due] > svg {
-  color: var(--accent-text);
-}
 .prop-empty {
   color: var(--text-3);
 }
@@ -188,10 +182,6 @@
 }
 .prop-note p + p {
   margin-top: 4px;
-}
-.date-input {
-  width: auto;
-  max-width: 100%;
 }
 @media (hover: hover) and (pointer: fine) {
   .prop-value:hover {

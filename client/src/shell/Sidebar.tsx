@@ -16,7 +16,6 @@ export function Sidebar({ route }: { route: Route }) {
 
 function AppNav({ route }: { route: Route }) {
   const { counts, today, openPalette } = useAppData();
-  const due = today?.follow_ups_due.length ?? 0;
   return (
     <>
       <div className="sidebar-head">
@@ -38,7 +37,7 @@ function AppNav({ route }: { route: Route }) {
                 <v.icon size={16} strokeWidth={1.75} />
                 <span className="nav-label">{v.label}</span>
                 {n ? (
-                  <span className="nav-count tnum" data-due={id === "applied" && due > 0 ? "" : undefined} title={id === "applied" && due > 0 ? `${due} follow-up${due === 1 ? "" : "s"} due` : undefined}>
+                  <span className="nav-count tnum">
                     {n.toLocaleString()}
                   </span>
                 ) : null}

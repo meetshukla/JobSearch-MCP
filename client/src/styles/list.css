@@ -231,9 +231,6 @@
   gap: 4px;
   white-space: nowrap;
 }
-.flag[data-due] {
-  color: var(--accent-text);
-}
 .row-verdict {
   grid-area: verdict;
   justify-self: end;
@@ -244,10 +241,6 @@
   font-size: var(--fs-meta);
   color: var(--text-3);
   white-space: nowrap;
-}
-.row-age[data-due] {
-  color: var(--accent-text);
-  font-weight: 500;
 }
 .row[data-cursor] {
   background: var(--fill-1);

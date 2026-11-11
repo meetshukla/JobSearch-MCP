@@ -35,7 +35,7 @@ Every day:
 1. list_jobs with unscored_only: true: new jobs you haven't reviewed. Applied and skipped jobs never appear here. Rows are short; open the promising ones with get_job.
 2. For each job you review, call update_job with a verdict (score 0-100 and one line why), or status "skipped" with a note. Skipped jobs never come back.
 3. Before applying, open the posting and check it's still open. Write the tailored resume on your side; Hunt doesn't make documents.
-4. After applying: update_job status "applied" with a note of what was sent, and a follow_up_at date. Then "in_process" when they reply, or "rejected".
+4. After applying: update_job status "applied" with a note of what was sent. Then "in_process" when they reply, or "rejected".
 5. People to contact: save them with update_job.contacts (name, title, linkedin_url, email, email_verified, contacted_at). The find-job-contacts skill in Hunt's repo shows one way to find them.
 
 Change the profile or filters only when the person asks.`;
@@ -159,7 +159,7 @@ export const TOOLS: Tool[] = [
     name: "list_jobs",
     title: "List jobs",
     description:
-      "Jobs as short rows (title, company, location, posted, verdict, status, a 240-character excerpt). Views: jobs (default): new jobs that pass the filters, scored ones first, best first; never applied or skipped ones. unscored_only: true narrows it to jobs you haven't reviewed. applied: applied, in process and rejected, with due follow-ups first. skipped: jobs passed on. counts gives each view's size. posted_within_days overrides the saved window for this call (null = any age); ignore_filters shows every stored new job.",
+      "Jobs as short rows (title, company, location, posted, verdict, status, a 240-character excerpt). Views: jobs (default): new jobs that pass the filters, scored ones first, best first; never applied or skipped ones. unscored_only: true narrows it to jobs you haven't reviewed. applied: in process, applied, then rejected. skipped: jobs passed on. counts gives each view's size. posted_within_days overrides the saved window for this call (null = any age); ignore_filters shows every stored new job.",
     input: z.object({
       view: z.enum(VIEWS).optional(),
       query: z.string().optional().describe("Text in the title, company or location"),
@@ -168,7 +168,6 @@ export const TOOLS: Tool[] = [
       posted_within_days: z.number().int().min(1).nullable().optional(),
       ignore_filters: z.boolean().optional(),
       unscored_only: z.boolean().optional(),
-      date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().describe("The person's local date, for which follow-ups are due"),
       sort: z.enum(["posted", "verdict", "seen", "updated"]).optional(),
       limit: z.number().int().min(1).max(200).optional().describe("Default 50"),
       offset: z.number().int().min(0).optional(),
@@ -198,14 +197,13 @@ export const TOOLS: Tool[] = [
   {
     name: "update_job",
     title: "Update a job",
-    description: `Record what happened. status: ${STATUSES.join(", ")} (new = not decided; in_process = they replied, interviews, offers). verdict: your score 0-100 and one line why (null clears it). note: free text on the timeline. contacts: people for this job, merged by LinkedIn link or name. follow_up_at: a date to come back to it (null clears).`,
+    description: `Record what happened. status: ${STATUSES.join(", ")} (new = not decided; in_process = they replied, interviews, offers). verdict: your score 0-100 and one line why (null clears it). note: free text on the timeline. contacts: people for this job, merged by LinkedIn link or name.`,
     input: z.object({
       job_id: jobId,
       status: z.enum(STATUSES).optional(),
       verdict: z.object({ score: z.number().min(0).max(100), note: z.string().min(1).max(1000) }).nullable().optional(),
       note: z.string().max(4000).optional(),
       contacts: z.array(contactShape).max(50).optional(),
-      follow_up_at: z.string().nullable().optional(),
     }),
     run: (a, ctx) => updateJob(a, ctx.by),
   },

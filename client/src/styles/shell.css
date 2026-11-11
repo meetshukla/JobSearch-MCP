@@ -126,10 +126,6 @@
   font-weight: 400;
   color: var(--text-3);
 }
-.nav-count[data-due] {
-  color: var(--accent-text);
-  font-weight: 500;
-}
 .nav-dot {
   width: 6px;
   height: 6px;
@@ -367,21 +363,6 @@
   font-size: 11px;
   line-height: 13px;
   font-weight: 500;
-}
-.tab-badge {
-  position: absolute;
-  top: -5px;
-  inset-inline-start: 13px;
-  min-width: 16px;
-  height: 16px;
-  padding-inline: 4px;
-  border-radius: 8px;
-  background: var(--accent);
-  color: var(--on-accent);
-  font-size: 10px;
-  line-height: 16px;
-  font-weight: 600;
-  text-align: center;
 }
 
 .phone-actions {

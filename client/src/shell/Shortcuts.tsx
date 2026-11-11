@@ -25,7 +25,6 @@ const GROUPS: { title: string; keys: [string, string][] }[] = [
     title: "Open job",
     keys: [
       ["S", "Change status"],
-      ["F", "Set a follow-up"],
       ["O", "Open the posting"],
       ["N", "Write a note"],
       ["Esc", "Close"],

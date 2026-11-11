@@ -60,13 +60,7 @@ export function localDay(iso: string) {
   return Number.isNaN(d.getTime()) ? iso.slice(0, 10) : ymd(d);
 }
 
-/** "Today", "Tomorrow" or "Nov 18", for follow-up dates. */
-export function dueLabel(date: string) {
-  const d = date.slice(0, 10);
-  if (d === todayIso()) return "Today";
-  if (d === todayIso(1)) return "Tomorrow";
-  return day(d);
-}
+
 
 export const plural = (n: number, one: string, many = `${one}s`) => `${n.toLocaleString()} ${n === 1 ? one : many}`;
 

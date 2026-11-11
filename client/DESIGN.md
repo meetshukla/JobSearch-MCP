@@ -10,7 +10,7 @@ Hunt should sit comfortably next to Linear without copying it. It borrows Linear
 
 - **The target family.** Hunt's mark is a ring with a center dot. The status glyphs grow out of it: an empty ring for a new job, a ring with a dot once you apply, a ring with a disc while you are in process.
 - **The verdict column.** Each row ends in a short meter that shows the agent's score out of 100, next to the number. Down a list the meters read as a bar chart, so strong matches stand out before you read a word.
-- **The accent means "this needs you".** The warm orange appears only on strong verdicts (75 and up), due follow-ups, the focus ring, and the mark. Buttons are neutral. The accent never decorates.
+- **The accent means "this needs you".** The warm orange appears only on strong verdicts (75 and up), the focus ring, and the mark. Buttons are neutral. The accent never decorates.
 
 The mode is Operate (Impeccable). Familiar controls and predictable structure beat novelty. Brand shows up in precision, not ornament.
 
@@ -47,12 +47,12 @@ Colors are `light-dark()` pairs on `:root`. `color-scheme` picks the side, so th
 
 | Token | Dark | Light | Use |
 | --- | --- | --- | --- |
-| `--accent` | `oklch(72% 0.16 50)` | `oklch(56% 0.17 45)` | Strong verdict meter, due follow-ups, focus ring, mark |
+| `--accent` | `oklch(72% 0.16 50)` | `oklch(56% 0.17 45)` | Strong verdict meter, focus ring, mark |
 | `--accent-text` | `oklch(76% 0.14 55)` | `oklch(52% 0.16 45)` | Accent used as text ("Due today") |
 | `--blue` | `oklch(72% 0.12 250)` | `oklch(54% 0.15 255)` | Applied |
 | `--green` | `oklch(75% 0.14 155)` | `oklch(52% 0.13 155)` | In process, active sources |
 | `--red` | `oklch(68% 0.16 25)` | `oklch(54% 0.19 27)` | Rejected, failing sources, errors |
-| `--on-accent` | `#1a0e05` | `#ffffff` | Text on an accent fill (the follow-up badge) |
+| `--on-accent` | `#1a0e05` | `#ffffff` | Text on an accent fill |
 
 All state colors clear 4.5:1 on the panel in both themes, so they work as text as well as glyphs. Color never carries meaning alone: every glyph has a distinct shape, and every state has a label nearby.
 
@@ -137,7 +137,7 @@ The sidebar sits on the window color. The main panel is inset 8px from the windo
 │          │ Today                  │ Mozilla                       │ Status   ○ New  │
 │          │ ○ Staff Software Eng…  │ Staff Software Engineer,      │ Verdict  ▰▰▱ 82 │
 │          │   Mozilla  Remote …  82│ Browser (New Products)        │  Strong TS fit… │
-│          │ ○ Senior Software Eng… │                               │ Follow up  Add  │
+│          │ ○ Senior Software Eng… │                               │ Posted  19h ago │
 │          │   Vannevar  Remote  22h│ Description, 14/22, 68ch      │ Posted   19h ago│
 │          │                        │ …                             │ Location Remote │
 │          │                        │ Contacts                  Add │ Salary   —      │
@@ -160,7 +160,7 @@ The list pane narrows to between 360 and 440px and its rows switch to two lines 
 │ ○ Senior Software Engineer│      │                           │      │ Today                     │
 │   Vannevar  Remote    22h │      │ Status        ○ New     › │      │ 33 new in the last day    │
 │ Yesterday               8 │      │ Verdict       ▰▰▱ 82    › │      │ 1,009 sources, 5 failing  │
-│ ○ Software Developer …    │      │ Follow up     Add date  › │      │ Settings                  │
+│ ○ Software Developer …    │      │ Posted        19 hours ago│      │ Settings                  │
 │   Canonical  Remote    1d │      │ Posted        19 hours ago│      │ Connect agent           › │
 │                           │      │ …                         │      │ Profile                 › │
 │                           │      │ Description               │      │ Filters                 › │
@@ -214,10 +214,10 @@ A job that is new and closed shows the closed glyph. A job you acted on keeps it
 | View | Path | Source | Groups |
 | --- | --- | --- | --- |
 | Jobs | `/jobs` | `jobs` | Scored (best first), then posting day |
-| Applied | `/applied` | `applied` | Follow up (due), In process, Applied, Rejected (quieter) |
+| Applied | `/applied` | `applied` | In process, Applied, Rejected (quieter) |
 | Skipped | `/skipped` | `skipped` | None |
 
-Old paths (`/review`, `/shortlist`, `/follow-ups`, `/rejected`, `/all`) still open the view that replaced them. The Applied count turns accent when a follow-up is due.
+Old paths (`/review`, `/shortlist`, `/follow-ups`, `/rejected`, `/all`) still open the view that replaced them.
 
 A job opens at `/<view>/<job id>`, so the list beside it keeps its context. Search, Remote and Posted live in the query string.
 
@@ -232,7 +232,6 @@ A job opens at `/<view>/<job id>`, so the list beside it keeps its context. Sear
 | Esc | Close the job, leave a field, close a menu |
 | s | Status menu for the open job |
 | 1 to 5 | With the status menu open, pick New, Applied, In process, Skipped or Rejected |
-| f | Follow-up menu for the open job |
 | o | Open the posting |
 | n | Write a note |
 | t | Track a job from a link |

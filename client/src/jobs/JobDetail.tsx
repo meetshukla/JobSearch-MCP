@@ -23,7 +23,6 @@ type Props = { jobId: string; view: ViewId; layout: Layout; onClose: () => void;
 export function JobDetail({ jobId, view, layout, onClose, onStep, hasPrev, hasNext }: Props) {
   const job = useLoad(() => tool("get_job", { job_id: jobId, html: true }), jobId, ["job", "settings"]);
   const [statusOpen, setStatusOpen] = useState(false);
-  const [followOpen, setFollowOpen] = useState(false);
   const note = useRef<HTMLTextAreaElement>(null);
   const body = useRef<HTMLDivElement>(null);
   const wide = useWidth(body) >= 720 && layout !== "phone";
@@ -53,10 +52,9 @@ export function JobDetail({ jobId, view, layout, onClose, onStep, hasPrev, hasNe
       (ok) => ok && toast(`Marked ${STATUS_LABEL[s].toLowerCase()}`, { action: { label: "Undo", run: () => void save({ status: prev }, (cur) => ({ ...cur, status: prev })) } }),
     );
   };
-  const setFollowUp = (date: string | null) => void save({ follow_up_at: date }, (cur) => ({ ...cur, follow_up_at: date }));
 
   useEffect(() => {
-    if (j) setActiveJob({ id: j.id, title: j.title, company: j.company, status: j.status, applyUrl: j.apply_url, followUp: j.follow_up_at, setStatus, setFollowUp, focusNote: () => note.current?.focus() });
+    if (j) setActiveJob({ id: j.id, title: j.title, company: j.company, status: j.status, applyUrl: j.apply_url, setStatus, focusNote: () => note.current?.focus() });
   });
   useEffect(() => () => setActiveJob(null), []);
 
@@ -65,7 +63,6 @@ export function JobDetail({ jobId, view, layout, onClose, onStep, hasPrev, hasNe
       if (!j || shortcutBlocked(e)) return;
       const k = e.key.toLowerCase();
       if (k === "s") setStatusOpen(true);
-      else if (k === "f") setFollowOpen(true);
       else if (k === "o") window.open(j.apply_url, "_blank", "noopener,noreferrer");
       else if (k === "n") note.current?.focus();
       else return;
@@ -76,7 +73,7 @@ export function JobDetail({ jobId, view, layout, onClose, onStep, hasPrev, hasNe
   });
 
   const props = j && (
-    <Properties job={j} save={save} setStatus={setStatus} setFollowUp={setFollowUp} statusOpen={statusOpen} setStatusOpen={setStatusOpen} followOpen={followOpen} setFollowOpen={setFollowOpen} />
+    <Properties job={j} save={save} setStatus={setStatus} statusOpen={statusOpen} setStatusOpen={setStatusOpen} />
   );
 
   return (

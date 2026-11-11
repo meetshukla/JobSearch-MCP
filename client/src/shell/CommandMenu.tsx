@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Dialog } from "@base-ui/react/dialog";
-import { ArrowUpRight, CalendarClock, CalendarX, ClipboardPaste, Keyboard, Link2, Link as LinkIcon, MessageSquare, Monitor, Moon, Plus, Rss, Settings, Sun } from "lucide-react";
+import { ArrowUpRight, ClipboardPaste, Keyboard, Link2, Link as LinkIcon, MessageSquare, Monitor, Moon, Plus, Rss, Settings, Sun } from "lucide-react";
 import type { JobRow } from "../../../shared/types.ts";
 import { tool } from "../api.ts";
 import { bump } from "../live.ts";
 import { STATUS_LABEL, STATUS_ORDER, SETTINGS_SECTIONS, VIEWS, VIEW_ORDER, viewForStatus } from "../model.ts";
-import { isUrl, todayIso } from "../format.ts";
+import { isUrl } from "../format.ts";
 import { jobsPath, navigate, settingsPath } from "../router.tsx";
 import { useActiveJob, useAppData, type PaletteMode } from "../data.tsx";
 import { StatusGlyph } from "../glyphs.tsx";
@@ -88,11 +88,6 @@ function Palette({ mode, input, onMode }: { mode: PaletteMode; input: React.RefO
         if (s === job.status) continue;
         list.push({ id: `status-${s}`, group: g, label: `Mark as ${STATUS_LABEL[s].toLowerCase()}`, icon: <StatusGlyph status={s} />, keywords: "status change", run: () => job.setStatus(s) });
       }
-      list.push(
-        { id: "fu-3", group: g, label: "Follow up in 3 days", icon: <CalendarClock {...ICON} />, keywords: "follow-up reminder date", run: () => job.setFollowUp(todayIso(3)) },
-        { id: "fu-7", group: g, label: "Follow up in a week", icon: <CalendarClock {...ICON} />, keywords: "follow-up reminder date", run: () => job.setFollowUp(todayIso(7)) },
-      );
-      if (job.followUp) list.push({ id: "fu-clear", group: g, label: "Clear the follow-up", icon: <CalendarX {...ICON} />, keywords: "follow-up remove", run: () => job.setFollowUp(null) });
       list.push(
         { id: "open", group: g, label: "Open the posting", icon: <ArrowUpRight {...ICON} />, keys: "O", keywords: "apply link", run: () => void window.open(job.applyUrl, "_blank", "noopener,noreferrer") },
         { id: "note", group: g, label: "Write a note", icon: <MessageSquare {...ICON} />, keys: "N", keywords: "comment activity", run: () => void setTimeout(job.focusNote, 0) },

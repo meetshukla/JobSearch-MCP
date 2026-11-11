@@ -1,8 +1,8 @@
 import { useState, type FormEvent, type ReactNode, type RefObject } from "react";
-import { Bot, CalendarClock, CircleDot, Gauge, Link2, UserPlus, UserRound } from "lucide-react";
+import { Bot, CircleDot, Gauge, Link2, UserPlus, UserRound } from "lucide-react";
 import type { JobDetail, Status, TimelineItem } from "../../../shared/types.ts";
 import { STATUS_LABEL } from "../model.ts";
-import { ago, byLabel, day, fullDate } from "../format.ts";
+import { ago, byLabel, fullDate } from "../format.ts";
 import { Mark, StatusGlyph } from "../glyphs.tsx";
 import { Button, Keys } from "../ui.tsx";
 import type { SaveJob } from "./JobDetail.tsx";
@@ -21,9 +21,6 @@ function describe(t: TimelineItem): { icon: ReactNode; text: string; sub?: React
   if (t.kind === "verdict") {
     if (d.score == null) return { icon: <Gauge {...ICON} />, text: `${who} cleared the verdict` };
     return { icon: <Gauge {...ICON} />, text: `${who} scored it ${d.score} out of 100`, sub: t.text.replace(/^\d+\/100\.\s*/, "") };
-  }
-  if (t.kind === "follow_up") {
-    return { icon: <CalendarClock {...ICON} />, text: d.date ? `${who} set a follow-up for ${day(d.date)}` : `${who} cleared the follow-up` };
   }
   if (t.kind === "contact") return { icon: <UserPlus {...ICON} />, text: `${who} ${lower(t.text)}` };
   if (t.kind === "added") return { icon: <Link2 {...ICON} />, text: t.text };

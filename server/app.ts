@@ -85,11 +85,8 @@ export function createApp(deps: AppDeps) {
     const args = await c.req.json().catch(() => ({}));
     return c.json((await callTool(c.req.param("name"), args, { by: "you", wake: deps.wake })) as any);
   });
-  // The website's summary (sidebar counts, follow-ups due, source health). Agents get the same facts from their tools.
-  app.get("/api/summary", (c) => {
-    const date = c.req.query("date");
-    return c.json(today(date && /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : undefined));
-  });
+  // The website's summary (sidebar counts, source health). Agents get the same facts from their tools.
+  app.get("/api/summary", (c) => c.json(today()));
   app.get("/api/pulse", (c) => c.json(pulse(Number(c.req.query("since") || 0), c.req.query("instance") || undefined)));
 
   app.all("/api/*", (c) => c.json({ error: "Not found" }, 404));

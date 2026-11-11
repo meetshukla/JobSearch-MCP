@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { Menu } from "@base-ui/react/menu";
-import { ArrowUpRight, CalendarClock, Check, ChevronDown, Pencil } from "lucide-react";
+import { ArrowUpRight, Check, ChevronDown, Pencil } from "lucide-react";
 import type { JobDetail, Status } from "../../../shared/types.ts";
-import { SOURCE_LABEL, STATUS_LABEL, STATUS_ORDER, isDue } from "../model.ts";
-import { ago, byLabel, day, dueLabel, fullDate, todayIso } from "../format.ts";
+import { SOURCE_LABEL, STATUS_LABEL, STATUS_ORDER } from "../model.ts";
+import { ago, byLabel, fullDate } from "../format.ts";
 import { StatusGlyph, VerdictMeter } from "../glyphs.tsx";
 import { MenuPopup } from "../overlay.tsx";
 import { Button, Keys } from "../ui.tsx";
@@ -13,15 +13,12 @@ type Props = {
   job: JobDetail;
   save: SaveJob;
   setStatus: (s: Status) => void;
-  setFollowUp: (date: string | null) => void;
   statusOpen: boolean;
   setStatusOpen: (o: boolean) => void;
-  followOpen: boolean;
-  setFollowOpen: (o: boolean) => void;
 };
 
 /** The job's properties, Linear style: a quiet label and an inline control per row. */
-export function Properties({ job: j, save, setStatus, setFollowUp, statusOpen, setStatusOpen, followOpen, setFollowOpen }: Props) {
+export function Properties({ job: j, save, setStatus, statusOpen, setStatusOpen }: Props) {
   const [editingVerdict, setEditingVerdict] = useState(false);
   return (
     <dl className="props">
@@ -52,9 +49,6 @@ export function Properties({ job: j, save, setStatus, setFollowUp, statusOpen, s
           </div>
         )
       )}
-      <Prop label="Follow up">
-        <FollowUpMenu value={j.follow_up_at?.slice(0, 10) ?? null} onChange={setFollowUp} open={followOpen} onOpenChange={setFollowOpen} />
-      </Prop>
       <Prop label="Posted">
         <span className="prop-text" title={j.posted_at ? fullDate(j.posted_at) : `Found ${fullDate(j.first_seen_at)}`}>
           {j.posted_at ? ago(j.posted_at) : <span className="t3">No date, found {ago(j.first_seen_at)}</span>}
@@ -145,73 +139,6 @@ export function StatusMenu({ status, closed, onChange, open, onOpenChange, side 
             </Menu.RadioItem>
           ))}
         </Menu.RadioGroup>
-      </MenuPopup>
-    </Menu.Root>
-  );
-}
-
-const quickDate = new Intl.DateTimeFormat("en", { weekday: "short", month: "short", day: "numeric" });
-const QUICK: { label: string; days: number }[] = [
-  { label: "Tomorrow", days: 1 },
-  { label: "In 3 days", days: 3 },
-  { label: "In a week", days: 7 },
-  { label: "In 2 weeks", days: 14 },
-];
-
-function FollowUpMenu({ value, onChange, open, onOpenChange }: { value: string | null; onChange: (d: string | null) => void; open: boolean; onOpenChange: (o: boolean) => void }) {
-  const [picking, setPicking] = useState(false);
-  const date = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    if (!picking) return;
-    date.current?.focus();
-    try {
-      date.current?.showPicker();
-    } catch {
-      // Some browsers only open the picker on a direct click. The focused field still takes typing.
-    }
-  }, [picking]);
-  if (picking) {
-    return (
-      <input
-        ref={date}
-        className="input date-input"
-        type="date"
-        aria-label="Follow-up date"
-        defaultValue={value ?? todayIso(7)}
-        min={todayIso()}
-        onChange={(e) => {
-          if (!e.target.value) return;
-          onChange(e.target.value);
-          setPicking(false);
-        }}
-        onBlur={() => setPicking(false)}
-        onKeyDown={(e) => e.key === "Escape" && setPicking(false)}
-      />
-    );
-  }
-  const due = isDue(value);
-  return (
-    <Menu.Root open={open} onOpenChange={(o) => onOpenChange(o)}>
-      <Menu.Trigger className={`prop-value${value ? "" : " prop-empty"}`} data-due={due || undefined} aria-label={value ? `Follow up ${day(value)}. Change` : "Add a follow-up date"}>
-        <CalendarClock size={14} strokeWidth={1.75} aria-hidden />
-        <span>{value ? (due && value < todayIso() ? `Overdue, ${day(value)}` : dueLabel(value)) : "Add date"}</span>
-      </Menu.Trigger>
-      <MenuPopup>
-        {QUICK.map((q) => (
-          <Menu.Item key={q.days} className="menu-item" onClick={() => onChange(todayIso(q.days))}>
-            <span className="menu-item-label">{q.label}</span>
-            <span className="menu-hint">{quickDate.format(new Date(`${todayIso(q.days)}T12:00:00`))}</span>
-          </Menu.Item>
-        ))}
-        <Menu.Separator className="menu-sep" />
-        <Menu.Item className="menu-item" onClick={() => setPicking(true)}>
-          <span className="menu-item-label">Pick a date…</span>
-        </Menu.Item>
-        {value && (
-          <Menu.Item className="menu-item" onClick={() => onChange(null)}>
-            <span className="menu-item-label">Clear follow-up</span>
-          </Menu.Item>
-        )}
       </MenuPopup>
     </Menu.Root>
   );

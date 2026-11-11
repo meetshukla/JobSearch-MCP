@@ -51,9 +51,9 @@ The note cites the deciding facts, not adjectives.
 Check the posting is still open first. Write the tailored resume on your side from the profile, never inventing facts. Then:
 
 ```json
-{ "job_id": "<id>", "status": "applied", "note": "Applied on the company site with resume v4", "follow_up_at": "2026-11-20" }
+{ "job_id": "<id>", "status": "applied", "note": "Applied on the company site with resume v4" }
 ```
 
-When they reply, set `in_process`. When it ends, `rejected`. `list_jobs` with `view: "applied"` puts follow-ups that are due first.
+When they reply, set `in_process`. When it ends, `rejected`.
 
 For people to contact about a job, see the `find-job-contacts` skill.

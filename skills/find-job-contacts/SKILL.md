@@ -66,7 +66,7 @@ Call `update_job` with the job's id and the people as `contacts`. Hunt merges th
 }
 ```
 
-After a message goes out, save the same person again with `contacted_at` (the date) and set the job's `follow_up_at`. Hunt never sends anything. Writing to someone is the person's decision. Cold-email rules differ by country (CASL in Canada, GDPR in the EU).
+After a message goes out, save the same person again with `contacted_at` (the date). Hunt never sends anything. Writing to someone is the person's decision. Cold-email rules differ by country (CASL in Canada, GDPR in the EU).
 
 ## 6. Report
 
