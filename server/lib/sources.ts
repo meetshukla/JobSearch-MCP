@@ -89,7 +89,8 @@ export function addSources(input: { items?: string[]; list?: string }): AddSourc
           const r = insert({ key: companyKey(c.ats, c.slug), kind: "company", name: c.name, ats: c.ats, slug: c.slug, url: c.url, tags: c.tags, state: "active" });
           if (!r.existed) added++;
         }
-        results.push({ input: `list:${input.list}`, status: "added", message: `Added ${added} companies from ${list.label} (${list.companies.length - added} were already there).` });
+        const had = list.companies.length - added;
+        results.push({ input: `list:${input.list}`, status: "added", message: `Added ${added} companies from ${list.label}.${had ? ` ${had} ${had === 1 ? "was" : "were"} already there.` : ""}` });
       }
     }
     for (const raw of input.items ?? []) results.push(addOne(raw));
