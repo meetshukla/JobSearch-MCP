@@ -1,0 +1,271 @@
+/** Jobs: the list, one job in full, tracking, and the daily agenda. */
+import { all, get, run, tx } from "../db.ts";
+import { getSettings } from "../settings.ts";
+import { matches, ageDays } from "../filters.ts";
+import { isoAt, nowIso } from "../schema.ts";
+import { addEvent, broadcast } from "./events.ts";
+import { passMinutes } from "./collect.ts";
+import { VIEWS, type Contact, type Filters, type JobDetail, type JobRow, type ListJobsResult, type Status, type Today, type View, type ViewCounts } from "../../shared/types.ts";
+
+const LIGHT = `id, company, company_domain, title, location, remote, department, salary, url, apply_url, source, posted_at, first_seen_at,
+  closed_at, status, status_at, verdict_score, verdict_note, verdict_at, follow_up_at, pinned, substr(description_text, 1, 400) AS head,
+  (SELECT COUNT(*) FROM contacts c WHERE c.job_id = jobs.id) AS contacts_n`;
+
+export const STATUS_LABEL: Record<Status, string> = { new: "new", skipped: "skipped", applied: "applied", in_process: "in process", rejected: "rejected" };
+
+function viewOf(j: { status: Status; verdict_score: number | null }): View {
+  if (j.status === "new") return j.verdict_score == null ? "to_review" : "shortlist";
+  if (j.status === "in_process") return "applied";
+  return j.status;
+}
+
+function toRow(j: any): JobRow {
+  const age = ageDays(j.posted_at);
+  return {
+    id: j.id,
+    title: j.title,
+    company: j.company,
+    location: j.location || "",
+    remote: Boolean(j.remote),
+    salary: j.salary ?? null,
+    url: j.url,
+    apply_url: j.apply_url || j.url,
+    source: j.source,
+    posted_at: j.posted_at ?? null,
+    posted_days_ago: age == null ? null : Math.max(0, Math.round(age * 10) / 10),
+    first_seen_at: j.first_seen_at,
+    closed: Boolean(j.closed_at),
+    status: j.status,
+    verdict: j.verdict_score == null ? null : { score: j.verdict_score, note: j.verdict_note ?? "", at: j.verdict_at },
+    follow_up_at: j.follow_up_at ?? null,
+    contacts: j.contacts_n ?? 0,
+    excerpt: String(j.head ?? "").replace(/\s+/g, " ").trim().slice(0, 240),
+  };
+}
+
+const asListing = (j: any) => ({ ...j, remote: Boolean(j.remote), pinned: Boolean(j.pinned) });
+
+/** Every job you can see: tracked jobs always, untouched open jobs only when they pass the filters. */
+function visible(f: Filters, ignoreFilters = false) {
+  const desc = f.skip_if_description.length > 0;
+  const out: { j: any; view: View }[] = [];
+  for (const j of all<any>(`SELECT ${LIGHT}${desc ? ", description_text" : ""} FROM jobs`)) {
+    if (j.status === "new" && (j.closed_at || (!ignoreFilters && !matches(asListing(j), f).ok))) continue;
+    out.push({ j, view: viewOf(j) });
+  }
+  return out;
+}
+
+const emptyCounts = (): ViewCounts => Object.fromEntries(VIEWS.map((v) => [v, 0])) as ViewCounts;
+
+export type ListQuery = {
+  view?: View;
+  query?: string;
+  company?: string;
+  remote_only?: boolean;
+  /** Replaces the saved "posted within" for this list only. null = any age. */
+  posted_within_days?: number | null;
+  ignore_filters?: boolean;
+  sort?: "posted" | "verdict" | "seen" | "updated";
+  limit?: number;
+  offset?: number;
+};
+
+export function listJobs(q: ListQuery = {}, filters?: Filters): ListJobsResult {
+  const view = q.view ?? "to_review";
+  let f = filters ?? getSettings().filters;
+  if (q.posted_within_days !== undefined) f = { ...f, posted_within_days: q.posted_within_days };
+  const counts = emptyCounts();
+  const text = q.query?.trim().toLowerCase();
+  const company = q.company?.trim().toLowerCase();
+  const picked: any[] = [];
+  for (const { j, view: v } of visible(f, q.ignore_filters)) {
+    counts[v]++;
+    counts.all++;
+    if (view !== "all" && v !== view) continue;
+    if (text && !`${j.title} ${j.company} ${j.location}`.toLowerCase().includes(text)) continue;
+    if (company && !j.company.toLowerCase().includes(company)) continue;
+    if (q.remote_only && !j.remote && !/remote/i.test(j.location)) continue;
+    picked.push(j);
+  }
+  const sort = q.sort ?? (view === "shortlist" ? "verdict" : view === "applied" || view === "rejected" || view === "skipped" ? "updated" : "posted");
+  const time = (s: string | null) => (s ? Date.parse(s) || 0 : 0);
+  picked.sort((a, b) => {
+    if (sort === "verdict") return (b.verdict_score ?? -1) - (a.verdict_score ?? -1) || time(b.posted_at) - time(a.posted_at);
+    if (sort === "seen") return time(b.first_seen_at) - time(a.first_seen_at);
+    if (sort === "updated") return time(b.status_at ?? b.first_seen_at) - time(a.status_at ?? a.first_seen_at);
+    return time(b.posted_at) - time(a.posted_at) || time(b.first_seen_at) - time(a.first_seen_at);
+  });
+  const offset = q.offset ?? 0;
+  const limit = Math.min(Math.max(q.limit ?? 50, 1), 200);
+  return { total: picked.length, counts, jobs: picked.slice(offset, offset + limit).map(toRow) };
+}
+
+function contactsFor(jobId: string): Contact[] {
+  return all<any>("SELECT * FROM contacts WHERE job_id = ? ORDER BY id", jobId).map((c) => ({
+    id: c.id,
+    name: c.name,
+    title: c.title,
+    linkedin_url: c.linkedin_url,
+    email: c.email,
+    email_verified: c.email_verified == null ? null : Boolean(c.email_verified),
+    note: c.note,
+    contacted_at: c.contacted_at,
+  }));
+}
+
+export function getJob(id: string, opts: { html?: boolean; maxChars?: number } = {}): JobDetail | null {
+  const j = get<any>(`SELECT ${LIGHT}, description_text, description_html FROM jobs WHERE id = ?`, id);
+  if (!j) return null;
+  const f = getSettings().filters;
+  const m = j.closed_at ? { ok: false, reason: "Closed: it's no longer on the board" } : j.status !== "new" ? { ok: true, reason: null } : matches(asListing(j), f);
+  return {
+    ...toRow(j),
+    company_domain: j.company_domain ?? null,
+    department: j.department ?? null,
+    description: String(j.description_text ?? "").slice(0, opts.maxChars ?? 20_000),
+    ...(opts.html ? { description_html: j.description_html ?? null } : {}),
+    filter: { ok: m.ok, reason: m.reason },
+    contacts_list: contactsFor(id),
+    timeline: all<any>("SELECT kind, text, by, created_at FROM events WHERE job_id = ? ORDER BY id DESC LIMIT 60", id).map((e) => ({ kind: e.kind, text: e.text, by: e.by, at: e.created_at })),
+  };
+}
+
+export type ContactInput = {
+  name: string;
+  title?: string | null;
+  linkedin_url?: string | null;
+  email?: string | null;
+  email_verified?: boolean | null;
+  note?: string | null;
+  contacted_at?: string | null;
+};
+
+export type UpdateJob = {
+  job_id: string;
+  status?: Status;
+  verdict?: { score: number; note: string } | null;
+  note?: string;
+  contacts?: ContactInput[];
+  follow_up_at?: string | null;
+};
+
+function linkedin(u?: string | null) {
+  const v = u?.trim();
+  if (!v) return null;
+  if (/^https?:\/\//i.test(v)) return v;
+  if (/linkedin\.com\//i.test(v)) return `https://${v.replace(/^\/+/, "")}`;
+  return `https://www.linkedin.com/in/${v.replace(/^@/, "")}`;
+}
+
+function isoOrThrow(v: string, what: string) {
+  const t = Date.parse(v);
+  if (Number.isNaN(t)) throw new Error(`${what} must be a date like 2026-11-20.`);
+  return isoAt(t);
+}
+
+export function updateJob(u: UpdateJob, by: "you" | "agent") {
+  const j = get<any>("SELECT id, status FROM jobs WHERE id = ?", u.job_id);
+  if (!j) throw new Error(`No job with id ${u.job_id}. Ids come from list_jobs.`);
+  const who = by === "you" ? "You" : "Your agent";
+  const now = nowIso();
+  tx(() => {
+    if (u.status && u.status !== j.status) {
+      run("UPDATE jobs SET status = ?, status_at = ? WHERE id = ?", u.status, now, j.id);
+      addEvent(j.id, "status", `${who} marked it ${STATUS_LABEL[u.status]}`, by);
+    }
+    if (u.verdict === null) {
+      run("UPDATE jobs SET verdict_score = NULL, verdict_note = NULL, verdict_at = NULL WHERE id = ?", j.id);
+      addEvent(j.id, "verdict", `${who} cleared the verdict`, by);
+    } else if (u.verdict) {
+      const score = Math.max(0, Math.min(100, Math.round(u.verdict.score)));
+      run("UPDATE jobs SET verdict_score = ?, verdict_note = ?, verdict_at = ? WHERE id = ?", score, u.verdict.note.trim(), now, j.id);
+      addEvent(j.id, "verdict", `${score}/100. ${u.verdict.note.trim()}`, by);
+    }
+    if (u.follow_up_at !== undefined) {
+      const at = u.follow_up_at ? isoOrThrow(u.follow_up_at, "follow_up_at") : null;
+      run("UPDATE jobs SET follow_up_at = ? WHERE id = ?", at, j.id);
+      addEvent(j.id, "follow_up", at ? `Follow up on ${at.slice(0, 10)}` : "Follow-up cleared", by);
+    }
+    for (const c of u.contacts ?? []) {
+      const name = c.name?.trim();
+      if (!name) continue;
+      const li = linkedin(c.linkedin_url);
+      const ex =
+        (li && get<any>("SELECT * FROM contacts WHERE job_id = ? AND linkedin_url = ?", j.id, li)) ||
+        get<any>("SELECT * FROM contacts WHERE job_id = ? AND lower(name) = lower(?)", j.id, name);
+      const contacted = c.contacted_at ? isoOrThrow(c.contacted_at, "contacted_at") : null;
+      if (ex) {
+        run(
+          `UPDATE contacts SET name = ?, title = COALESCE(?, title), linkedin_url = COALESCE(?, linkedin_url), email = COALESCE(?, email),
+             email_verified = COALESCE(?, email_verified), note = COALESCE(?, note), contacted_at = COALESCE(?, contacted_at) WHERE id = ?`,
+          name, c.title ?? null, li, c.email ?? null, c.email_verified == null ? null : c.email_verified ? 1 : 0, c.note ?? null, contacted, ex.id,
+        );
+        if (contacted && !ex.contacted_at) addEvent(j.id, "contact", `Contacted ${name}`, by);
+      } else {
+        run(
+          "INSERT INTO contacts (job_id, name, title, linkedin_url, email, email_verified, note, contacted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+          j.id, name, c.title ?? null, li, c.email ?? null, c.email_verified == null ? null : c.email_verified ? 1 : 0, c.note ?? null, contacted,
+        );
+        addEvent(j.id, "contact", contacted ? `Contacted ${name}` : `Added ${name}${c.title ? `, ${c.title}` : ""}`, by);
+      }
+    }
+    if (u.note?.trim()) addEvent(j.id, "note", u.note.trim(), by);
+    run("UPDATE jobs SET updated_at = ? WHERE id = ?", now, j.id);
+  });
+  broadcast("job");
+  broadcast("jobs");
+  return getJob(j.id, { maxChars: 0 });
+}
+
+export function today(): Today {
+  const s = getSettings();
+  const f = s.filters;
+  const rows = visible(f);
+  const counts = emptyCounts();
+  const dayCounts = new Map<string, number>();
+  const since24h = isoAt(Date.now() - 86_400_000);
+  const since14d = isoAt(Date.now() - 13 * 86_400_000).slice(0, 10);
+  let new24h = 0;
+  for (const { j, view } of rows) {
+    counts[view]++;
+    if (j.status === "new" && j.first_seen_at >= since24h) new24h++;
+    const day = String(j.first_seen_at).slice(0, 10);
+    if (day >= since14d) dayCounts.set(day, (dayCounts.get(day) ?? 0) + 1);
+  }
+  const days: Today["days"] = [];
+  for (let i = 13; i >= 0; i--) {
+    const day = isoAt(Date.now() - i * 86_400_000).slice(0, 10);
+    days.push({ day, jobs: dayCounts.get(day) ?? 0 });
+  }
+  const st = Object.fromEntries(all<any>("SELECT state, COUNT(*) n FROM sources GROUP BY state").map((r) => [r.state, r.n]));
+  const readable = get<{ n: number }>("SELECT COUNT(*) n FROM sources WHERE kind IN ('company','feed') AND state <> 'paused'")!.n;
+  const missing: string[] = [];
+  if (!s.profile.trim()) missing.push("Add the person's profile (resume, and what they want and won't accept) with update_settings.profile.");
+  if (!readable) missing.push("Add company job boards with add_sources (company names, careers page URLs, or the starter list).");
+  if ((f.onsite && !f.places.length) || (f.remote && !f.remote_regions.length))
+    missing.push("Say where the person can work: filters.places for on-site or hybrid, filters.remote_regions for remote. Empty keeps every place.");
+  return {
+    setup: { ready: missing.length === 0, missing },
+    jobs: {
+      new_24h: new24h,
+      to_review: counts.to_review,
+      shortlist: counts.shortlist,
+      applied: rows.filter((r) => r.j.status === "applied").length,
+      in_process: rows.filter((r) => r.j.status === "in_process").length,
+    },
+    follow_ups_due: all<any>(
+      "SELECT id, title, company, status, follow_up_at FROM jobs WHERE follow_up_at IS NOT NULL AND follow_up_at <= ? AND status IN ('applied','in_process') ORDER BY follow_up_at",
+      nowIso(),
+    ),
+    sources: {
+      active: st.active ?? 0,
+      queued: st.queued ?? 0,
+      paused: st.paused ?? 0,
+      errors: st.error ?? 0,
+      last_read_at: get<{ t: string | null }>("SELECT MAX(last_read_at) t FROM sources")?.t ?? null,
+      pass_minutes: passMinutes(),
+    },
+    days,
+  };
+}

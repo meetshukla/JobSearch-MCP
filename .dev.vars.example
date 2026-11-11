@@ -1,0 +1,3 @@
+# A long random password. Your agent sends it to connect, and you type it once to open the website.
+# Make one with: openssl rand -hex 24
+HUNT_TOKEN=

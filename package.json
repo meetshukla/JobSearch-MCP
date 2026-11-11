@@ -1,0 +1,45 @@
+{
+  "name": "hunt",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Hunt collects job postings from the boards you choose, keeps the ones that pass your filters, and gives your agent an MCP server to review, apply and track.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npm run build && wrangler dev --var DEV_NO_AUTH:1",
+    "dev:client": "vite --config client/vite.config.ts",
+    "build": "vite build --config client/vite.config.ts",
+    "deploy": "npm run build && wrangler deploy",
+    "typecheck": "tsc -p worker/tsconfig.json --noEmit && tsc -p client/tsconfig.json --noEmit",
+    "test": "node scripts/test-filters.ts"
+  },
+  "cloudflare": {
+    "bindings": {
+      "HUNT_TOKEN": {
+        "description": "A long random password. Your agent sends it to connect, and you type it once to open the website. Make one with: openssl rand -hex 24"
+      }
+    }
+  },
+  "dependencies": {
+    "dompurify": "^3.4.17",
+    "hono": "^4.13.16",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261104.1",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.2.1",
+    "lucide-react": "^1.68.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "wrangler": "^4.152.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "workerd@1.20261110.1": true
+  }
+}

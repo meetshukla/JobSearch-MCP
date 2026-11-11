@@ -1,0 +1,8036 @@
+[
+ {
+  "name": "Affirm",
+  "ats": "greenhouse",
+  "slug": "affirm",
+  "tags": [
+   "BNPL fintech"
+  ]
+ },
+ {
+  "name": "GitLab",
+  "ats": "greenhouse",
+  "slug": "gitlab",
+  "tags": [
+   "DevOps platform"
+  ]
+ },
+ {
+  "name": "Supabase",
+  "ats": "ashby",
+  "slug": "supabase",
+  "tags": [
+   "Postgres BaaS"
+  ]
+ },
+ {
+  "name": "Waabi",
+  "ats": "lever",
+  "slug": "waabi",
+  "tags": [
+   "Toronto autonomous trucking AI"
+  ]
+ },
+ {
+  "name": "Samsara",
+  "ats": "greenhouse",
+  "slug": "samsara",
+  "tags": [
+   "IoT fleet SaaS"
+  ]
+ },
+ {
+  "name": "Elastic",
+  "ats": "greenhouse",
+  "slug": "elastic",
+  "tags": [
+   "Search/observability"
+  ]
+ },
+ {
+  "name": "Cohere",
+  "ats": "ashby",
+  "slug": "cohere",
+  "tags": [
+   "Canadian AI lab"
+  ]
+ },
+ {
+  "name": "Okta",
+  "ats": "greenhouse",
+  "slug": "okta",
+  "tags": [
+   "Identity SaaS"
+  ]
+ },
+ {
+  "name": "Cerebras",
+  "ats": "ashby",
+  "slug": "cerebras",
+  "tags": [
+   "AI chip maker"
+  ]
+ },
+ {
+  "name": "Mercury",
+  "ats": "greenhouse",
+  "slug": "mercury",
+  "tags": [
+   "Fintech banking"
+  ]
+ },
+ {
+  "name": "Baseten",
+  "ats": "ashby",
+  "slug": "baseten",
+  "tags": [
+   "AI inference"
+  ]
+ },
+ {
+  "name": "Stripe",
+  "ats": "greenhouse",
+  "slug": "stripe",
+  "tags": [
+   "Payments"
+  ]
+ },
+ {
+  "name": "Huawei Canada",
+  "ats": "recruitee",
+  "slug": "huaweicanada",
+  "tags": [
+   "Telecom giant Canada R&D"
+  ]
+ },
+ {
+  "name": "Lyft",
+  "ats": "greenhouse",
+  "slug": "lyft",
+  "tags": [
+   "Rideshare"
+  ]
+ },
+ {
+  "name": "Alpaca",
+  "ats": "greenhouse",
+  "slug": "alpaca",
+  "tags": [
+   "Brokerage API"
+  ]
+ },
+ {
+  "name": "Grafana Labs",
+  "ats": "greenhouse",
+  "slug": "grafanalabs",
+  "tags": [
+   "Observability"
+  ]
+ },
+ {
+  "name": "Trm Labs",
+  "ats": "ashby",
+  "slug": "trm-labs",
+  "tags": [
+   "Crypto compliance"
+  ]
+ },
+ {
+  "name": "Tenstorrent",
+  "ats": "greenhouse",
+  "slug": "tenstorrent",
+  "tags": [
+   "AI chips, Toronto"
+  ]
+ },
+ {
+  "name": "Xero",
+  "ats": "ashby",
+  "slug": "xero",
+  "tags": [
+   "Accounting SaaS"
+  ]
+ },
+ {
+  "name": "1Password",
+  "ats": "ashby",
+  "slug": "1password",
+  "tags": [
+   "Canadian password manager"
+  ]
+ },
+ {
+  "name": "Maintainx",
+  "ats": "ashby",
+  "slug": "maintainx",
+  "tags": [
+   "Maintenance SaaS"
+  ]
+ },
+ {
+  "name": "Mozilla",
+  "ats": "greenhouse",
+  "slug": "mozilla",
+  "tags": [
+   "Firefox maker"
+  ]
+ },
+ {
+  "name": "Anduril Industries",
+  "ats": "greenhouse",
+  "slug": "andurilindustries",
+  "tags": [
+   "Defense tech"
+  ]
+ },
+ {
+  "name": "Harvey",
+  "ats": "ashby",
+  "slug": "harvey",
+  "tags": [
+   "Legal AI unicorn"
+  ]
+ },
+ {
+  "name": "ClickHouse",
+  "ats": "ashby",
+  "slug": "clickhouse",
+  "tags": [
+   "OLAP database"
+  ]
+ },
+ {
+  "name": "Rivianvw Tech",
+  "ats": "ashby",
+  "slug": "rivianvw.tech",
+  "tags": [
+   "Rivian-VW software JV"
+  ]
+ },
+ {
+  "name": "Render",
+  "ats": "ashby",
+  "slug": "render",
+  "tags": [
+   "Cloud hosting"
+  ]
+ },
+ {
+  "name": "WorkOS",
+  "ats": "ashby",
+  "slug": "workos",
+  "tags": [
+   "Auth APIs"
+  ]
+ },
+ {
+  "name": "ServiceNow",
+  "ats": "smartrecruiters",
+  "slug": "ServiceNow",
+  "tags": [
+   "Enterprise SaaS"
+  ]
+ },
+ {
+  "name": "Tailscale",
+  "ats": "greenhouse",
+  "slug": "tailscale",
+  "tags": [
+   "Canadian-founded VPN"
+  ]
+ },
+ {
+  "name": "Matx",
+  "ats": "ashby",
+  "slug": "matx",
+  "tags": [
+   "AI chip startup"
+  ]
+ },
+ {
+  "name": "Arista Networks",
+  "ats": "smartrecruiters",
+  "slug": "AristaNetworks",
+  "tags": [
+   "Networking"
+  ]
+ },
+ {
+  "name": "Reddit",
+  "ats": "greenhouse",
+  "slug": "reddit",
+  "tags": [
+   "Social"
+  ]
+ },
+ {
+  "name": "Instacart",
+  "ats": "greenhouse",
+  "slug": "instacart",
+  "tags": [
+   "Grocery delivery"
+  ]
+ },
+ {
+  "name": "Robinhood",
+  "ats": "greenhouse",
+  "slug": "robinhood",
+  "tags": [
+   "Brokerage"
+  ]
+ },
+ {
+  "name": "PointClickCare",
+  "ats": "lever",
+  "slug": "pointclickcare",
+  "tags": [
+   "Canadian healthcare SaaS"
+  ]
+ },
+ {
+  "name": "Shield AI",
+  "ats": "ashby",
+  "slug": "shieldai",
+  "tags": [
+   "Defense AI unicorn"
+  ]
+ },
+ {
+  "name": "Runway Ml",
+  "ats": "ashby",
+  "slug": "runway-ml",
+  "tags": [
+   "Generative video AI"
+  ]
+ },
+ {
+  "name": "Cloudflare",
+  "ats": "greenhouse",
+  "slug": "cloudflare",
+  "tags": [
+   "Edge network"
+  ]
+ },
+ {
+  "name": "Cresta",
+  "ats": "greenhouse",
+  "slug": "cresta",
+  "tags": [
+   "Contact center AI"
+  ]
+ },
+ {
+  "name": "Coinbase",
+  "ats": "greenhouse",
+  "slug": "coinbase",
+  "tags": [
+   "Crypto exchange"
+  ]
+ },
+ {
+  "name": "Ramp",
+  "ats": "ashby",
+  "slug": "ramp",
+  "tags": [
+   "Fintech unicorn"
+  ]
+ },
+ {
+  "name": "Sentry",
+  "ats": "ashby",
+  "slug": "sentry",
+  "tags": [
+   "Error monitoring"
+  ]
+ },
+ {
+  "name": "Faire",
+  "ats": "greenhouse",
+  "slug": "faire",
+  "tags": [
+   "Wholesale marketplace"
+  ]
+ },
+ {
+  "name": "Pinterest",
+  "ats": "greenhouse",
+  "slug": "pinterest",
+  "tags": [
+   "Social"
+  ]
+ },
+ {
+  "name": "Nubank",
+  "ats": "ashby",
+  "slug": "nubank",
+  "tags": [
+   "Brazilian neobank"
+  ]
+ },
+ {
+  "name": "Hud",
+  "ats": "ashby",
+  "slug": "hud",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Firecrawl",
+  "ats": "ashby",
+  "slug": "firecrawl",
+  "tags": [
+   "Web scraping AI startup"
+  ]
+ },
+ {
+  "name": "Linear",
+  "ats": "ashby",
+  "slug": "linear",
+  "tags": [
+   "Issue tracker"
+  ]
+ },
+ {
+  "name": "Roblox",
+  "ats": "greenhouse",
+  "slug": "roblox",
+  "tags": [
+   "Gaming platform"
+  ]
+ },
+ {
+  "name": "Wealthsimple",
+  "ats": "ashby",
+  "slug": "wealthsimple",
+  "tags": [
+   "Canadian fintech"
+  ]
+ },
+ {
+  "name": "Vanta",
+  "ats": "ashby",
+  "slug": "vanta",
+  "tags": [
+   "Compliance SaaS"
+  ]
+ },
+ {
+  "name": "Jobber",
+  "ats": "ashby",
+  "slug": "jobber",
+  "tags": [
+   "Edmonton field service SaaS"
+  ]
+ },
+ {
+  "name": "Braze",
+  "ats": "greenhouse",
+  "slug": "braze",
+  "tags": [
+   "Customer engagement SaaS"
+  ]
+ },
+ {
+  "name": "SpaceX",
+  "ats": "greenhouse",
+  "slug": "spacex",
+  "tags": [
+   "Space launch"
+  ]
+ },
+ {
+  "name": "OpenAI",
+  "ats": "ashby",
+  "slug": "openai",
+  "tags": [
+   "Top AI lab"
+  ]
+ },
+ {
+  "name": "LiveKit",
+  "ats": "ashby",
+  "slug": "livekit",
+  "tags": [
+   "Realtime media infra"
+  ]
+ },
+ {
+  "name": "MongoDB",
+  "ats": "greenhouse",
+  "slug": "mongodb",
+  "tags": [
+   "Database"
+  ]
+ },
+ {
+  "name": "Relayfi",
+  "ats": "ashby",
+  "slug": "relayfi",
+  "tags": [
+   "Canadian SMB banking"
+  ]
+ },
+ {
+  "name": "Databricks",
+  "ats": "greenhouse",
+  "slug": "databricks",
+  "tags": [
+   "Data/AI platform"
+  ]
+ },
+ {
+  "name": "NVIDIA",
+  "ats": "workday",
+  "slug": "nvidia/NVIDIAExternalCareerSite",
+  "url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite",
+  "tags": [
+   "GPU leader"
+  ]
+ },
+ {
+  "name": "Salesforce",
+  "ats": "workday",
+  "slug": "salesforce/External_Career_Site",
+  "url": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site",
+  "tags": [
+   "CRM SaaS giant"
+  ]
+ },
+ {
+  "name": "Phantom",
+  "ats": "ashby",
+  "slug": "phantom",
+  "tags": [
+   "Crypto wallet"
+  ]
+ },
+ {
+  "name": "Thomson Reuters",
+  "ats": "workday",
+  "slug": "thomsonreuters/External_Career_Site",
+  "url": "https://thomsonreuters.wd5.myworkdayjobs.com/External_Career_Site",
+  "tags": [
+   "Info/media conglomerate"
+  ]
+ },
+ {
+  "name": "Snowflake",
+  "ats": "ashby",
+  "slug": "snowflake",
+  "tags": [
+   "Data cloud"
+  ]
+ },
+ {
+  "name": "ZipRecruiter",
+  "ats": "greenhouse",
+  "slug": "ziprecruiter",
+  "tags": [
+   "Job marketplace"
+  ]
+ },
+ {
+  "name": "Chainguard",
+  "ats": "greenhouse",
+  "slug": "chainguard",
+  "tags": [
+   "Secure container images unicorn"
+  ]
+ },
+ {
+  "name": "Temporal",
+  "ats": "ashby",
+  "slug": "temporal",
+  "tags": [
+   "Durable execution platform"
+  ]
+ },
+ {
+  "name": "Anthropic",
+  "ats": "greenhouse",
+  "slug": "anthropic",
+  "tags": [
+   "Top AI lab"
+  ]
+ },
+ {
+  "name": "Perplexity",
+  "ats": "ashby",
+  "slug": "perplexity",
+  "tags": [
+   "AI search"
+  ]
+ },
+ {
+  "name": "Scribd",
+  "ats": "ashby",
+  "slug": "scribdinc",
+  "tags": [
+   "Reading platform"
+  ]
+ },
+ {
+  "name": "Lightspeed",
+  "ats": "ashby",
+  "slug": "lightspeedhq",
+  "tags": [
+   "Montreal commerce SaaS"
+  ]
+ },
+ {
+  "name": "Airbnb",
+  "ats": "greenhouse",
+  "slug": "airbnb",
+  "tags": [
+   "Travel marketplace"
+  ]
+ },
+ {
+  "name": "DoorDash Canada",
+  "ats": "greenhouse",
+  "slug": "doordashcanada",
+  "tags": [
+   "Delivery"
+  ]
+ },
+ {
+  "name": "Assured",
+  "ats": "ashby",
+  "slug": "assured",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Dropbox",
+  "ats": "greenhouse",
+  "slug": "dropbox",
+  "tags": [
+   "Cloud storage"
+  ]
+ },
+ {
+  "name": "Vannevar",
+  "ats": "greenhouse",
+  "slug": "vannevarlabs",
+  "tags": [
+   "Defense tech"
+  ]
+ },
+ {
+  "name": "Palantir",
+  "ats": "lever",
+  "slug": "palantir",
+  "tags": [
+   "Data analytics software"
+  ]
+ },
+ {
+  "name": "Camunda",
+  "ats": "ashby",
+  "slug": "camunda",
+  "tags": [
+   "Workflow engine"
+  ]
+ },
+ {
+  "name": "ZoomInfo Technologies LLC",
+  "ats": "greenhouse",
+  "slug": "zoominfo",
+  "tags": [
+   "B2B data"
+  ]
+ },
+ {
+  "name": "Jane",
+  "ats": "ashby",
+  "slug": "jane",
+  "tags": [
+   "Vancouver clinic software"
+  ]
+ },
+ {
+  "name": "Owner",
+  "ats": "ashby",
+  "slug": "owner",
+  "tags": [
+   "Restaurant SaaS"
+  ]
+ },
+ {
+  "name": "Waymo",
+  "ats": "greenhouse",
+  "slug": "waymo",
+  "tags": [
+   "Autonomous driving"
+  ]
+ },
+ {
+  "name": "eBay",
+  "ats": "workday",
+  "slug": "ebay/apply",
+  "url": "https://ebay.wd5.myworkdayjobs.com/apply",
+  "tags": [
+   "E-commerce"
+  ]
+ },
+ {
+  "name": "Sierra",
+  "ats": "ashby",
+  "slug": "sierra",
+  "tags": [
+   "AI agent unicorn"
+  ]
+ },
+ {
+  "name": "Clear Street",
+  "ats": "greenhouse",
+  "slug": "clearstreet",
+  "tags": [
+   "Brokerage fintech"
+  ]
+ },
+ {
+  "name": "Clera",
+  "ats": "ashby",
+  "slug": "clera",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Quora",
+  "ats": "ashby",
+  "slug": "quora",
+  "tags": [
+   "Q&A, Poe"
+  ]
+ },
+ {
+  "name": "Fullscript",
+  "ats": "lever",
+  "slug": "fullscript",
+  "tags": [
+   "Ottawa health platform"
+  ]
+ },
+ {
+  "name": "Metabase",
+  "ats": "lever",
+  "slug": "metabase",
+  "tags": [
+   "BI open source"
+  ]
+ },
+ {
+  "name": "Twilio",
+  "ats": "greenhouse",
+  "slug": "twilio",
+  "tags": [
+   "Communications APIs"
+  ]
+ },
+ {
+  "name": "ElevenLabs",
+  "ats": "ashby",
+  "slug": "elevenlabs",
+  "tags": [
+   "Voice AI"
+  ]
+ },
+ {
+  "name": "Adyen",
+  "ats": "greenhouse",
+  "slug": "adyen",
+  "tags": [
+   "Payments"
+  ]
+ },
+ {
+  "name": "Cursor",
+  "ats": "ashby",
+  "slug": "cursor",
+  "tags": [
+   "AI code editor"
+  ]
+ },
+ {
+  "name": "Sardine",
+  "ats": "ashby",
+  "slug": "sardine",
+  "tags": [
+   "Fraud fintech"
+  ]
+ },
+ {
+  "name": "CrowdStrike",
+  "ats": "workday",
+  "slug": "crowdstrike/crowdstrikecareers",
+  "url": "https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers",
+  "tags": [
+   "Cybersecurity leader"
+  ]
+ },
+ {
+  "name": "Scale AI",
+  "ats": "greenhouse",
+  "slug": "scaleai",
+  "tags": [
+   "AI data unicorn"
+  ]
+ },
+ {
+  "name": "Customer.io",
+  "ats": "greenhouse",
+  "slug": "customerio",
+  "tags": [
+   "Messaging SaaS"
+  ]
+ },
+ {
+  "name": "Marqeta Inc",
+  "ats": "ashby",
+  "slug": "marqeta-inc",
+  "tags": [
+   "Card issuing"
+  ]
+ },
+ {
+  "name": "Jane Street",
+  "ats": "greenhouse",
+  "slug": "janestreet",
+  "tags": [
+   "Top quant firm"
+  ]
+ },
+ {
+  "name": "Decagon",
+  "ats": "ashby",
+  "slug": "decagon",
+  "tags": [
+   "AI support unicorn"
+  ]
+ },
+ {
+  "name": "Etched",
+  "ats": "ashby",
+  "slug": "etched",
+  "tags": [
+   "AI chip startup"
+  ]
+ },
+ {
+  "name": "Block",
+  "ats": "greenhouse",
+  "slug": "block",
+  "tags": [
+   "Square/Cash App"
+  ]
+ },
+ {
+  "name": "SpaceXSI",
+  "ats": "greenhouse",
+  "slug": "xai",
+  "tags": [
+   "xAI lab"
+  ]
+ },
+ {
+  "name": "Docker",
+  "ats": "ashby",
+  "slug": "docker",
+  "tags": [
+   "Containers"
+  ]
+ },
+ {
+  "name": "Magnet Forensics",
+  "ats": "lever",
+  "slug": "magnetforensics",
+  "tags": [
+   "Waterloo forensics software"
+  ]
+ },
+ {
+  "name": "Discord",
+  "ats": "greenhouse",
+  "slug": "discord",
+  "tags": [
+   "Chat platform"
+  ]
+ },
+ {
+  "name": "Faculty",
+  "ats": "ashby",
+  "slug": "faculty",
+  "tags": [
+   "UK AI consultancy"
+  ]
+ },
+ {
+  "name": "Ashby",
+  "ats": "ashby",
+  "slug": "ashby",
+  "tags": [
+   "Recruiting SaaS"
+  ]
+ },
+ {
+  "name": "DoorDash USA",
+  "ats": "greenhouse",
+  "slug": "doordashusa",
+  "tags": [
+   "Delivery platform"
+  ]
+ },
+ {
+  "name": "Spotify",
+  "ats": "lever",
+  "slug": "spotify",
+  "tags": [
+   "Music streaming"
+  ]
+ },
+ {
+  "name": "Toast",
+  "ats": "greenhouse",
+  "slug": "toast",
+  "tags": [
+   "Restaurant POS"
+  ]
+ },
+ {
+  "name": "Docebo",
+  "ats": "ashby",
+  "slug": "docebo",
+  "tags": [
+   "Toronto LMS"
+  ]
+ },
+ {
+  "name": "Adobe",
+  "ats": "workday",
+  "slug": "adobe/external_experienced",
+  "url": "https://adobe.wd5.myworkdayjobs.com/external_experienced",
+  "tags": [
+   "Creative software"
+  ]
+ },
+ {
+  "name": "Rubrik Job Board",
+  "ats": "greenhouse",
+  "slug": "rubrik",
+  "tags": [
+   "Public data security"
+  ]
+ },
+ {
+  "name": "AlphaSense",
+  "ats": "greenhouse",
+  "slug": "alphasense",
+  "tags": [
+   "Market intelligence"
+  ]
+ },
+ {
+  "name": "Webflow",
+  "ats": "ashby",
+  "slug": "webflow",
+  "tags": [
+   "Web design SaaS unicorn"
+  ]
+ },
+ {
+  "name": "Justworks",
+  "ats": "greenhouse",
+  "slug": "justworks",
+  "tags": [
+   "HR/PEO"
+  ]
+ },
+ {
+  "name": "Fleetio",
+  "ats": "greenhouse",
+  "slug": "fleetio",
+  "tags": [
+   "Fleet SaaS"
+  ]
+ },
+ {
+  "name": "IMC",
+  "ats": "greenhouse",
+  "slug": "imc",
+  "tags": [
+   "Quant trading"
+  ]
+ },
+ {
+  "name": "Kraken Com",
+  "ats": "ashby",
+  "slug": "kraken.com",
+  "tags": [
+   "Crypto exchange"
+  ]
+ },
+ {
+  "name": "Mistral Ai",
+  "ats": "ashby",
+  "slug": "mistral.ai",
+  "tags": [
+   "AI lab"
+  ]
+ },
+ {
+  "name": "Datadog",
+  "ats": "greenhouse",
+  "slug": "datadog",
+  "tags": [
+   "Observability"
+  ]
+ },
+ {
+  "name": "Jump Trading",
+  "ats": "greenhouse",
+  "slug": "jumptrading",
+  "tags": [
+   "Quant trading"
+  ]
+ },
+ {
+  "name": "Tower Research Capital",
+  "ats": "greenhouse",
+  "slug": "towerresearchcapital",
+  "tags": [
+   "Quant trading firm"
+  ]
+ },
+ {
+  "name": "GuidePoint Security",
+  "ats": "greenhouse",
+  "slug": "guidepointsecurity",
+  "tags": [
+   "Security consulting/VAR"
+  ]
+ },
+ {
+  "name": "CircleCI",
+  "ats": "greenhouse",
+  "slug": "circleci",
+  "tags": [
+   "CI/CD"
+  ]
+ },
+ {
+  "name": "Plaid",
+  "ats": "ashby",
+  "slug": "plaid",
+  "tags": [
+   "Fintech APIs"
+  ]
+ },
+ {
+  "name": "LangChain",
+  "ats": "ashby",
+  "slug": "langchain",
+  "tags": [
+   "LLM framework unicorn"
+  ]
+ },
+ {
+  "name": "Headway",
+  "ats": "ashby",
+  "slug": "headway",
+  "tags": [
+   "Mental health"
+  ]
+ },
+ {
+  "name": "Analog Devices",
+  "ats": "workday",
+  "slug": "analogdevices/External",
+  "url": "https://analogdevices.wd1.myworkdayjobs.com/External",
+  "tags": [
+   "Semiconductors"
+  ]
+ },
+ {
+  "name": "Applied Materials",
+  "ats": "workday",
+  "slug": "amat/External",
+  "url": "https://amat.wd1.myworkdayjobs.com/External",
+  "tags": [
+   "Semi equipment"
+  ]
+ },
+ {
+  "name": "Capital One",
+  "ats": "workday",
+  "slug": "capitalone/Capital_One",
+  "url": "https://capitalone.wd12.myworkdayjobs.com/Capital_One",
+  "tags": [
+   "Tech-heavy bank"
+  ]
+ },
+ {
+  "name": "Intel",
+  "ats": "workday",
+  "slug": "intel/External",
+  "url": "https://intel.wd1.myworkdayjobs.com/External",
+  "tags": [
+   "Semiconductors"
+  ]
+ },
+ {
+  "name": "KLA",
+  "ats": "workday",
+  "slug": "kla/Search",
+  "url": "https://kla.wd1.myworkdayjobs.com/Search",
+  "tags": [
+   "Semi equipment"
+  ]
+ },
+ {
+  "name": "Micron",
+  "ats": "workday",
+  "slug": "micron/External",
+  "url": "https://micron.wd1.myworkdayjobs.com/External",
+  "tags": [
+   "Memory chips"
+  ]
+ },
+ {
+  "name": "Motorola Solutions",
+  "ats": "workday",
+  "slug": "motorolasolutions/Careers",
+  "url": "https://motorolasolutions.wd5.myworkdayjobs.com/Careers",
+  "tags": [
+   "Public safety comms"
+  ]
+ },
+ {
+  "name": "Runway",
+  "ats": "ashby",
+  "slug": "runway",
+  "tags": [
+   "Generative video AI"
+  ]
+ },
+ {
+  "name": "Notion",
+  "ats": "ashby",
+  "slug": "notion",
+  "tags": [
+   "Productivity SaaS unicorn"
+  ]
+ },
+ {
+  "name": "Figma",
+  "ats": "greenhouse",
+  "slug": "figma",
+  "tags": [
+   "Design software"
+  ]
+ },
+ {
+  "name": "Hercules",
+  "ats": "ashby",
+  "slug": "hercules",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Resend",
+  "ats": "ashby",
+  "slug": "resend",
+  "tags": [
+   "Email API"
+  ]
+ },
+ {
+  "name": "Cadence",
+  "ats": "workday",
+  "slug": "cadence/External_Careers",
+  "url": "https://cadence.wd1.myworkdayjobs.com/External_Careers",
+  "tags": [
+   "EDA software"
+  ]
+ },
+ {
+  "name": "HP",
+  "ats": "workday",
+  "slug": "hp/ExternalCareerSite",
+  "url": "https://hp.wd5.myworkdayjobs.com/ExternalCareerSite",
+  "tags": [
+   "PCs and printers"
+  ]
+ },
+ {
+  "name": "Lovable",
+  "ats": "ashby",
+  "slug": "lovable",
+  "tags": [
+   "Hot AI app builder"
+  ]
+ },
+ {
+  "name": "Cognition",
+  "ats": "ashby",
+  "slug": "cognition",
+  "tags": [
+   "AI coding (Devin/Windsurf)"
+  ]
+ },
+ {
+  "name": "Glean",
+  "ats": "greenhouse",
+  "slug": "gleanwork",
+  "tags": [
+   "Enterprise AI search"
+  ]
+ },
+ {
+  "name": "Squarepoint Capital",
+  "ats": "greenhouse",
+  "slug": "squarepointcapital",
+  "tags": [
+   "Quant hedge fund"
+  ]
+ },
+ {
+  "name": "Thumbtack",
+  "ats": "ashby",
+  "slug": "thumbtack",
+  "tags": [
+   "Services marketplace"
+  ]
+ },
+ {
+  "name": "Vercel",
+  "ats": "greenhouse",
+  "slug": "vercel",
+  "tags": [
+   "Frontend cloud"
+  ]
+ },
+ {
+  "name": "Railway",
+  "ats": "ashby",
+  "slug": "railway",
+  "tags": [
+   "Cloud deploys"
+  ]
+ },
+ {
+  "name": "G2i",
+  "ats": "ashby",
+  "slug": "g2i",
+  "tags": [
+   "Dev staffing"
+  ]
+ },
+ {
+  "name": "Zoom",
+  "ats": "workday",
+  "slug": "zoom/Zoom",
+  "url": "https://zoom.wd5.myworkdayjobs.com/Zoom",
+  "tags": [
+   "Video communications, public"
+  ]
+ },
+ {
+  "name": "Thinking Machines Lab",
+  "ats": "ashby",
+  "slug": "thinkingmachines",
+  "tags": [
+   "Top AI lab"
+  ]
+ },
+ {
+  "name": "Honeycomb.io",
+  "ats": "greenhouse",
+  "slug": "honeycomb",
+  "tags": [
+   "Observability platform"
+  ]
+ },
+ {
+  "name": "Boeing",
+  "ats": "workday",
+  "slug": "boeing/EXTERNAL_CAREERS",
+  "url": "https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS",
+  "tags": [
+   "Aerospace"
+  ]
+ },
+ {
+  "name": "Revenuecat",
+  "ats": "ashby",
+  "slug": "revenuecat",
+  "tags": [
+   "Subscription SDK"
+  ]
+ },
+ {
+  "name": "Super Com",
+  "ats": "ashby",
+  "slug": "super.com",
+  "tags": [
+   "Savings app"
+  ]
+ },
+ {
+  "name": "Homebase",
+  "ats": "ashby",
+  "slug": "homebase",
+  "tags": [
+   "SMB scheduling"
+  ]
+ },
+ {
+  "name": "DRW",
+  "ats": "greenhouse",
+  "slug": "drweng",
+  "tags": [
+   "Trading firm"
+  ]
+ },
+ {
+  "name": "Marvell",
+  "ats": "workday",
+  "slug": "marvell/MarvellCareers",
+  "url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers",
+  "tags": [
+   "Semiconductors"
+  ]
+ },
+ {
+  "name": "HelloFresh",
+  "ats": "greenhouse",
+  "slug": "hellofresh",
+  "tags": [
+   "Meal kits"
+  ]
+ },
+ {
+  "name": "Duolingo",
+  "ats": "greenhouse",
+  "slug": "duolingo",
+  "tags": [
+   "Language learning"
+  ]
+ },
+ {
+  "name": "Mastercard",
+  "ats": "workday",
+  "slug": "mastercard/CorporateCareers",
+  "url": "https://mastercard.wd1.myworkdayjobs.com/CorporateCareers",
+  "tags": [
+   "Payments network"
+  ]
+ },
+ {
+  "name": "Wiz, Inc.",
+  "ats": "greenhouse",
+  "slug": "wizinc",
+  "tags": [
+   "Cloud security"
+  ]
+ },
+ {
+  "name": "Physical Intelligence",
+  "ats": "ashby",
+  "slug": "physicalintelligence",
+  "tags": [
+   "Robotics AI lab"
+  ]
+ },
+ {
+  "name": "Miovision",
+  "ats": "ashby",
+  "slug": "miovision",
+  "tags": [
+   "Canadian traffic tech"
+  ]
+ },
+ {
+  "name": "Fivetran",
+  "ats": "greenhouse",
+  "slug": "fivetran",
+  "tags": [
+   "Data pipelines"
+  ]
+ },
+ {
+  "name": "Fal Ai",
+  "ats": "ashby",
+  "slug": "fal-ai",
+  "tags": [
+   "Generative media inference unicorn"
+  ]
+ },
+ {
+  "name": "Luma AI",
+  "ats": "ashby",
+  "slug": "lumaai",
+  "tags": [
+   "Generative video AI"
+  ]
+ },
+ {
+  "name": "Solink",
+  "ats": "ashby",
+  "slug": "solink",
+  "tags": [
+   "Canadian video security SaaS"
+  ]
+ },
+ {
+  "name": "Agility Robotics",
+  "ats": "greenhouse",
+  "slug": "agilityrobotics",
+  "tags": [
+   "Humanoid robots"
+  ]
+ },
+ {
+  "name": "Legora",
+  "ats": "ashby",
+  "slug": "legora",
+  "tags": [
+   "Legal AI"
+  ]
+ },
+ {
+  "name": "Fireworks AI",
+  "ats": "ashby",
+  "slug": "fireworks",
+  "tags": [
+   "AI inference platform"
+  ]
+ },
+ {
+  "name": "Modal",
+  "ats": "ashby",
+  "slug": "modal",
+  "tags": [
+   "Serverless AI compute"
+  ]
+ },
+ {
+  "name": "Canonical",
+  "ats": "greenhouse",
+  "slug": "canonical",
+  "tags": [
+   "Ubuntu"
+  ]
+ },
+ {
+  "name": "Cribl",
+  "ats": "greenhouse",
+  "slug": "cribl",
+  "tags": [
+   "Observability data unicorn"
+  ]
+ },
+ {
+  "name": "PostHog",
+  "ats": "ashby",
+  "slug": "posthog",
+  "tags": [
+   "Product analytics"
+  ]
+ },
+ {
+  "name": "Virtahealth",
+  "ats": "ashby",
+  "slug": "virtahealth",
+  "tags": [
+   "Diabetes care"
+  ]
+ },
+ {
+  "name": "Amplitude",
+  "ats": "ashby",
+  "slug": "amplitude",
+  "tags": [
+   "Product analytics public co"
+  ]
+ },
+ {
+  "name": "Black Forest Labs",
+  "ats": "ashby",
+  "slug": "black-forest-labs",
+  "tags": [
+   "Image gen AI lab"
+  ]
+ },
+ {
+  "name": "Replicant",
+  "ats": "ashby",
+  "slug": "replicant",
+  "tags": [
+   "Voice AI"
+  ]
+ },
+ {
+  "name": "Synthesia",
+  "ats": "ashby",
+  "slug": "synthesia",
+  "tags": [
+   "AI video unicorn"
+  ]
+ },
+ {
+  "name": "Neo Financial",
+  "ats": "ashby",
+  "slug": "neofinancial",
+  "tags": [
+   "Top Canadian fintech"
+  ]
+ },
+ {
+  "name": "Celonis",
+  "ats": "greenhouse",
+  "slug": "celonis",
+  "tags": [
+   "Process mining unicorn"
+  ]
+ },
+ {
+  "name": "Character.AI",
+  "ats": "ashby",
+  "slug": "character",
+  "tags": [
+   "AI chatbots"
+  ]
+ },
+ {
+  "name": "Hudson River Trading",
+  "ats": "greenhouse",
+  "slug": "wehrtyou",
+  "tags": [
+   "Top quant trading firm"
+  ]
+ },
+ {
+  "name": "Visa",
+  "ats": "workday",
+  "slug": "visa/Visa",
+  "url": "https://visa.wd5.myworkdayjobs.com/Visa",
+  "tags": [
+   "Payments network"
+  ]
+ },
+ {
+  "name": "Wikimedia Foundation",
+  "ats": "greenhouse",
+  "slug": "wikimedia",
+  "tags": [
+   "Wikipedia nonprofit"
+  ]
+ },
+ {
+  "name": "Benevity",
+  "ats": "ashby",
+  "slug": "benevity",
+  "tags": [
+   "Calgary corporate giving SaaS"
+  ]
+ },
+ {
+  "name": "Shakepay",
+  "ats": "greenhouse",
+  "slug": "shakepay",
+  "tags": [
+   "Canadian crypto app"
+  ]
+ },
+ {
+  "name": "Trulioo",
+  "ats": "ashby",
+  "slug": "trulioo",
+  "tags": [
+   "Vancouver identity verification"
+  ]
+ },
+ {
+  "name": "d-Matrix",
+  "ats": "ashby",
+  "slug": "d-matrix",
+  "tags": [
+   "AI inference chips"
+  ]
+ },
+ {
+  "name": "Ursa Major",
+  "ats": "greenhouse",
+  "slug": "ursamajor",
+  "tags": [
+   "Rocket engines"
+  ]
+ },
+ {
+  "name": "Persona",
+  "ats": "ashby",
+  "slug": "persona",
+  "tags": [
+   "Identity verification unicorn"
+  ]
+ },
+ {
+  "name": "Junipersquare",
+  "ats": "ashby",
+  "slug": "junipersquare",
+  "tags": [
+   "Real estate investment software"
+  ]
+ },
+ {
+  "name": "Autodesk",
+  "ats": "workday",
+  "slug": "autodesk/Ext",
+  "url": "https://autodesk.wd1.myworkdayjobs.com/Ext",
+  "tags": [
+   "Design software major"
+  ]
+ },
+ {
+  "name": "Reliable Robotics",
+  "ats": "ashby",
+  "slug": "reliable-robotics",
+  "tags": [
+   "Autonomous aviation"
+  ]
+ },
+ {
+  "name": "HeyGen",
+  "ats": "greenhouse",
+  "slug": "heygen",
+  "tags": [
+   "AI video"
+  ]
+ },
+ {
+  "name": "Healthie",
+  "ats": "greenhouse",
+  "slug": "healthie",
+  "tags": [
+   "Health practice management software"
+  ]
+ },
+ {
+  "name": "Cockroach Labs",
+  "ats": "greenhouse",
+  "slug": "cockroachlabs",
+  "tags": [
+   "Distributed database unicorn"
+  ]
+ },
+ {
+  "name": "Airwallex",
+  "ats": "ashby",
+  "slug": "airwallex",
+  "tags": [
+   "Fintech unicorn"
+  ]
+ },
+ {
+  "name": "Workday",
+  "ats": "workday",
+  "slug": "workday/Workday",
+  "url": "https://workday.wd5.myworkdayjobs.com/Workday",
+  "tags": [
+   "HR SaaS"
+  ]
+ },
+ {
+  "name": "Constructor",
+  "ats": "ashby",
+  "slug": "constructor",
+  "tags": [
+   "E-commerce search/discovery"
+  ]
+ },
+ {
+  "name": "Oscilar",
+  "ats": "ashby",
+  "slug": "oscilar",
+  "tags": [
+   "AI risk/fraud platform"
+  ]
+ },
+ {
+  "name": "Kong",
+  "ats": "ashby",
+  "slug": "kong",
+  "tags": [
+   "API gateway"
+  ]
+ },
+ {
+  "name": "Zscaler",
+  "ats": "greenhouse",
+  "slug": "zscaler",
+  "tags": [
+   "Cloud security"
+  ]
+ },
+ {
+  "name": "Duck Duck Go",
+  "ats": "ashby",
+  "slug": "duck-duck-go",
+  "tags": [
+   "Privacy search engine"
+  ]
+ },
+ {
+  "name": "Tines",
+  "ats": "greenhouse",
+  "slug": "tines",
+  "tags": [
+   "Security automation"
+  ]
+ },
+ {
+  "name": "Zoox",
+  "ats": "lever",
+  "slug": "zoox",
+  "tags": [
+   "Amazon robotaxi"
+  ]
+ },
+ {
+  "name": "Turquoise Health",
+  "ats": "ashby",
+  "slug": "turquoise-health",
+  "tags": [
+   "Healthcare price transparency"
+  ]
+ },
+ {
+  "name": "iFIT",
+  "ats": "greenhouse",
+  "slug": "ifit",
+  "tags": [
+   "Connected fitness"
+  ]
+ },
+ {
+  "name": "CoreWeave",
+  "ats": "greenhouse",
+  "slug": "coreweave",
+  "tags": [
+   "GPU cloud"
+  ]
+ },
+ {
+  "name": "Doppel",
+  "ats": "ashby",
+  "slug": "doppel",
+  "tags": [
+   "AI social engineering/brand protection startup"
+  ]
+ },
+ {
+  "name": "The Trade Desk",
+  "ats": "greenhouse",
+  "slug": "thetradedesk",
+  "tags": [
+   "Adtech public company"
+  ]
+ },
+ {
+  "name": "EnCharge AI",
+  "ats": "greenhouse",
+  "slug": "enchargeai36",
+  "tags": [
+   "AI chip startup"
+  ]
+ },
+ {
+  "name": "Stream",
+  "ats": "ashby",
+  "slug": "stream",
+  "tags": [
+   "Chat/feeds APIs"
+  ]
+ },
+ {
+  "name": "Sandboxaq",
+  "ats": "ashby",
+  "slug": "sandboxaq",
+  "tags": [
+   "AI/quantum unicorn"
+  ]
+ },
+ {
+  "name": "ClickUp",
+  "ats": "ashby",
+  "slug": "clickup",
+  "tags": [
+   "Productivity SaaS unicorn"
+  ]
+ },
+ {
+  "name": "Mysten Labs",
+  "ats": "ashby",
+  "slug": "mystenlabs",
+  "tags": [
+   "Sui blockchain"
+  ]
+ },
+ {
+  "name": "D2L",
+  "ats": "greenhouse",
+  "slug": "d2l",
+  "tags": [
+   "Canadian edtech public co"
+  ]
+ },
+ {
+  "name": "Reflectionai",
+  "ats": "ashby",
+  "slug": "reflectionai",
+  "tags": [
+   "AI lab"
+  ]
+ },
+ {
+  "name": "Kalshi",
+  "ats": "ashby",
+  "slug": "kalshi",
+  "tags": [
+   "Prediction market unicorn"
+  ]
+ },
+ {
+  "name": "Polymarket",
+  "ats": "ashby",
+  "slug": "polymarket",
+  "tags": [
+   "Prediction market unicorn"
+  ]
+ },
+ {
+  "name": "Warp",
+  "ats": "greenhouse",
+  "slug": "warp",
+  "tags": [
+   "AI terminal"
+  ]
+ },
+ {
+  "name": "Top Hat",
+  "ats": "ashby",
+  "slug": "top-hat",
+  "tags": [
+   "Toronto edtech"
+  ]
+ },
+ {
+  "name": "Workleap",
+  "ats": "greenhouse",
+  "slug": "workleap",
+  "tags": [
+   "Montreal HR software"
+  ]
+ },
+ {
+  "name": "Broadcom",
+  "ats": "workday",
+  "slug": "broadcom/External_Career",
+  "url": "https://broadcom.wd1.myworkdayjobs.com/External_Career",
+  "tags": [
+   "Semis and software"
+  ]
+ },
+ {
+  "name": "Conga",
+  "ats": "greenhouse",
+  "slug": "conga",
+  "tags": [
+   "CLM/revenue software"
+  ]
+ },
+ {
+  "name": "Verkada",
+  "ats": "greenhouse",
+  "slug": "verkada",
+  "tags": [
+   "Security camera unicorn"
+  ]
+ },
+ {
+  "name": "The Allen Institute for Artificial Intelligence",
+  "ats": "greenhouse",
+  "slug": "thealleninstitute",
+  "tags": [
+   "AI2 research lab"
+  ]
+ },
+ {
+  "name": "Crusoe",
+  "ats": "ashby",
+  "slug": "crusoe",
+  "tags": [
+   "AI cloud"
+  ]
+ },
+ {
+  "name": "Menlosecurity",
+  "ats": "ashby",
+  "slug": "menlosecurity",
+  "tags": [
+   "Browser security"
+  ]
+ },
+ {
+  "name": "Zipline",
+  "ats": "greenhouse",
+  "slug": "flyzipline",
+  "tags": [
+   "Drone delivery"
+  ]
+ },
+ {
+  "name": "Zip",
+  "ats": "ashby",
+  "slug": "zip",
+  "tags": [
+   "Procurement unicorn"
+  ]
+ },
+ {
+  "name": "Riot Games",
+  "ats": "greenhouse",
+  "slug": "riotgames",
+  "tags": [
+   "Game studio"
+  ]
+ },
+ {
+  "name": "Helsing",
+  "ats": "greenhouse",
+  "slug": "helsing",
+  "tags": [
+   "Defense AI"
+  ]
+ },
+ {
+  "name": "Midjourney",
+  "ats": "ashby",
+  "slug": "midjourney",
+  "tags": [
+   "AI image lab"
+  ]
+ },
+ {
+  "name": "Engineers Gate",
+  "ats": "greenhouse",
+  "slug": "engineersgate",
+  "tags": [
+   "Quant hedge fund"
+  ]
+ },
+ {
+  "name": "Sensor Tower",
+  "ats": "ashby",
+  "slug": "sensor-tower",
+  "tags": [
+   "App intelligence"
+  ]
+ },
+ {
+  "name": "Everpure",
+  "ats": "greenhouse",
+  "slug": "purestorage",
+  "tags": [
+   "Storage (Pure Storage)"
+  ]
+ },
+ {
+  "name": "Neo4j",
+  "ats": "greenhouse",
+  "slug": "neo4j",
+  "tags": [
+   "Graph database"
+  ]
+ },
+ {
+  "name": "Box",
+  "ats": "greenhouse",
+  "slug": "boxinc",
+  "tags": [
+   "Cloud content"
+  ]
+ },
+ {
+  "name": "AssemblyAI",
+  "ats": "greenhouse",
+  "slug": "assemblyai",
+  "tags": [
+   "Speech AI API"
+  ]
+ },
+ {
+  "name": "Skydio",
+  "ats": "ashby",
+  "slug": "skydio",
+  "tags": [
+   "Drones"
+  ]
+ },
+ {
+  "name": "Applied",
+  "ats": "ashby",
+  "slug": "applied",
+  "tags": [
+   "Applied Intuition, AV software"
+  ]
+ },
+ {
+  "name": "Brex",
+  "ats": "greenhouse",
+  "slug": "brex",
+  "tags": [
+   "Fintech"
+  ]
+ },
+ {
+  "name": "Disney",
+  "ats": "workday",
+  "slug": "disney/disneycareer",
+  "url": "https://disney.wd5.myworkdayjobs.com/disneycareer",
+  "tags": [
+   "Media giant"
+  ]
+ },
+ {
+  "name": "Automattic Careers",
+  "ats": "greenhouse",
+  "slug": "automatticcareers",
+  "tags": [
+   "WordPress.com"
+  ]
+ },
+ {
+  "name": "Carta",
+  "ats": "greenhouse",
+  "slug": "carta",
+  "tags": [
+   "Equity management"
+  ]
+ },
+ {
+  "name": "Epic Games",
+  "ats": "greenhouse",
+  "slug": "epicgames",
+  "tags": [
+   "Games/Unreal"
+  ]
+ },
+ {
+  "name": "Nuro",
+  "ats": "greenhouse",
+  "slug": "nuro",
+  "tags": [
+   "Autonomous delivery"
+  ]
+ },
+ {
+  "name": "Spellbook Com",
+  "ats": "ashby",
+  "slug": "spellbook.com",
+  "tags": [
+   "Canadian AI legal startup"
+  ]
+ },
+ {
+  "name": "Garner Health",
+  "ats": "greenhouse",
+  "slug": "garnerhealth",
+  "tags": [
+   "Health benefits startup"
+  ]
+ },
+ {
+  "name": "Gainsight",
+  "ats": "ashby",
+  "slug": "gainsight",
+  "tags": [
+   "Customer success SaaS"
+  ]
+ },
+ {
+  "name": "Infisical",
+  "ats": "ashby",
+  "slug": "infisical",
+  "tags": [
+   "Secrets management startup"
+  ]
+ },
+ {
+  "name": "Insomniac Games",
+  "ats": "greenhouse",
+  "slug": "insomniac",
+  "tags": [
+   "Sony game studio"
+  ]
+ },
+ {
+  "name": "Red Hat",
+  "ats": "workday",
+  "slug": "redhat/jobs",
+  "url": "https://redhat.wd5.myworkdayjobs.com/jobs",
+  "tags": [
+   "Open source software"
+  ]
+ },
+ {
+  "name": "Reflow",
+  "ats": "ashby",
+  "slug": "reflow",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Redis",
+  "ats": "ashby",
+  "slug": "redis",
+  "tags": [
+   "In-memory database"
+  ]
+ },
+ {
+  "name": "Coupang",
+  "ats": "greenhouse",
+  "slug": "coupang",
+  "tags": [
+   "Korean e-commerce"
+  ]
+ },
+ {
+  "name": "Ripple",
+  "ats": "greenhouse",
+  "slug": "ripple",
+  "tags": [
+   "Crypto payments"
+  ]
+ },
+ {
+  "name": "Five Rings LLC - Careers",
+  "ats": "greenhouse",
+  "slug": "fiveringsllc",
+  "tags": [
+   "Quant trading firm"
+  ]
+ },
+ {
+  "name": "Saronic",
+  "ats": "ashby",
+  "slug": "saronic",
+  "tags": [
+   "Autonomous ships"
+  ]
+ },
+ {
+  "name": "PayPal",
+  "ats": "workday",
+  "slug": "paypal/jobs",
+  "url": "https://paypal.wd1.myworkdayjobs.com/jobs",
+  "tags": [
+   "Payments"
+  ]
+ },
+ {
+  "name": "Snap",
+  "ats": "workday",
+  "slug": "snapchat/snap",
+  "url": "https://snapchat.wd1.myworkdayjobs.com/snap",
+  "tags": [
+   "Social media"
+  ]
+ },
+ {
+  "name": "Alan",
+  "ats": "ashby",
+  "slug": "alan",
+  "tags": [
+   "French health insurtech"
+  ]
+ },
+ {
+  "name": "Lattice",
+  "ats": "greenhouse",
+  "slug": "lattice",
+  "tags": [
+   "HR SaaS"
+  ]
+ },
+ {
+  "name": "Hopper",
+  "ats": "ashby",
+  "slug": "hopper",
+  "tags": [
+   "Montreal travel app"
+  ]
+ },
+ {
+  "name": "Ubisoft",
+  "ats": "smartrecruiters",
+  "slug": "Ubisoft2",
+  "tags": [
+   "Game studio, big in Montreal"
+  ]
+ },
+ {
+  "name": "Human Computer Lab",
+  "ats": "ashby",
+  "slug": "human-computer-lab",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "InfluxData",
+  "ats": "ashby",
+  "slug": "influxdata",
+  "tags": [
+   "Time series DB"
+  ]
+ },
+ {
+  "name": "Khan Academy",
+  "ats": "greenhouse",
+  "slug": "khanacademy",
+  "tags": [
+   "Education nonprofit"
+  ]
+ },
+ {
+  "name": "Koho",
+  "ats": "ashby",
+  "slug": "koho",
+  "tags": [
+   "Canadian fintech"
+  ]
+ },
+ {
+  "name": "Headlands Technologies LLC",
+  "ats": "greenhouse",
+  "slug": "headlandstechnologiesllc",
+  "tags": [
+   "Quant trading firm"
+  ]
+ },
+ {
+  "name": "BlackRock",
+  "ats": "workday",
+  "slug": "blackrock/BlackRock_Professional",
+  "url": "https://blackrock.wd1.myworkdayjobs.com/BlackRock_Professional",
+  "tags": [
+   "Asset manager"
+  ]
+ },
+ {
+  "name": "Klaviyo",
+  "ats": "greenhouse",
+  "slug": "klaviyo",
+  "tags": [
+   "Marketing SaaS"
+  ]
+ },
+ {
+  "name": "Tekion",
+  "ats": "ashby",
+  "slug": "tekion",
+  "tags": [
+   "Auto retail software"
+  ]
+ },
+ {
+  "name": "Together AI",
+  "ats": "greenhouse",
+  "slug": "togetherai",
+  "tags": [
+   "AI cloud"
+  ]
+ },
+ {
+  "name": "Blockstream",
+  "ats": "ashby",
+  "slug": "blockstream",
+  "tags": [
+   "Bitcoin infra"
+  ]
+ },
+ {
+  "name": "Magic Dev",
+  "ats": "ashby",
+  "slug": "magic.dev",
+  "tags": [
+   "AI coding lab, well-funded"
+  ]
+ },
+ {
+  "name": "Apollo.io",
+  "ats": "greenhouse",
+  "slug": "apolloio",
+  "tags": [
+   "Sales intelligence unicorn"
+  ]
+ },
+ {
+  "name": "Silver",
+  "ats": "ashby",
+  "slug": "silver",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Lambda",
+  "ats": "ashby",
+  "slug": "lambda",
+  "tags": [
+   "GPU cloud"
+  ]
+ },
+ {
+  "name": "SambaNova",
+  "ats": "greenhouse",
+  "slug": "sambanovasystems",
+  "tags": [
+   "AI chip startup"
+  ]
+ },
+ {
+  "name": "Asana",
+  "ats": "greenhouse",
+  "slug": "asana",
+  "tags": [
+   "Work management SaaS"
+  ]
+ },
+ {
+  "name": "Torc Robotics",
+  "ats": "greenhouse",
+  "slug": "torcrobotics",
+  "tags": [
+   "Autonomous trucks"
+  ]
+ },
+ {
+  "name": "Upstart",
+  "ats": "greenhouse",
+  "slug": "upstart",
+  "tags": [
+   "AI lending fintech"
+  ]
+ },
+ {
+  "name": "PagerDuty",
+  "ats": "greenhouse",
+  "slug": "pagerduty",
+  "tags": [
+   "Public incident mgmt SaaS"
+  ]
+ },
+ {
+  "name": "Suno",
+  "ats": "ashby",
+  "slug": "suno",
+  "tags": [
+   "AI music"
+  ]
+ },
+ {
+  "name": "Graphcore",
+  "ats": "greenhouse",
+  "slug": "graphcore",
+  "tags": [
+   "AI chips"
+  ]
+ },
+ {
+  "name": "Fin",
+  "ats": "greenhouse",
+  "slug": "intercom",
+  "tags": [
+   "Customer service AI"
+  ]
+ },
+ {
+  "name": "SumUp",
+  "ats": "greenhouse",
+  "slug": "sumup",
+  "tags": [
+   "Payments fintech"
+  ]
+ },
+ {
+  "name": "True Anomaly",
+  "ats": "greenhouse",
+  "slug": "trueanomalyinc",
+  "tags": [
+   "Space defense startup"
+  ]
+ },
+ {
+  "name": "Geotab",
+  "ats": "greenhouse",
+  "slug": "geotab",
+  "tags": [
+   "Canadian telematics"
+  ]
+ },
+ {
+  "name": "Navan",
+  "ats": "greenhouse",
+  "slug": "tripactions",
+  "tags": [
+   "Travel/expense SaaS"
+  ]
+ },
+ {
+  "name": "Motional",
+  "ats": "greenhouse",
+  "slug": "motional",
+  "tags": [
+   "AV company"
+  ]
+ },
+ {
+  "name": "Brave",
+  "ats": "greenhouse",
+  "slug": "brave",
+  "tags": [
+   "Privacy browser"
+  ]
+ },
+ {
+  "name": "Apptronik",
+  "ats": "greenhouse",
+  "slug": "apptronik",
+  "tags": [
+   "Humanoid robotics"
+  ]
+ },
+ {
+  "name": "Netskope",
+  "ats": "greenhouse",
+  "slug": "netskope",
+  "tags": [
+   "Cloud security"
+  ]
+ },
+ {
+  "name": "Upgrade",
+  "ats": "greenhouse",
+  "slug": "upgrade",
+  "tags": [
+   "Fintech lender"
+  ]
+ },
+ {
+  "name": "Mattermost",
+  "ats": "greenhouse",
+  "slug": "mattermost",
+  "tags": [
+   "Open source messaging"
+  ]
+ },
+ {
+  "name": "Clutch Technologies Inc.",
+  "ats": "greenhouse",
+  "slug": "clutch",
+  "tags": [
+   "Canadian online car retailer"
+  ]
+ },
+ {
+  "name": "Smartsheet",
+  "ats": "greenhouse",
+  "slug": "smartsheet",
+  "tags": [
+   "Work management SaaS"
+  ]
+ },
+ {
+  "name": "Workato",
+  "ats": "greenhouse",
+  "slug": "workato",
+  "tags": [
+   "Integration platform"
+  ]
+ },
+ {
+  "name": "Later",
+  "ats": "greenhouse",
+  "slug": "later",
+  "tags": [
+   "Social media marketing, Vancouver"
+  ]
+ },
+ {
+  "name": "Gusto, Inc.",
+  "ats": "greenhouse",
+  "slug": "gusto",
+  "tags": [
+   "Payroll SaaS"
+  ]
+ },
+ {
+  "name": "Extend",
+  "ats": "greenhouse",
+  "slug": "extend",
+  "tags": [
+   "Product protection startup"
+  ]
+ },
+ {
+  "name": "Nebius",
+  "ats": "greenhouse",
+  "slug": "nebius",
+  "tags": [
+   "AI cloud"
+  ]
+ },
+ {
+  "name": "Oscar Health",
+  "ats": "greenhouse",
+  "slug": "oscar",
+  "tags": [
+   "Health insurance tech"
+  ]
+ },
+ {
+  "name": "Coursera",
+  "ats": "greenhouse",
+  "slug": "coursera",
+  "tags": [
+   "Online education"
+  ]
+ },
+ {
+  "name": "Sanity",
+  "ats": "ashby",
+  "slug": "sanity",
+  "tags": [
+   "Headless CMS"
+  ]
+ },
+ {
+  "name": "Sigma Computing",
+  "ats": "greenhouse",
+  "slug": "sigmacomputing",
+  "tags": [
+   "BI analytics"
+  ]
+ },
+ {
+  "name": "Chime Financial, Inc",
+  "ats": "greenhouse",
+  "slug": "chime",
+  "tags": [
+   "Neobank"
+  ]
+ },
+ {
+  "name": "PubMatic",
+  "ats": "greenhouse",
+  "slug": "pubmatic",
+  "tags": [
+   "Adtech"
+  ]
+ },
+ {
+  "name": "Expedia Group",
+  "ats": "workday",
+  "slug": "expedia/search",
+  "url": "https://expedia.wd108.myworkdayjobs.com/search",
+  "tags": [
+   "Travel tech"
+  ]
+ },
+ {
+  "name": "Wayve",
+  "ats": "ashby",
+  "slug": "wayve",
+  "tags": [
+   "AV AI startup"
+  ]
+ },
+ {
+  "name": "Paddle",
+  "ats": "ashby",
+  "slug": "paddle",
+  "tags": [
+   "Payments/merchant of record"
+  ]
+ },
+ {
+  "name": "Mercor",
+  "ats": "ashby",
+  "slug": "mercor",
+  "tags": [
+   "AI hiring/data unicorn"
+  ]
+ },
+ {
+  "name": "Bolt.new",
+  "ats": "greenhouse",
+  "slug": "stackblitz",
+  "tags": [
+   "Bolt.new AI builder"
+  ]
+ },
+ {
+  "name": "Prefect",
+  "ats": "ashby",
+  "slug": "prefect",
+  "tags": [
+   "Workflow orchestration"
+  ]
+ },
+ {
+  "name": "Tiger Data",
+  "ats": "ashby",
+  "slug": "tigerdata",
+  "tags": [
+   "Timescale database"
+  ]
+ },
+ {
+  "name": "Defense Unicorns",
+  "ats": "greenhouse",
+  "slug": "defenseunicorns",
+  "tags": [
+   "Defense software startup"
+  ]
+ },
+ {
+  "name": "SentinelOne",
+  "ats": "greenhouse",
+  "slug": "sentinellabs",
+  "tags": [
+   "Cybersecurity"
+  ]
+ },
+ {
+  "name": "Snyk",
+  "ats": "ashby",
+  "slug": "snyk",
+  "tags": [
+   "Developer security"
+  ]
+ },
+ {
+  "name": "Handshake",
+  "ats": "ashby",
+  "slug": "handshake",
+  "tags": [
+   "Career platform"
+  ]
+ },
+ {
+  "name": "Hims & Hers",
+  "ats": "ashby",
+  "slug": "hims-and-hers",
+  "tags": [
+   "Telehealth"
+  ]
+ },
+ {
+  "name": "WorldQuant",
+  "ats": "greenhouse",
+  "slug": "worldquant",
+  "tags": [
+   "Quant fund"
+  ]
+ },
+ {
+  "name": "Twitch",
+  "ats": "greenhouse",
+  "slug": "twitch",
+  "tags": [
+   "Streaming (Amazon)"
+  ]
+ },
+ {
+  "name": "Wattpad",
+  "ats": "lever",
+  "slug": "wattpad",
+  "tags": [
+   "Toronto story platform"
+  ]
+ },
+ {
+  "name": "Expel",
+  "ats": "greenhouse",
+  "slug": "expel",
+  "tags": [
+   "MDR security"
+  ]
+ },
+ {
+  "name": "HighRadius",
+  "ats": "greenhouse",
+  "slug": "highradius",
+  "tags": [
+   "Fintech SaaS"
+  ]
+ },
+ {
+  "name": "Loopio",
+  "ats": "ashby",
+  "slug": "loopio",
+  "tags": [
+   "RFP software, Toronto"
+  ]
+ },
+ {
+  "name": "Deepgram",
+  "ats": "ashby",
+  "slug": "deepgram",
+  "tags": [
+   "Speech AI"
+  ]
+ },
+ {
+  "name": "SingleStore",
+  "ats": "greenhouse",
+  "slug": "singlestore",
+  "tags": [
+   "Database"
+  ]
+ },
+ {
+  "name": "PlanetScale",
+  "ats": "greenhouse",
+  "slug": "planetscale",
+  "tags": [
+   "Database platform"
+  ]
+ },
+ {
+  "name": "Abnormal",
+  "ats": "greenhouse",
+  "slug": "abnormalsecurity",
+  "tags": [
+   "Email security"
+  ]
+ },
+ {
+  "name": "CLEAR - Corporate",
+  "ats": "greenhouse",
+  "slug": "clear",
+  "tags": [
+   "Identity verification"
+  ]
+ },
+ {
+  "name": "Coupa",
+  "ats": "lever",
+  "slug": "coupa",
+  "tags": [
+   "Spend management SaaS"
+  ]
+ },
+ {
+  "name": "Freshworks",
+  "ats": "smartrecruiters",
+  "slug": "Freshworks",
+  "tags": [
+   "CX SaaS"
+  ]
+ },
+ {
+  "name": "Zocdoc",
+  "ats": "greenhouse",
+  "slug": "zocdoc",
+  "tags": [
+   "Healthcare booking"
+  ]
+ },
+ {
+  "name": "Code Metal",
+  "ats": "ashby",
+  "slug": "code-metal",
+  "tags": [
+   "AI code translation startup"
+  ]
+ },
+ {
+  "name": "Fluidstack",
+  "ats": "ashby",
+  "slug": "fluidstack",
+  "tags": [
+   "GPU cloud"
+  ]
+ },
+ {
+  "name": "iCapital",
+  "ats": "greenhouse",
+  "slug": "icapitalnetwork",
+  "tags": [
+   "Alt investment fintech"
+  ]
+ },
+ {
+  "name": "Writer",
+  "ats": "ashby",
+  "slug": "writer",
+  "tags": [
+   "Enterprise gen AI"
+  ]
+ },
+ {
+  "name": "Anyscale",
+  "ats": "ashby",
+  "slug": "anyscale",
+  "tags": [
+   "Ray compute platform"
+  ]
+ },
+ {
+  "name": "Clay",
+  "ats": "ashby",
+  "slug": "claylabs",
+  "tags": [
+   "GTM data platform"
+  ]
+ },
+ {
+  "name": "Fastly",
+  "ats": "greenhouse",
+  "slug": "fastly",
+  "tags": [
+   "CDN/edge cloud"
+  ]
+ },
+ {
+  "name": "Vast",
+  "ats": "greenhouse",
+  "slug": "vast",
+  "tags": [
+   "Space station startup"
+  ]
+ },
+ {
+  "name": "AST SpaceMobile",
+  "ats": "greenhouse",
+  "slug": "astspacemobile",
+  "tags": [
+   "Satellite cellular"
+  ]
+ },
+ {
+  "name": "Monte Carlo",
+  "ats": "ashby",
+  "slug": "montecarlodata",
+  "tags": [
+   "Data observability"
+  ]
+ },
+ {
+  "name": "League Inc.",
+  "ats": "greenhouse",
+  "slug": "leagueinc",
+  "tags": [
+   "Toronto health platform"
+  ]
+ },
+ {
+  "name": "Visier",
+  "ats": "ashby",
+  "slug": "visier",
+  "tags": [
+   "People analytics, Vancouver"
+  ]
+ },
+ {
+  "name": "DigitalOcean",
+  "ats": "greenhouse",
+  "slug": "digitalocean98",
+  "tags": [
+   "Cloud provider"
+  ]
+ },
+ {
+  "name": "Commvault",
+  "ats": "greenhouse",
+  "slug": "commvault",
+  "tags": [
+   "Data protection software"
+  ]
+ },
+ {
+  "name": "Ro",
+  "ats": "lever",
+  "slug": "ro",
+  "tags": [
+   "Telehealth company"
+  ]
+ },
+ {
+  "name": "Coupang Internal",
+  "ats": "greenhouse",
+  "slug": "coupanginternal",
+  "tags": [
+   "Coupang internal"
+  ]
+ },
+ {
+  "name": "‎ConnectWise",
+  "ats": "greenhouse",
+  "slug": "connectwise",
+  "tags": [
+   "MSP software"
+  ]
+ },
+ {
+  "name": "Starburst",
+  "ats": "greenhouse",
+  "slug": "starburst",
+  "tags": [
+   "Trino data platform"
+  ]
+ },
+ {
+  "name": "Sprinklr",
+  "ats": "workday",
+  "slug": "sprinklr/careers",
+  "url": "https://sprinklr.wd1.myworkdayjobs.com/careers",
+  "tags": [
+   "CX SaaS"
+  ]
+ },
+ {
+  "name": "Jobs Valence",
+  "ats": "ashby",
+  "slug": "jobs-valence",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Veeam Software",
+  "ats": "greenhouse",
+  "slug": "veeamsoftware",
+  "tags": [
+   "Backup software"
+  ]
+ },
+ {
+  "name": "Bitwarden",
+  "ats": "greenhouse",
+  "slug": "bitwarden",
+  "tags": [
+   "Password manager"
+  ]
+ },
+ {
+  "name": "SoFi",
+  "ats": "greenhouse",
+  "slug": "sofi",
+  "tags": [
+   "Fintech"
+  ]
+ },
+ {
+  "name": "Strava",
+  "ats": "ashby",
+  "slug": "strava",
+  "tags": [
+   "Fitness app"
+  ]
+ },
+ {
+  "name": "Gorgias",
+  "ats": "ashby",
+  "slug": "gorgias",
+  "tags": [
+   "E-commerce helpdesk"
+  ]
+ },
+ {
+  "name": "Zed Industries",
+  "ats": "ashby",
+  "slug": "zed",
+  "tags": [
+   "Code editor"
+  ]
+ },
+ {
+  "name": "Buffer",
+  "ats": "ashby",
+  "slug": "buffer",
+  "tags": [
+   "Social media tools, remote"
+  ]
+ },
+ {
+  "name": "Scribe",
+  "ats": "ashby",
+  "slug": "scribe",
+  "tags": [
+   "Process documentation SaaS"
+  ]
+ },
+ {
+  "name": "Gamma",
+  "ats": "ashby",
+  "slug": "gamma",
+  "tags": [
+   "AI presentations"
+  ]
+ },
+ {
+  "name": "Gemini",
+  "ats": "greenhouse",
+  "slug": "gemini",
+  "tags": [
+   "Crypto exchange"
+  ]
+ },
+ {
+  "name": "Vectra",
+  "ats": "greenhouse",
+  "slug": "vectranetworks",
+  "tags": [
+   "AI network security"
+  ]
+ },
+ {
+  "name": "Hex",
+  "ats": "ashby",
+  "slug": "hex",
+  "tags": [
+   "Data notebooks"
+  ]
+ },
+ {
+  "name": "Pendo",
+  "ats": "greenhouse",
+  "slug": "pendo",
+  "tags": [
+   "Product analytics"
+  ]
+ },
+ {
+  "name": "Snorkel AI",
+  "ats": "greenhouse",
+  "slug": "snorkelai",
+  "tags": [
+   "AI data"
+  ]
+ },
+ {
+  "name": "Harness",
+  "ats": "greenhouse",
+  "slug": "harnessinc",
+  "tags": [
+   "DevOps platform"
+  ]
+ },
+ {
+  "name": "Peloton",
+  "ats": "greenhouse",
+  "slug": "peloton",
+  "tags": [
+   "Fitness"
+  ]
+ },
+ {
+  "name": "Huntress Labs",
+  "ats": "greenhouse",
+  "slug": "huntress",
+  "tags": [
+   "SMB cybersecurity"
+  ]
+ },
+ {
+  "name": "Patreon",
+  "ats": "ashby",
+  "slug": "patreon",
+  "tags": [
+   "Creator membership platform"
+  ]
+ },
+ {
+  "name": "Wealthfront",
+  "ats": "lever",
+  "slug": "wealthfront",
+  "tags": [
+   "Robo-advisor fintech"
+  ]
+ },
+ {
+  "name": "Alloy",
+  "ats": "greenhouse",
+  "slug": "alloy",
+  "tags": [
+   "Identity/fraud fintech"
+  ]
+ },
+ {
+  "name": "Grow Therapy",
+  "ats": "ashby",
+  "slug": "grow-therapy",
+  "tags": [
+   "Mental health marketplace"
+  ]
+ },
+ {
+  "name": "Pennylane",
+  "ats": "ashby",
+  "slug": "pennylane",
+  "tags": [
+   "French accounting fintech"
+  ]
+ },
+ {
+  "name": "Accenture",
+  "ats": "workday",
+  "slug": "accenture/AccentureCareers",
+  "url": "https://accenture.wd103.myworkdayjobs.com/AccentureCareers",
+  "tags": [
+   "IT consulting"
+  ]
+ },
+ {
+  "name": "Drata",
+  "ats": "ashby",
+  "slug": "drata",
+  "tags": [
+   "Compliance automation unicorn"
+  ]
+ },
+ {
+  "name": "JFrog",
+  "ats": "greenhouse",
+  "slug": "jfrog",
+  "tags": [
+   "DevOps artifact SaaS"
+  ]
+ },
+ {
+  "name": "Mixpanel",
+  "ats": "greenhouse",
+  "slug": "mixpanel",
+  "tags": [
+   "Product analytics"
+  ]
+ },
+ {
+  "name": "Pika",
+  "ats": "ashby",
+  "slug": "pika",
+  "tags": [
+   "AI video startup"
+  ]
+ },
+ {
+  "name": "Squarespace",
+  "ats": "greenhouse",
+  "slug": "squarespace",
+  "tags": [
+   "Website builder"
+  ]
+ },
+ {
+  "name": "Nerdwallet",
+  "ats": "ashby",
+  "slug": "nerdwallet",
+  "tags": [
+   "Personal finance site"
+  ]
+ },
+ {
+  "name": "Flex",
+  "ats": "greenhouse",
+  "slug": "flex",
+  "tags": [
+   "Rent payments fintech"
+  ]
+ },
+ {
+  "name": "Voyager Technologies, Inc.",
+  "ats": "greenhouse",
+  "slug": "voyagertechnologiesinc",
+  "tags": [
+   "Space/defense"
+  ]
+ },
+ {
+  "name": "42dot",
+  "ats": "ashby",
+  "slug": "42dot",
+  "tags": [
+   "Hyundai software"
+  ]
+ },
+ {
+  "name": "Telnyx",
+  "ats": "greenhouse",
+  "slug": "telnyx54",
+  "tags": [
+   "Communications API platform"
+  ]
+ },
+ {
+  "name": "Arize AI",
+  "ats": "greenhouse",
+  "slug": "arizeai",
+  "tags": [
+   "ML observability"
+  ]
+ },
+ {
+  "name": "Astronomer",
+  "ats": "ashby",
+  "slug": "astronomer",
+  "tags": [
+   "Airflow platform"
+  ]
+ },
+ {
+  "name": "Benchling",
+  "ats": "ashby",
+  "slug": "benchling",
+  "tags": [
+   "Biotech R&D SaaS"
+  ]
+ },
+ {
+  "name": "MoonPay",
+  "ats": "lever",
+  "slug": "moonpay",
+  "tags": [
+   "Crypto payments"
+  ]
+ },
+ {
+  "name": "n8n",
+  "ats": "ashby",
+  "slug": "n8n",
+  "tags": [
+   "Workflow automation"
+  ]
+ },
+ {
+  "name": "Motive",
+  "ats": "greenhouse",
+  "slug": "gomotive",
+  "tags": [
+   "Fleet management IoT"
+  ]
+ },
+ {
+  "name": "Blue River Technology",
+  "ats": "greenhouse",
+  "slug": "bluerivertech",
+  "tags": [
+   "John Deere ag robotics"
+  ]
+ },
+ {
+  "name": "Alarm.com",
+  "ats": "greenhouse",
+  "slug": "alarmcom",
+  "tags": [
+   "Security IoT"
+  ]
+ },
+ {
+  "name": "Horizon3ai",
+  "ats": "ashby",
+  "slug": "horizon3ai",
+  "tags": [
+   "Autonomous pentesting"
+  ]
+ },
+ {
+  "name": "Cartesia",
+  "ats": "ashby",
+  "slug": "cartesia",
+  "tags": [
+   "Voice AI startup"
+  ]
+ },
+ {
+  "name": "Checkr",
+  "ats": "greenhouse",
+  "slug": "checkr",
+  "tags": [
+   "Background check unicorn"
+  ]
+ },
+ {
+  "name": "Ironclad",
+  "ats": "ashby",
+  "slug": "ironcladhq",
+  "tags": [
+   "Contract management unicorn"
+  ]
+ },
+ {
+  "name": "Iterable",
+  "ats": "ashby",
+  "slug": "iterable",
+  "tags": [
+   "Marketing automation SaaS"
+  ]
+ },
+ {
+  "name": "Mintlify",
+  "ats": "ashby",
+  "slug": "mintlify",
+  "tags": [
+   "Docs platform startup"
+  ]
+ },
+ {
+  "name": "New Relic",
+  "ats": "greenhouse",
+  "slug": "newrelic",
+  "tags": [
+   "Observability SaaS"
+  ]
+ },
+ {
+  "name": "Nextdoor",
+  "ats": "greenhouse",
+  "slug": "nextdoor",
+  "tags": [
+   "Neighborhood social network"
+  ]
+ },
+ {
+  "name": "Semgrep",
+  "ats": "ashby",
+  "slug": "semgrep",
+  "tags": [
+   "Code security startup"
+  ]
+ },
+ {
+  "name": "Lancedb",
+  "ats": "ashby",
+  "slug": "lancedb",
+  "tags": [
+   "Vector database startup"
+  ]
+ },
+ {
+  "name": "Tavus",
+  "ats": "ashby",
+  "slug": "tavus",
+  "tags": [
+   "AI video startup"
+  ]
+ },
+ {
+  "name": "Formlabs",
+  "ats": "greenhouse",
+  "slug": "formlabs",
+  "tags": [
+   "3D printing"
+  ]
+ },
+ {
+  "name": "Alchemy",
+  "ats": "ashby",
+  "slug": "alchemy",
+  "tags": [
+   "Web3 dev platform"
+  ]
+ },
+ {
+  "name": "Betterment",
+  "ats": "greenhouse",
+  "slug": "betterment",
+  "tags": [
+   "Robo-advisor fintech"
+  ]
+ },
+ {
+  "name": "Typeform",
+  "ats": "greenhouse",
+  "slug": "typeform",
+  "tags": [
+   "Forms SaaS"
+  ]
+ },
+ {
+  "name": "Xona Space",
+  "ats": "ashby",
+  "slug": "xona-space",
+  "tags": [
+   "LEO navigation satellites startup"
+  ]
+ },
+ {
+  "name": "Codat",
+  "ats": "ashby",
+  "slug": "codat",
+  "tags": [
+   "Fintech data API"
+  ]
+ },
+ {
+  "name": "Semperis",
+  "ats": "ashby",
+  "slug": "semperis",
+  "tags": [
+   "Identity security"
+  ]
+ },
+ {
+  "name": "Buildkite",
+  "ats": "greenhouse",
+  "slug": "buildkite",
+  "tags": [
+   "CI/CD platform"
+  ]
+ },
+ {
+  "name": "LaunchDarkly",
+  "ats": "greenhouse",
+  "slug": "launchdarkly",
+  "tags": [
+   "Feature flag SaaS"
+  ]
+ },
+ {
+  "name": "Paxos",
+  "ats": "ashby",
+  "slug": "paxos",
+  "tags": [
+   "Blockchain infrastructure"
+  ]
+ },
+ {
+  "name": "Backbase",
+  "ats": "greenhouse",
+  "slug": "workatbackbase",
+  "tags": [
+   "Banking software"
+  ]
+ },
+ {
+  "name": "IonQ",
+  "ats": "greenhouse",
+  "slug": "ionq",
+  "tags": [
+   "Quantum computing"
+  ]
+ },
+ {
+  "name": "Socure",
+  "ats": "ashby",
+  "slug": "socure",
+  "tags": [
+   "Identity verification fintech"
+  ]
+ },
+ {
+  "name": "Stratum Ai",
+  "ats": "ashby",
+  "slug": "stratum-ai",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Wave",
+  "ats": "greenhouse",
+  "slug": "wavemm1",
+  "tags": [
+   "African mobile money"
+  ]
+ },
+ {
+  "name": "Airbyte",
+  "ats": "ashby",
+  "slug": "airbyte",
+  "tags": [
+   "Data integration"
+  ]
+ },
+ {
+  "name": "Greenhouse",
+  "ats": "greenhouse",
+  "slug": "greenhouse",
+  "tags": [
+   "Recruiting software"
+  ]
+ },
+ {
+  "name": "Labelbox",
+  "ats": "greenhouse",
+  "slug": "labelbox",
+  "tags": [
+   "AI data labeling"
+  ]
+ },
+ {
+  "name": "MotherDuck",
+  "ats": "ashby",
+  "slug": "motherduck",
+  "tags": [
+   "DuckDB cloud"
+  ]
+ },
+ {
+  "name": "Netlify",
+  "ats": "greenhouse",
+  "slug": "netlify",
+  "tags": [
+   "Web hosting platform"
+  ]
+ },
+ {
+  "name": "Substack",
+  "ats": "ashby",
+  "slug": "substack",
+  "tags": [
+   "Newsletter platform"
+  ]
+ },
+ {
+  "name": "Uniswap Labs",
+  "ats": "ashby",
+  "slug": "uniswap",
+  "tags": [
+   "DeFi protocol"
+  ]
+ },
+ {
+  "name": "Zilliz",
+  "ats": "lever",
+  "slug": "zilliz",
+  "tags": [
+   "Milvus vector DB"
+  ]
+ },
+ {
+  "name": "Varicent",
+  "ats": "greenhouse",
+  "slug": "varicent",
+  "tags": [
+   "Toronto incentive comp SaaS"
+  ]
+ },
+ {
+  "name": "Qualtrics",
+  "ats": "greenhouse",
+  "slug": "qualtrics",
+  "tags": [
+   "Experience management SaaS"
+  ]
+ },
+ {
+  "name": "Formenergy",
+  "ats": "ashby",
+  "slug": "formenergy",
+  "tags": [
+   "Battery storage"
+  ]
+ },
+ {
+  "name": "Bio",
+  "ats": "ashby",
+  "slug": "bio",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Yobi",
+  "ats": "ashby",
+  "slug": "yobi",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Lilt Production",
+  "ats": "ashby",
+  "slug": "lilt-production",
+  "tags": [
+   "AI translation platform"
+  ]
+ },
+ {
+  "name": "Ddn",
+  "ats": "ashby",
+  "slug": "ddn",
+  "tags": [
+   "Storage systems"
+  ]
+ },
+ {
+  "name": "Acorns",
+  "ats": "ashby",
+  "slug": "acorns",
+  "tags": [
+   "Investing fintech"
+  ]
+ },
+ {
+  "name": "Apollo Graphql",
+  "ats": "ashby",
+  "slug": "apollo-graphql",
+  "tags": [
+   "GraphQL platform"
+  ]
+ },
+ {
+  "name": "Materialsecurity",
+  "ats": "ashby",
+  "slug": "materialsecurity",
+  "tags": [
+   "Email security"
+  ]
+ },
+ {
+  "name": "Classdojo",
+  "ats": "ashby",
+  "slug": "classdojo",
+  "tags": [
+   "Edtech"
+  ]
+ },
+ {
+  "name": "Pinecone",
+  "ats": "ashby",
+  "slug": "pinecone",
+  "tags": [
+   "Vector DB"
+  ]
+ },
+ {
+  "name": "Gen Digital",
+  "ats": "ashby",
+  "slug": "gen-digital",
+  "tags": [
+   "Norton consumer security"
+  ]
+ },
+ {
+  "name": "DevRev",
+  "ats": "greenhouse",
+  "slug": "devrev",
+  "tags": [
+   "AI support platform"
+  ]
+ },
+ {
+  "name": "Tubi",
+  "ats": "greenhouse",
+  "slug": "tubitv",
+  "tags": [
+   "Fox streaming service"
+  ]
+ },
+ {
+  "name": "Varda Space Industries",
+  "ats": "greenhouse",
+  "slug": "vardaspace",
+  "tags": [
+   "Space manufacturing"
+  ]
+ },
+ {
+  "name": "Hadrian Automation",
+  "ats": "ashby",
+  "slug": "hadrian-automation",
+  "tags": [
+   "Factory automation"
+  ]
+ },
+ {
+  "name": "Isar Aerospace SE",
+  "ats": "greenhouse",
+  "slug": "isaraerospace",
+  "tags": [
+   "German launch company"
+  ]
+ },
+ {
+  "name": "Divergent",
+  "ats": "greenhouse",
+  "slug": "divergent",
+  "tags": [
+   "3D-printed auto manufacturing startup"
+  ]
+ },
+ {
+  "name": "Calendly",
+  "ats": "greenhouse",
+  "slug": "calendly",
+  "tags": [
+   "Scheduling unicorn"
+  ]
+ },
+ {
+  "name": "Modern Treasury",
+  "ats": "ashby",
+  "slug": "moderntreasury",
+  "tags": [
+   "Payments ops unicorn"
+  ]
+ },
+ {
+  "name": "Mux",
+  "ats": "ashby",
+  "slug": "mux",
+  "tags": [
+   "Video API"
+  ]
+ },
+ {
+  "name": "TripleLift",
+  "ats": "greenhouse",
+  "slug": "triplelift",
+  "tags": [
+   "Adtech"
+  ]
+ },
+ {
+  "name": "Fanatics Betting & Gaming",
+  "ats": "greenhouse",
+  "slug": "fanaticsfbg",
+  "tags": [
+   "Sports betting"
+  ]
+ },
+ {
+  "name": "Anaplan",
+  "ats": "greenhouse",
+  "slug": "anaplan",
+  "tags": [
+   "Planning SaaS"
+  ]
+ },
+ {
+  "name": "Realmalliance",
+  "ats": "ashby",
+  "slug": "realmalliance",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Altruist",
+  "ats": "greenhouse",
+  "slug": "altruist",
+  "tags": [
+   "Wealth fintech"
+  ]
+ },
+ {
+  "name": "General Matter",
+  "ats": "greenhouse",
+  "slug": "generalmatter",
+  "tags": [
+   "Nuclear fuel startup"
+  ]
+ },
+ {
+  "name": "Commure",
+  "ats": "ashby",
+  "slug": "commure",
+  "tags": [
+   "Healthcare tech"
+  ]
+ },
+ {
+  "name": "Checkout Com",
+  "ats": "ashby",
+  "slug": "checkout.com",
+  "tags": [
+   "Payments unicorn"
+  ]
+ },
+ {
+  "name": "Hinge Health",
+  "ats": "ashby",
+  "slug": "hinge-health",
+  "tags": [
+   "Digital health"
+  ]
+ },
+ {
+  "name": "BILL",
+  "ats": "greenhouse",
+  "slug": "billcom",
+  "tags": [
+   "Public fintech SaaS"
+  ]
+ },
+ {
+  "name": "Zuora",
+  "ats": "greenhouse",
+  "slug": "zuora",
+  "tags": [
+   "Subscription billing SaaS"
+  ]
+ },
+ {
+  "name": "Astera",
+  "ats": "ashby",
+  "slug": "astera",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Antares",
+  "ats": "ashby",
+  "slug": "antares",
+  "tags": [
+   "Nuclear microreactor startup"
+  ]
+ },
+ {
+  "name": "Anchorage Digital",
+  "ats": "lever",
+  "slug": "anchorage",
+  "tags": [
+   "Crypto bank"
+  ]
+ },
+ {
+  "name": "Inngest",
+  "ats": "ashby",
+  "slug": "inngest",
+  "tags": [
+   "Workflow dev platform"
+  ]
+ },
+ {
+  "name": "LlamaIndex",
+  "ats": "ashby",
+  "slug": "llamaindex",
+  "tags": [
+   "LLM framework startup"
+  ]
+ },
+ {
+  "name": "Medium",
+  "ats": "greenhouse",
+  "slug": "medium",
+  "tags": [
+   "Publishing platform"
+  ]
+ },
+ {
+  "name": "MetaMask",
+  "ats": "greenhouse",
+  "slug": "consensys",
+  "tags": [
+   "Ethereum software, MetaMask"
+  ]
+ },
+ {
+  "name": "Base Power",
+  "ats": "ashby",
+  "slug": "base-power",
+  "tags": [
+   "Home battery energy startup"
+  ]
+ },
+ {
+  "name": "Achievers",
+  "ats": "lever",
+  "slug": "achievers",
+  "tags": [
+   "Toronto employee recognition SaaS"
+  ]
+ },
+ {
+  "name": "Creatoriq",
+  "ats": "ashby",
+  "slug": "creatoriq",
+  "tags": [
+   "Influencer marketing SaaS"
+  ]
+ },
+ {
+  "name": "G-P",
+  "ats": "greenhouse",
+  "slug": "globalizationpartners",
+  "tags": [
+   "EOR global employment"
+  ]
+ },
+ {
+  "name": "Weights & Biases",
+  "ats": "greenhouse",
+  "slug": "weights_and_biases",
+  "tags": [
+   "ML ops platform"
+  ]
+ },
+ {
+  "name": "Conviva",
+  "ats": "greenhouse",
+  "slug": "conviva",
+  "tags": [
+   "Streaming analytics"
+  ]
+ },
+ {
+  "name": "Valar Atomics",
+  "ats": "greenhouse",
+  "slug": "valaratomics",
+  "tags": [
+   "Nuclear startup"
+  ]
+ },
+ {
+  "name": "Opengov",
+  "ats": "ashby",
+  "slug": "opengov",
+  "tags": [
+   "Gov SaaS"
+  ]
+ },
+ {
+  "name": "Flagship Pioneering, Inc.",
+  "ats": "greenhouse",
+  "slug": "flagshippioneeringinc",
+  "tags": [
+   "Biotech venture firm"
+  ]
+ },
+ {
+  "name": "Netgear",
+  "ats": "ashby",
+  "slug": "netgear",
+  "tags": [
+   "Networking hardware"
+  ]
+ },
+ {
+  "name": "Whoop",
+  "ats": "ashby",
+  "slug": "whoop",
+  "tags": [
+   "Wearables"
+  ]
+ },
+ {
+  "name": "Addepar",
+  "ats": "greenhouse",
+  "slug": "addepar1",
+  "tags": [
+   "Wealth data platform"
+  ]
+ },
+ {
+  "name": "Glia",
+  "ats": "ashby",
+  "slug": "glia",
+  "tags": [
+   "Customer service platform"
+  ]
+ },
+ {
+  "name": "Honeydew",
+  "ats": "ashby",
+  "slug": "honeydew",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Hatch",
+  "ats": "greenhouse",
+  "slug": "hatchcareers",
+  "tags": [
+   "Ambiguous name"
+  ]
+ },
+ {
+  "name": "Keycard Labs",
+  "ats": "ashby",
+  "slug": "keycard-labs",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Aptos",
+  "ats": "greenhouse",
+  "slug": "aptoslabs",
+  "tags": [
+   "Layer 1 blockchain"
+  ]
+ },
+ {
+  "name": "Paytm",
+  "ats": "lever",
+  "slug": "paytm",
+  "tags": [
+   "Indian payments"
+  ]
+ },
+ {
+  "name": "Close",
+  "ats": "ashby",
+  "slug": "close",
+  "tags": [
+   "Sales CRM"
+  ]
+ },
+ {
+  "name": "AbCellera",
+  "ats": "greenhouse",
+  "slug": "abcellera",
+  "tags": [
+   "Vancouver antibody biotech"
+  ]
+ },
+ {
+  "name": "Coder",
+  "ats": "ashby",
+  "slug": "coder",
+  "tags": [
+   "Cloud dev environments"
+  ]
+ },
+ {
+  "name": "Ambiq Micro, Inc.",
+  "ats": "greenhouse",
+  "slug": "ambiqmicroinc",
+  "tags": [
+   "Low-power chips"
+  ]
+ },
+ {
+  "name": "impact.com",
+  "ats": "greenhouse",
+  "slug": "impact",
+  "tags": [
+   "Partnership marketing SaaS"
+  ]
+ },
+ {
+  "name": "FanDuel",
+  "ats": "greenhouse",
+  "slug": "fanduel",
+  "tags": [
+   "Sports betting"
+  ]
+ },
+ {
+  "name": "Consensys",
+  "ats": "ashby",
+  "slug": "consensys",
+  "tags": [
+   "Ethereum software"
+  ]
+ },
+ {
+  "name": "Descript",
+  "ats": "greenhouse",
+  "slug": "descript",
+  "tags": [
+   "AI video/audio editor"
+  ]
+ },
+ {
+  "name": "2K",
+  "ats": "greenhouse",
+  "slug": "2k",
+  "tags": [
+   "Video game publisher"
+  ]
+ },
+ {
+  "name": "Freeform",
+  "ats": "greenhouse",
+  "slug": "freeformfuturecorp",
+  "tags": [
+   "Metal 3D printing startup"
+  ]
+ },
+ {
+  "name": "HP IQ",
+  "ats": "greenhouse",
+  "slug": "hpiq",
+  "tags": [
+   "HP AI division"
+  ]
+ },
+ {
+  "name": "Gatik AI",
+  "ats": "greenhouse",
+  "slug": "gatikaiinc",
+  "tags": [
+   "Autonomous trucking"
+  ]
+ },
+ {
+  "name": "Redpanda Data",
+  "ats": "ashby",
+  "slug": "redpanda-data",
+  "tags": [
+   "Streaming data platform"
+  ]
+ },
+ {
+  "name": "Bedrock Robotics",
+  "ats": "ashby",
+  "slug": "bedrock-robotics",
+  "tags": [
+   "Autonomous construction"
+  ]
+ },
+ {
+  "name": "DV Trading",
+  "ats": "greenhouse",
+  "slug": "dvtrading",
+  "tags": [
+   "Prop trading"
+  ]
+ },
+ {
+  "name": "Bjakcareer",
+  "ats": "ashby",
+  "slug": "bjakcareer",
+  "tags": [
+   "Malaysian insurtech"
+  ]
+ },
+ {
+  "name": "Via",
+  "ats": "greenhouse",
+  "slug": "via",
+  "tags": [
+   "Transit tech"
+  ]
+ },
+ {
+  "name": "Neko Health",
+  "ats": "ashby",
+  "slug": "neko-health",
+  "tags": [
+   "Body scan health"
+  ]
+ },
+ {
+  "name": "Perk",
+  "ats": "ashby",
+  "slug": "perk",
+  "tags": [
+   "Travel management (TravelPerk)"
+  ]
+ },
+ {
+  "name": "Flexport",
+  "ats": "greenhouse",
+  "slug": "flexport",
+  "tags": [
+   "Logistics tech"
+  ]
+ },
+ {
+  "name": "Dandy",
+  "ats": "ashby",
+  "slug": "dandy",
+  "tags": [
+   "Dental lab tech"
+  ]
+ },
+ {
+  "name": "Illumio",
+  "ats": "ashby",
+  "slug": "illumio",
+  "tags": [
+   "Security"
+  ]
+ },
+ {
+  "name": "Delinea",
+  "ats": "ashby",
+  "slug": "delinea",
+  "tags": [
+   "Identity security"
+  ]
+ },
+ {
+  "name": "Exa",
+  "ats": "ashby",
+  "slug": "exa",
+  "tags": [
+   "AI search API"
+  ]
+ },
+ {
+  "name": "Coalition, Inc.",
+  "ats": "greenhouse",
+  "slug": "coalition",
+  "tags": [
+   "Cyber insurance"
+  ]
+ },
+ {
+  "name": "Hootsuite",
+  "ats": "smartrecruiters",
+  "slug": "hootsuite",
+  "tags": [
+   "Canadian social media SaaS"
+  ]
+ },
+ {
+  "name": "Flow Traders",
+  "ats": "greenhouse",
+  "slug": "flowtraders",
+  "tags": [
+   "Trading firm"
+  ]
+ },
+ {
+  "name": "IDMe",
+  "ats": "greenhouse",
+  "slug": "idme",
+  "tags": [
+   "Digital identity"
+  ]
+ },
+ {
+  "name": "AlayaCare",
+  "ats": "greenhouse",
+  "slug": "alayacare",
+  "tags": [
+   "Home care software, Montreal"
+  ]
+ },
+ {
+  "name": "Mapbox",
+  "ats": "ashby",
+  "slug": "mapbox",
+  "tags": [
+   "Mapping platform"
+  ]
+ },
+ {
+  "name": "Crunchyroll, LLC",
+  "ats": "greenhouse",
+  "slug": "crunchyroll",
+  "tags": [
+   "Anime streaming"
+  ]
+ },
+ {
+  "name": "Dragos",
+  "ats": "greenhouse",
+  "slug": "dragos",
+  "tags": [
+   "ICS security"
+  ]
+ },
+ {
+  "name": "SeatGeek",
+  "ats": "greenhouse",
+  "slug": "seatgeek",
+  "tags": [
+   "Ticketing"
+  ]
+ },
+ {
+  "name": "Galaxy",
+  "ats": "greenhouse",
+  "slug": "galaxydigitalservices",
+  "tags": [
+   "Crypto financial"
+  ]
+ },
+ {
+  "name": "Aurorasolar",
+  "ats": "ashby",
+  "slug": "aurorasolar",
+  "tags": [
+   "Solar design software"
+  ]
+ },
+ {
+  "name": "Tonal",
+  "ats": "ashby",
+  "slug": "tonal",
+  "tags": [
+   "Connected fitness"
+  ]
+ },
+ {
+  "name": "Form3 - External",
+  "ats": "greenhouse",
+  "slug": "form3",
+  "tags": [
+   "Payments infrastructure"
+  ]
+ },
+ {
+  "name": "Higgsfieldai",
+  "ats": "ashby",
+  "slug": "higgsfieldai",
+  "tags": [
+   "AI video"
+  ]
+ },
+ {
+  "name": "WEKA",
+  "ats": "greenhouse",
+  "slug": "wekatest",
+  "tags": [
+   "AI storage"
+  ]
+ },
+ {
+  "name": "Xaira Therapeutics",
+  "ats": "greenhouse",
+  "slug": "xairatherapeutics",
+  "tags": [
+   "AI drug discovery"
+  ]
+ },
+ {
+  "name": "Aircall.io, Inc.",
+  "ats": "greenhouse",
+  "slug": "aircallioinc",
+  "tags": [
+   "Cloud phone"
+  ]
+ },
+ {
+  "name": "Hightouch",
+  "ats": "ashby",
+  "slug": "hightouch",
+  "tags": [
+   "Reverse ETL unicorn"
+  ]
+ },
+ {
+  "name": "Gong.io",
+  "ats": "greenhouse",
+  "slug": "gongio",
+  "tags": [
+   "Revenue intelligence"
+  ]
+ },
+ {
+  "name": "Cognite - AI for Industry",
+  "ats": "greenhouse",
+  "slug": "cognite",
+  "tags": [
+   "Industrial data/AI software"
+  ]
+ },
+ {
+  "name": "Lightning",
+  "ats": "ashby",
+  "slug": "lightning",
+  "tags": [
+   "Lightning AI"
+  ]
+ },
+ {
+  "name": "Anyone Ai",
+  "ats": "ashby",
+  "slug": "anyone-ai",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Ava Labs",
+  "ats": "ashby",
+  "slug": "ava-labs",
+  "tags": [
+   "Avalanche blockchain"
+  ]
+ },
+ {
+  "name": "Digital Extremes",
+  "ats": "greenhouse",
+  "slug": "digitalextremes",
+  "tags": [
+   "Warframe game studio, Ontario"
+  ]
+ },
+ {
+  "name": "Partyhat",
+  "ats": "ashby",
+  "slug": "partyhat",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Eliseai",
+  "ats": "ashby",
+  "slug": "eliseai",
+  "tags": [
+   "AI for property management"
+  ]
+ },
+ {
+  "name": "Fieldguide",
+  "ats": "ashby",
+  "slug": "fieldguide",
+  "tags": [
+   "AI audit platform startup"
+  ]
+ },
+ {
+  "name": "Taktile",
+  "ats": "ashby",
+  "slug": "taktile",
+  "tags": [
+   "Decisioning platform startup"
+  ]
+ },
+ {
+  "name": "Fictiv",
+  "ats": "greenhouse",
+  "slug": "fictiv",
+  "tags": [
+   "Manufacturing marketplace"
+  ]
+ },
+ {
+  "name": "Ritual",
+  "ats": "greenhouse",
+  "slug": "ritual",
+  "tags": [
+   "Supplements/startup"
+  ]
+ },
+ {
+  "name": "Hcompany",
+  "ats": "ashby",
+  "slug": "hcompany",
+  "tags": [
+   "French AI agents lab"
+  ]
+ },
+ {
+  "name": "Tripledot Studios",
+  "ats": "greenhouse",
+  "slug": "tripledotstudios",
+  "tags": [
+   "Mobile game studio"
+  ]
+ },
+ {
+  "name": "Encord",
+  "ats": "ashby",
+  "slug": "encord",
+  "tags": [
+   "AI data platform"
+  ]
+ },
+ {
+  "name": "Nightfall Ai",
+  "ats": "ashby",
+  "slug": "nightfall-ai",
+  "tags": [
+   "DLP security startup"
+  ]
+ },
+ {
+  "name": "Zyphra",
+  "ats": "ashby",
+  "slug": "zyphra",
+  "tags": [
+   "AI research startup"
+  ]
+ },
+ {
+  "name": "InterSystems",
+  "ats": "greenhouse",
+  "slug": "intersystems",
+  "tags": [
+   "Database/healthcare software"
+  ]
+ },
+ {
+  "name": "Airspace Intelligence Com",
+  "ats": "ashby",
+  "slug": "airspace-intelligence.com",
+  "tags": [
+   "Aviation AI startup"
+  ]
+ },
+ {
+  "name": "Datasnipper",
+  "ats": "ashby",
+  "slug": "datasnipper",
+  "tags": [
+   "Audit automation unicorn"
+  ]
+ },
+ {
+  "name": "BlackSky",
+  "ats": "greenhouse",
+  "slug": "blacksky",
+  "tags": [
+   "Satellite imagery, public"
+  ]
+ },
+ {
+  "name": "Eightsleep",
+  "ats": "ashby",
+  "slug": "eightsleep",
+  "tags": [
+   "Sleep tech"
+  ]
+ },
+ {
+  "name": "Rula",
+  "ats": "ashby",
+  "slug": "rula",
+  "tags": [
+   "Mental health platform"
+  ]
+ },
+ {
+  "name": "DigiCert",
+  "ats": "greenhouse",
+  "slug": "digicert",
+  "tags": [
+   "PKI/certificates"
+  ]
+ },
+ {
+  "name": "EarnIn",
+  "ats": "greenhouse",
+  "slug": "earnin",
+  "tags": [
+   "Earned wage access fintech"
+  ]
+ },
+ {
+  "name": "Kit",
+  "ats": "ashby",
+  "slug": "kit",
+  "tags": [
+   "Creator email platform"
+  ]
+ },
+ {
+  "name": "Cape",
+  "ats": "ashby",
+  "slug": "cape",
+  "tags": [
+   "Privacy mobile carrier"
+  ]
+ },
+ {
+  "name": "Neara",
+  "ats": "ashby",
+  "slug": "neara",
+  "tags": [
+   "Utility network digital twin"
+  ]
+ },
+ {
+  "name": "Chaidiscovery",
+  "ats": "ashby",
+  "slug": "chaidiscovery",
+  "tags": [
+   "AI drug discovery"
+  ]
+ },
+ {
+  "name": "Instructure",
+  "ats": "ashby",
+  "slug": "instructure",
+  "tags": [
+   "Canvas LMS"
+  ]
+ },
+ {
+  "name": "Radar",
+  "ats": "ashby",
+  "slug": "radar",
+  "tags": [
+   "Geolocation platform"
+  ]
+ },
+ {
+  "name": "Sentilink",
+  "ats": "ashby",
+  "slug": "sentilink",
+  "tags": [
+   "Fraud detection"
+  ]
+ },
+ {
+  "name": "Iambic Therapeutics",
+  "ats": "ashby",
+  "slug": "iambic-therapeutics",
+  "tags": [
+   "AI drug discovery"
+  ]
+ },
+ {
+  "name": "6sense",
+  "ats": "greenhouse",
+  "slug": "6sense",
+  "tags": [
+   "B2B marketing SaaS"
+  ]
+ },
+ {
+  "name": "Altana",
+  "ats": "greenhouse",
+  "slug": "altanaai",
+  "tags": [
+   "Supply chain AI"
+  ]
+ },
+ {
+  "name": "DataCamp",
+  "ats": "greenhouse",
+  "slug": "datacamp",
+  "tags": [
+   "Edtech"
+  ]
+ },
+ {
+  "name": "Ethos Life",
+  "ats": "greenhouse",
+  "slug": "ethoslife",
+  "tags": [
+   "Insurtech"
+  ]
+ },
+ {
+  "name": "Tailor",
+  "ats": "ashby",
+  "slug": "tailor",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Gecko Robotics",
+  "ats": "ashby",
+  "slug": "gecko-robotics",
+  "tags": [
+   "Inspection robotics"
+  ]
+ },
+ {
+  "name": "Meter",
+  "ats": "ashby",
+  "slug": "meter",
+  "tags": [
+   "Network-as-a-service"
+  ]
+ },
+ {
+  "name": "Niantic Spatial",
+  "ats": "ashby",
+  "slug": "niantic-spatial",
+  "tags": [
+   "Geospatial AI"
+  ]
+ },
+ {
+  "name": "Onebrief",
+  "ats": "ashby",
+  "slug": "onebrief",
+  "tags": [
+   "Military planning software"
+  ]
+ },
+ {
+  "name": "Runpod",
+  "ats": "ashby",
+  "slug": "runpod",
+  "tags": [
+   "GPU cloud"
+  ]
+ },
+ {
+  "name": "Hudl",
+  "ats": "greenhouse",
+  "slug": "hudl",
+  "tags": [
+   "Sports video"
+  ]
+ },
+ {
+  "name": "Inworld Ai",
+  "ats": "ashby",
+  "slug": "inworld-ai",
+  "tags": [
+   "AI characters"
+  ]
+ },
+ {
+  "name": "Samsung Research America",
+  "ats": "greenhouse",
+  "slug": "samsungresearchamerica",
+  "tags": [
+   "Samsung R&D"
+  ]
+ },
+ {
+  "name": "Tempo Xyz",
+  "ats": "ashby",
+  "slug": "tempo-xyz",
+  "tags": [
+   "Stripe/Paradigm blockchain"
+  ]
+ },
+ {
+  "name": "Cyberhaven",
+  "ats": "ashby",
+  "slug": "cyberhaven",
+  "tags": [
+   "Data security startup"
+  ]
+ },
+ {
+  "name": "Zip Co Limited",
+  "ats": "greenhouse",
+  "slug": "zipcolimited",
+  "tags": [
+   "BNPL"
+  ]
+ },
+ {
+  "name": "Factory",
+  "ats": "ashby",
+  "slug": "factory",
+  "tags": [
+   "AI coding agents"
+  ]
+ },
+ {
+  "name": "Meridianlink",
+  "ats": "ashby",
+  "slug": "meridianlink",
+  "tags": [
+   "Lending software"
+  ]
+ },
+ {
+  "name": "Profound",
+  "ats": "ashby",
+  "slug": "profound",
+  "tags": [
+   "AI search visibility"
+  ]
+ },
+ {
+  "name": "Heartflow",
+  "ats": "greenhouse",
+  "slug": "heartflowinc",
+  "tags": [
+   "Cardiac AI medtech"
+  ]
+ },
+ {
+  "name": "Intrinsic",
+  "ats": "greenhouse",
+  "slug": "intrinsicrobotics",
+  "tags": [
+   "Alphabet robotics"
+  ]
+ },
+ {
+  "name": "DeepIntent",
+  "ats": "greenhouse",
+  "slug": "deepintent",
+  "tags": [
+   "Healthcare adtech"
+  ]
+ },
+ {
+  "name": "Builders at Gigs",
+  "ats": "greenhouse",
+  "slug": "engineeringatgigs",
+  "tags": [
+   "Telecom-as-a-service startup"
+  ]
+ },
+ {
+  "name": "Ginkgo Bioworks Inc.",
+  "ats": "greenhouse",
+  "slug": "ginkgobioworks",
+  "tags": [
+   "Synthetic biology public co"
+  ]
+ },
+ {
+  "name": "GoFundMe",
+  "ats": "greenhouse",
+  "slug": "gofundme",
+  "tags": [
+   "Crowdfunding platform"
+  ]
+ },
+ {
+  "name": "Standardbots",
+  "ats": "ashby",
+  "slug": "standardbots",
+  "tags": [
+   "Robot arms"
+  ]
+ },
+ {
+  "name": "Taskrabbit",
+  "ats": "greenhouse",
+  "slug": "taskrabbit",
+  "tags": [
+   "Gig services marketplace"
+  ]
+ },
+ {
+  "name": "VIA",
+  "ats": "greenhouse",
+  "slug": "via99",
+  "tags": [
+   "Transit tech"
+  ]
+ },
+ {
+  "name": "Candidhealth",
+  "ats": "ashby",
+  "slug": "candidhealth",
+  "tags": [
+   "Healthcare billing startup"
+  ]
+ },
+ {
+  "name": "G2",
+  "ats": "ashby",
+  "slug": "g2",
+  "tags": [
+   "Software review marketplace"
+  ]
+ },
+ {
+  "name": "Heidihealth Com Au",
+  "ats": "ashby",
+  "slug": "heidihealth.com.au",
+  "tags": [
+   "AI medical scribe"
+  ]
+ },
+ {
+  "name": "Openrouter",
+  "ats": "ashby",
+  "slug": "openrouter",
+  "tags": [
+   "LLM routing API"
+  ]
+ },
+ {
+  "name": "Span",
+  "ats": "ashby",
+  "slug": "span",
+  "tags": [
+   "Smart electrical panels"
+  ]
+ },
+ {
+  "name": "Valon",
+  "ats": "ashby",
+  "slug": "valon",
+  "tags": [
+   "Mortgage servicing tech"
+  ]
+ },
+ {
+  "name": "8am",
+  "ats": "greenhouse",
+  "slug": "affinipay1",
+  "tags": [
+   "Legal payments SaaS"
+  ]
+ },
+ {
+  "name": "Tenable, Inc.",
+  "ats": "greenhouse",
+  "slug": "tenableinc",
+  "tags": [
+   "Cybersecurity public co"
+  ]
+ },
+ {
+  "name": "Watershed",
+  "ats": "ashby",
+  "slug": "watershed",
+  "tags": [
+   "Carbon accounting SaaS"
+  ]
+ },
+ {
+  "name": "Endor Labs",
+  "ats": "greenhouse",
+  "slug": "endorlabs",
+  "tags": [
+   "Supply chain security"
+  ]
+ },
+ {
+  "name": "Rho",
+  "ats": "ashby",
+  "slug": "rho",
+  "tags": [
+   "Business banking fintech"
+  ]
+ },
+ {
+  "name": "Yext",
+  "ats": "greenhouse",
+  "slug": "yext",
+  "tags": [
+   "Search/listings SaaS"
+  ]
+ },
+ {
+  "name": "Braintrust",
+  "ats": "ashby",
+  "slug": "braintrust",
+  "tags": [
+   "LLM eval platform"
+  ]
+ },
+ {
+  "name": "Chainalysis Careers",
+  "ats": "ashby",
+  "slug": "chainalysis-careers",
+  "tags": [
+   "Blockchain analytics"
+  ]
+ },
+ {
+  "name": "Distyl",
+  "ats": "ashby",
+  "slug": "distyl",
+  "tags": [
+   "AI enterprise startup"
+  ]
+ },
+ {
+  "name": "Qumulo",
+  "ats": "ashby",
+  "slug": "qumulo",
+  "tags": [
+   "File storage"
+  ]
+ },
+ {
+  "name": "Speak",
+  "ats": "ashby",
+  "slug": "speak",
+  "tags": [
+   "AI language learning"
+  ]
+ },
+ {
+  "name": "Hebbia Ai",
+  "ats": "ashby",
+  "slug": "hebbia-ai",
+  "tags": [
+   "AI finance research"
+  ]
+ },
+ {
+  "name": "Ibotta",
+  "ats": "ashby",
+  "slug": "ibotta",
+  "tags": [
+   "Cashback public co"
+  ]
+ },
+ {
+  "name": "Everlaw",
+  "ats": "greenhouse",
+  "slug": "everlaw",
+  "tags": [
+   "Legal tech SaaS"
+  ]
+ },
+ {
+  "name": "Council Capital",
+  "ats": "ashby",
+  "slug": "council-capital",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Future",
+  "ats": "greenhouse",
+  "slug": "future",
+  "tags": [
+   "Ambiguous name"
+  ]
+ },
+ {
+  "name": "Atob",
+  "ats": "ashby",
+  "slug": "atob",
+  "tags": [
+   "Fleet payments fintech"
+  ]
+ },
+ {
+  "name": "Paradigm",
+  "ats": "ashby",
+  "slug": "paradigm",
+  "tags": [
+   "Crypto investment/research"
+  ]
+ },
+ {
+  "name": "Hume AI",
+  "ats": "greenhouse",
+  "slug": "humeai",
+  "tags": [
+   "Emotional voice AI"
+  ]
+ },
+ {
+  "name": "Zeta",
+  "ats": "lever",
+  "slug": "zeta",
+  "tags": [
+   "Banking tech / marketing"
+  ]
+ },
+ {
+  "name": "Yubico Inc.",
+  "ats": "greenhouse",
+  "slug": "yubico",
+  "tags": [
+   "Security hardware keys"
+  ]
+ },
+ {
+  "name": "Ambiencehealthcare",
+  "ats": "ashby",
+  "slug": "ambiencehealthcare",
+  "tags": [
+   "Healthcare AI startup"
+  ]
+ },
+ {
+  "name": "Coderabbit",
+  "ats": "ashby",
+  "slug": "coderabbit",
+  "tags": [
+   "AI code review"
+  ]
+ },
+ {
+  "name": "Insitro",
+  "ats": "ashby",
+  "slug": "insitro",
+  "tags": [
+   "ML drug discovery"
+  ]
+ },
+ {
+  "name": "Goteleport",
+  "ats": "ashby",
+  "slug": "goteleport",
+  "tags": [
+   "Infra access security"
+  ]
+ },
+ {
+  "name": "Rocket Money",
+  "ats": "greenhouse",
+  "slug": "truebill",
+  "tags": [
+   "Personal finance app"
+  ]
+ },
+ {
+  "name": "Vonage",
+  "ats": "greenhouse",
+  "slug": "vonage",
+  "tags": [
+   "Communications APIs"
+  ]
+ },
+ {
+  "name": "Antithesis",
+  "ats": "ashby",
+  "slug": "antithesis",
+  "tags": [
+   "Deterministic testing startup"
+  ]
+ },
+ {
+  "name": "Demandbase",
+  "ats": "ashby",
+  "slug": "demandbase",
+  "tags": [
+   "B2B marketing SaaS"
+  ]
+ },
+ {
+  "name": "Liquid Ai",
+  "ats": "ashby",
+  "slug": "liquid-ai",
+  "tags": [
+   "Foundation model startup"
+  ]
+ },
+ {
+  "name": "Poshmark",
+  "ats": "ashby",
+  "slug": "poshmark",
+  "tags": [
+   "Resale marketplace"
+  ]
+ },
+ {
+  "name": "Talos Trading",
+  "ats": "ashby",
+  "slug": "talos-trading",
+  "tags": [
+   "Crypto trading infra"
+  ]
+ },
+ {
+  "name": "Hiya",
+  "ats": "ashby",
+  "slug": "hiya",
+  "tags": [
+   "Caller ID/spam blocking"
+  ]
+ },
+ {
+  "name": "Krea",
+  "ats": "ashby",
+  "slug": "krea",
+  "tags": [
+   "AI image generation startup"
+  ]
+ },
+ {
+  "name": "Ivanti",
+  "ats": "greenhouse",
+  "slug": "a3c41b8b71eff8c4",
+  "tags": [
+   "IT management software"
+  ]
+ },
+ {
+  "name": "Altos Labs",
+  "ats": "greenhouse",
+  "slug": "altoslabs",
+  "tags": [
+   "Well-funded longevity biotech"
+  ]
+ },
+ {
+  "name": "Amperity",
+  "ats": "greenhouse",
+  "slug": "amperity",
+  "tags": [
+   "Customer data platform"
+  ]
+ },
+ {
+  "name": "Databento",
+  "ats": "greenhouse",
+  "slug": "databento",
+  "tags": [
+   "Market data API"
+  ]
+ },
+ {
+  "name": "Datavant",
+  "ats": "greenhouse",
+  "slug": "datavant2",
+  "tags": [
+   "Health data platform"
+  ]
+ },
+ {
+  "name": "DISCO",
+  "ats": "greenhouse",
+  "slug": "disco",
+  "tags": [
+   "Legal tech (CS Disco)"
+  ]
+ },
+ {
+  "name": "ExtraHop",
+  "ats": "greenhouse",
+  "slug": "extrahopnetworks",
+  "tags": [
+   "Network detection security"
+  ]
+ },
+ {
+  "name": "Visual Concepts",
+  "ats": "greenhouse",
+  "slug": "visualconcepts",
+  "tags": [
+   "2K game studio (NBA 2K)"
+  ]
+ },
+ {
+  "name": "Hackerone",
+  "ats": "ashby",
+  "slug": "hackerone",
+  "tags": [
+   "Bug bounty platform"
+  ]
+ },
+ {
+  "name": "Ontra",
+  "ats": "ashby",
+  "slug": "ontra",
+  "tags": [
+   "Legal contract AI"
+  ]
+ },
+ {
+  "name": "IEX Group",
+  "ats": "greenhouse",
+  "slug": "iex",
+  "tags": [
+   "Stock exchange"
+  ]
+ },
+ {
+  "name": "Ivalua",
+  "ats": "greenhouse",
+  "slug": "ivalua",
+  "tags": [
+   "Procurement software"
+  ]
+ },
+ {
+  "name": "Crexi",
+  "ats": "greenhouse",
+  "slug": "crexi",
+  "tags": [
+   "Commercial real estate marketplace"
+  ]
+ },
+ {
+  "name": "Enova International",
+  "ats": "greenhouse",
+  "slug": "enova",
+  "tags": [
+   "Online lending fintech"
+  ]
+ },
+ {
+  "name": "FalconX",
+  "ats": "greenhouse",
+  "slug": "falconx",
+  "tags": [
+   "Crypto prime broker"
+  ]
+ },
+ {
+  "name": "Geneva Trading",
+  "ats": "greenhouse",
+  "slug": "genevatrading",
+  "tags": [
+   "Prop trading firm"
+  ]
+ },
+ {
+  "name": "Graham Capital Management, L.P.",
+  "ats": "greenhouse",
+  "slug": "grahamcapitalmanagement",
+  "tags": [
+   "Hedge fund"
+  ]
+ },
+ {
+  "name": "Rescale",
+  "ats": "ashby",
+  "slug": "rescale",
+  "tags": [
+   "Cloud HPC"
+  ]
+ },
+ {
+  "name": "Spoton",
+  "ats": "ashby",
+  "slug": "spoton",
+  "tags": [
+   "Restaurant POS"
+  ]
+ },
+ {
+  "name": "Deepnote",
+  "ats": "ashby",
+  "slug": "deepnote",
+  "tags": [
+   "Data notebook startup"
+  ]
+ },
+ {
+  "name": "Finch",
+  "ats": "ashby",
+  "slug": "finch",
+  "tags": [
+   "Employment API startup"
+  ]
+ },
+ {
+  "name": "Flutterflow",
+  "ats": "ashby",
+  "slug": "flutterflow",
+  "tags": [
+   "Low-code app builder"
+  ]
+ },
+ {
+  "name": "Georgian",
+  "ats": "ashby",
+  "slug": "georgian",
+  "tags": [
+   "Toronto growth VC"
+  ]
+ },
+ {
+  "name": "Improbable",
+  "ats": "ashby",
+  "slug": "improbable",
+  "tags": [
+   "UK simulation tech"
+  ]
+ },
+ {
+  "name": "Cloud Chamber",
+  "ats": "greenhouse",
+  "slug": "cloudchamberen",
+  "tags": [
+   "2K game studio (BioShock)"
+  ]
+ },
+ {
+  "name": "Current",
+  "ats": "greenhouse",
+  "slug": "current",
+  "tags": [
+   "Fintech neobank"
+  ]
+ },
+ {
+  "name": "GoGuardian",
+  "ats": "greenhouse",
+  "slug": "goguardian",
+  "tags": [
+   "Edtech"
+  ]
+ },
+ {
+  "name": "ATOMS Careers page",
+  "ats": "greenhouse",
+  "slug": "cssmerge",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Aerovect",
+  "ats": "ashby",
+  "slug": "aerovect",
+  "tags": [
+   "Airport autonomy startup"
+  ]
+ },
+ {
+  "name": "Delos Data",
+  "ats": "ashby",
+  "slug": "delos-data",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Inductive Automation Llc",
+  "ats": "ashby",
+  "slug": "inductive-automation-llc",
+  "tags": [
+   "Industrial SCADA software"
+  ]
+ },
+ {
+  "name": "Solace",
+  "ats": "ashby",
+  "slug": "solace",
+  "tags": [
+   "Event streaming, Ottawa"
+  ]
+ },
+ {
+  "name": "Tebra",
+  "ats": "greenhouse",
+  "slug": "tebra",
+  "tags": [
+   "Medical practice SaaS"
+  ]
+ },
+ {
+  "name": "Assembledhq",
+  "ats": "ashby",
+  "slug": "assembledhq",
+  "tags": [
+   "Support workforce SaaS"
+  ]
+ },
+ {
+  "name": "Imprint",
+  "ats": "ashby",
+  "slug": "imprint",
+  "tags": [
+   "Co-brand cards fintech"
+  ]
+ },
+ {
+  "name": "Parafin",
+  "ats": "ashby",
+  "slug": "parafin",
+  "tags": [
+   "Embedded lending"
+  ]
+ },
+ {
+  "name": "Philo",
+  "ats": "ashby",
+  "slug": "philo",
+  "tags": [
+   "Streaming TV"
+  ]
+ },
+ {
+  "name": "Teamworks",
+  "ats": "ashby",
+  "slug": "teamworks",
+  "tags": [
+   "Sports ops SaaS"
+  ]
+ },
+ {
+  "name": "Veho Tech Inc",
+  "ats": "ashby",
+  "slug": "veho-tech-inc",
+  "tags": [
+   "Delivery logistics"
+  ]
+ },
+ {
+  "name": "Human Interest",
+  "ats": "greenhouse",
+  "slug": "humaninterest",
+  "tags": [
+   "401k fintech"
+  ]
+ },
+ {
+  "name": "Cloudzero",
+  "ats": "ashby",
+  "slug": "cloudzero",
+  "tags": [
+   "Cloud cost management SaaS"
+  ]
+ },
+ {
+  "name": "Dune",
+  "ats": "ashby",
+  "slug": "dune",
+  "tags": [
+   "Crypto data analytics"
+  ]
+ },
+ {
+  "name": "Harmonic Ai",
+  "ats": "ashby",
+  "slug": "harmonic-ai",
+  "tags": [
+   "Startup data platform"
+  ]
+ },
+ {
+  "name": "Lumos",
+  "ats": "ashby",
+  "slug": "lumos",
+  "tags": [
+   "Identity governance"
+  ]
+ },
+ {
+  "name": "Collibra",
+  "ats": "greenhouse",
+  "slug": "collibra",
+  "tags": [
+   "Data governance unicorn"
+  ]
+ },
+ {
+  "name": "Doximity",
+  "ats": "greenhouse",
+  "slug": "doximity",
+  "tags": [
+   "Physician network, public"
+  ]
+ },
+ {
+  "name": "Zwift",
+  "ats": "greenhouse",
+  "slug": "zwift",
+  "tags": [
+   "Fitness gaming"
+  ]
+ },
+ {
+  "name": "FourKites",
+  "ats": "greenhouse",
+  "slug": "fourkites",
+  "tags": [
+   "Supply chain visibility"
+  ]
+ },
+ {
+  "name": "Eon",
+  "ats": "greenhouse",
+  "slug": "eonio",
+  "tags": [
+   "Cloud backup startup"
+  ]
+ },
+ {
+  "name": "Garda Capital Partners",
+  "ats": "greenhouse",
+  "slug": "gardacp",
+  "tags": [
+   "Hedge fund"
+  ]
+ },
+ {
+  "name": "Genius Sports",
+  "ats": "greenhouse",
+  "slug": "geniussports",
+  "tags": [
+   "Sports data, public"
+  ]
+ },
+ {
+  "name": "DistantJob",
+  "ats": "greenhouse",
+  "slug": "distantjob",
+  "tags": [
+   "Remote staffing"
+  ]
+ },
+ {
+  "name": "Tigera",
+  "ats": "greenhouse",
+  "slug": "tigera",
+  "tags": [
+   "Calico networking"
+  ]
+ },
+ {
+  "name": "Unite Us",
+  "ats": "greenhouse",
+  "slug": "uniteus",
+  "tags": [
+   "Social care network"
+  ]
+ },
+ {
+  "name": "Vestwell",
+  "ats": "greenhouse",
+  "slug": "vestwell",
+  "tags": [
+   "Retirement fintech"
+  ]
+ },
+ {
+  "name": "VTS",
+  "ats": "greenhouse",
+  "slug": "vts",
+  "tags": [
+   "CRE software"
+  ]
+ },
+ {
+  "name": "Weee! Inc",
+  "ats": "greenhouse",
+  "slug": "weee",
+  "tags": [
+   "Asian grocery ecommerce"
+  ]
+ },
+ {
+  "name": "Anrok",
+  "ats": "ashby",
+  "slug": "anrok",
+  "tags": [
+   "Sales tax SaaS"
+  ]
+ },
+ {
+  "name": "Brightwheel",
+  "ats": "ashby",
+  "slug": "brightwheel",
+  "tags": [
+   "Childcare software"
+  ]
+ },
+ {
+  "name": "Jerry Ai",
+  "ats": "ashby",
+  "slug": "jerry.ai",
+  "tags": [
+   "car insurance app"
+  ]
+ },
+ {
+  "name": "Levelpath",
+  "ats": "ashby",
+  "slug": "levelpath",
+  "tags": [
+   "procurement SaaS"
+  ]
+ },
+ {
+  "name": "Listenlabs",
+  "ats": "ashby",
+  "slug": "listenlabs",
+  "tags": [
+   "AI customer research"
+  ]
+ },
+ {
+  "name": "Metaview",
+  "ats": "ashby",
+  "slug": "metaview",
+  "tags": [
+   "AI interview notes"
+  ]
+ },
+ {
+  "name": "Norm Ai",
+  "ats": "ashby",
+  "slug": "norm-ai",
+  "tags": [
+   "AI compliance startup"
+  ]
+ },
+ {
+  "name": "Openly",
+  "ats": "ashby",
+  "slug": "openly",
+  "tags": [
+   "insurtech"
+  ]
+ },
+ {
+  "name": "Paraform",
+  "ats": "ashby",
+  "slug": "paraform",
+  "tags": [
+   "recruiting marketplace"
+  ]
+ },
+ {
+  "name": "Zello",
+  "ats": "ashby",
+  "slug": "zello",
+  "tags": [
+   "push-to-talk app"
+  ]
+ },
+ {
+  "name": "Affinity Co",
+  "ats": "ashby",
+  "slug": "affinity.co",
+  "tags": [
+   "relationship CRM"
+  ]
+ },
+ {
+  "name": "Airops",
+  "ats": "ashby",
+  "slug": "airops",
+  "tags": [
+   "AI content platform"
+  ]
+ },
+ {
+  "name": "Blackbird Labs Inc",
+  "ats": "ashby",
+  "slug": "blackbird-labs-inc",
+  "tags": [
+   "restaurant crypto loyalty"
+  ]
+ },
+ {
+  "name": "Column",
+  "ats": "ashby",
+  "slug": "column",
+  "tags": [
+   "developer bank"
+  ]
+ },
+ {
+  "name": "Dave",
+  "ats": "ashby",
+  "slug": "dave",
+  "tags": [
+   "public neobank"
+  ]
+ },
+ {
+  "name": "Envoy",
+  "ats": "ashby",
+  "slug": "envoy",
+  "tags": [
+   "workplace SaaS"
+  ]
+ },
+ {
+  "name": "Gumloop",
+  "ats": "ashby",
+  "slug": "gumloop",
+  "tags": [
+   "AI automation startup"
+  ]
+ },
+ {
+  "name": "AcuityMD",
+  "ats": "greenhouse",
+  "slug": "acuitymd",
+  "tags": [
+   "Medtech commercial SaaS"
+  ]
+ },
+ {
+  "name": "Ahrefs",
+  "ats": "greenhouse",
+  "slug": "ahrefsjobs",
+  "tags": [
+   "SEO tools company"
+  ]
+ },
+ {
+  "name": "AMP: AI-Powered Sortation for Waste and Recycling",
+  "ats": "greenhouse",
+  "slug": "ampsortation",
+  "tags": [
+   "AI recycling robotics"
+  ]
+ },
+ {
+  "name": "CTC Campus - Website",
+  "ats": "greenhouse",
+  "slug": "chicagotradingcampus",
+  "tags": [
+   "Chicago Trading Company, trading firm"
+  ]
+ },
+ {
+  "name": "Cleo (US)",
+  "ats": "greenhouse",
+  "slug": "cleo",
+  "tags": [
+   "AI personal finance app"
+  ]
+ },
+ {
+  "name": "Cloudbeds",
+  "ats": "greenhouse",
+  "slug": "cloudbeds",
+  "tags": [
+   "Hospitality management SaaS"
+  ]
+ },
+ {
+  "name": "Coast",
+  "ats": "greenhouse",
+  "slug": "coast",
+  "tags": [
+   "Fleet fintech card"
+  ]
+ },
+ {
+  "name": "Corelight",
+  "ats": "greenhouse",
+  "slug": "corelight",
+  "tags": [
+   "Network security company"
+  ]
+ },
+ {
+  "name": "dv01",
+  "ats": "greenhouse",
+  "slug": "dv01",
+  "tags": [
+   "Lending data fintech"
+  ]
+ },
+ {
+  "name": "Evolve",
+  "ats": "greenhouse",
+  "slug": "evolvevacationrental",
+  "tags": [
+   "Vacation rental platform"
+  ]
+ },
+ {
+  "name": "Gelber Group",
+  "ats": "greenhouse",
+  "slug": "gelbergroup",
+  "tags": [
+   "Proprietary trading firm"
+  ]
+ },
+ {
+  "name": "Ghost Story Games",
+  "ats": "greenhouse",
+  "slug": "gsgcareers",
+  "tags": [
+   "Game studio"
+  ]
+ },
+ {
+  "name": "Artemis",
+  "ats": "ashby",
+  "slug": "artemis",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Maxima",
+  "ats": "ashby",
+  "slug": "maxima",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Goodfire",
+  "ats": "greenhouse",
+  "slug": "goodfire",
+  "tags": [
+   "AI interpretability startup"
+  ]
+ },
+ {
+  "name": "Cambio",
+  "ats": "ashby",
+  "slug": "cambio",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Headstart",
+  "ats": "ashby",
+  "slug": "headstart",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Apex Technology Inc",
+  "ats": "ashby",
+  "slug": "apex-technology-inc",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Vox Media Group",
+  "ats": "greenhouse",
+  "slug": "voxmedia",
+  "tags": [
+   "Digital media"
+  ]
+ },
+ {
+  "name": "Betterup",
+  "ats": "ashby",
+  "slug": "betterup",
+  "tags": [
+   "Coaching platform unicorn"
+  ]
+ },
+ {
+  "name": "Check Technologies",
+  "ats": "ashby",
+  "slug": "check-technologies",
+  "tags": [
+   "Payroll API"
+  ]
+ },
+ {
+  "name": "Elliptic",
+  "ats": "ashby",
+  "slug": "elliptic",
+  "tags": [
+   "Crypto compliance"
+  ]
+ },
+ {
+  "name": "Jellyfish",
+  "ats": "ashby",
+  "slug": "jellyfish",
+  "tags": [
+   "engineering management platform"
+  ]
+ },
+ {
+  "name": "Primer",
+  "ats": "ashby",
+  "slug": "primer",
+  "tags": [
+   "payments orchestration / AI"
+  ]
+ },
+ {
+  "name": "Recharge",
+  "ats": "ashby",
+  "slug": "recharge",
+  "tags": [
+   "subscription commerce platform"
+  ]
+ },
+ {
+  "name": "Hippo Insurance",
+  "ats": "greenhouse",
+  "slug": "hippo70",
+  "tags": [
+   "insurtech, public"
+  ]
+ },
+ {
+  "name": "HomeLight",
+  "ats": "greenhouse",
+  "slug": "homelight",
+  "tags": [
+   "real estate tech"
+  ]
+ },
+ {
+  "name": "Imbue",
+  "ats": "greenhouse",
+  "slug": "imbue",
+  "tags": [
+   "AI research lab"
+  ]
+ },
+ {
+  "name": "Comfy Org",
+  "ats": "ashby",
+  "slug": "comfy-org",
+  "tags": [
+   "ComfyUI maintainers"
+  ]
+ },
+ {
+  "name": "Dailypay",
+  "ats": "ashby",
+  "slug": "dailypay",
+  "tags": [
+   "earned wage access"
+  ]
+ },
+ {
+  "name": "Freshpaint",
+  "ats": "ashby",
+  "slug": "freshpaint",
+  "tags": [
+   "Healthcare privacy data platform"
+  ]
+ },
+ {
+  "name": "Guild",
+  "ats": "ashby",
+  "slug": "guild",
+  "tags": [
+   "Education benefits unicorn"
+  ]
+ },
+ {
+  "name": "Infinitus",
+  "ats": "ashby",
+  "slug": "infinitus",
+  "tags": [
+   "Healthcare voice AI"
+  ]
+ },
+ {
+  "name": "Madhive",
+  "ats": "ashby",
+  "slug": "madhive",
+  "tags": [
+   "CTV adtech"
+  ]
+ },
+ {
+  "name": "Accela",
+  "ats": "greenhouse",
+  "slug": "accela",
+  "tags": [
+   "Gov SaaS"
+  ]
+ },
+ {
+  "name": "Cordial Experience Inc.",
+  "ats": "greenhouse",
+  "slug": "cordial81",
+  "tags": [
+   "Marketing messaging SaaS"
+  ]
+ },
+ {
+  "name": "Crystal Dynamics",
+  "ats": "greenhouse",
+  "slug": "crystaldynamics",
+  "tags": [
+   "Game studio"
+  ]
+ },
+ {
+  "name": "Gigs",
+  "ats": "greenhouse",
+  "slug": "gigs",
+  "tags": [
+   "Telecom API startup"
+  ]
+ },
+ {
+  "name": "GOAT Group",
+  "ats": "greenhouse",
+  "slug": "goatgroup",
+  "tags": [
+   "Sneaker marketplace"
+  ]
+ },
+ {
+  "name": "Convex Dev",
+  "ats": "ashby",
+  "slug": "convex-dev",
+  "tags": [
+   "Backend platform startup"
+  ]
+ },
+ {
+  "name": "Quest Defense Systems & Solutions, Inc.",
+  "ats": "greenhouse",
+  "slug": "questdefensesystemssolutionsinc",
+  "tags": [
+   "Defense contractor"
+  ]
+ },
+ {
+  "name": "Glydways",
+  "ats": "greenhouse",
+  "slug": "glydways",
+  "tags": [
+   "Transit startup"
+  ]
+ },
+ {
+  "name": "Tensorwave",
+  "ats": "ashby",
+  "slug": "tensorwave",
+  "tags": [
+   "GPU cloud"
+  ]
+ },
+ {
+  "name": "Adaption",
+  "ats": "ashby",
+  "slug": "adaption",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "VSCO",
+  "ats": "greenhouse",
+  "slug": "vsco39",
+  "tags": [
+   "Photo app"
+  ]
+ },
+ {
+  "name": "Diligent Corporation",
+  "ats": "greenhouse",
+  "slug": "diligentcorporation",
+  "tags": [
+   "GRC/board software"
+  ]
+ },
+ {
+  "name": "Duetto Research",
+  "ats": "greenhouse",
+  "slug": "duettoresearch",
+  "tags": [
+   "Hotel revenue SaaS"
+  ]
+ },
+ {
+  "name": "Gametime United",
+  "ats": "greenhouse",
+  "slug": "gametimeunited",
+  "tags": [
+   "Ticket marketplace"
+  ]
+ },
+ {
+  "name": "Neuroscale",
+  "ats": "ashby",
+  "slug": "neuroscale",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Inflection AI",
+  "ats": "greenhouse",
+  "slug": "inflectionai",
+  "tags": [
+   "AI company"
+  ]
+ },
+ {
+  "name": "Browserbase",
+  "ats": "ashby",
+  "slug": "browserbase",
+  "tags": [
+   "Headless browser infra"
+  ]
+ },
+ {
+  "name": "Extropic",
+  "ats": "ashby",
+  "slug": "extropic",
+  "tags": [
+   "Thermodynamic chips"
+  ]
+ },
+ {
+  "name": "Afresh",
+  "ats": "greenhouse",
+  "slug": "afresh",
+  "tags": [
+   "Grocery AI startup"
+  ]
+ },
+ {
+  "name": "Fubo",
+  "ats": "greenhouse",
+  "slug": "fubotv",
+  "tags": [
+   "Streaming TV"
+  ]
+ },
+ {
+  "name": "Transgrid Energy",
+  "ats": "ashby",
+  "slug": "transgrid-energy",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Hyperhug",
+  "ats": "ashby",
+  "slug": "hyperhug",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Materialize",
+  "ats": "ashby",
+  "slug": "materialize",
+  "tags": [
+   "Streaming database"
+  ]
+ },
+ {
+  "name": "Ascertain",
+  "ats": "ashby",
+  "slug": "ascertain",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Felix",
+  "ats": "ashby",
+  "slug": "felix",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "GoFasti",
+  "ats": "greenhouse",
+  "slug": "gofasti",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Taxbit",
+  "ats": "greenhouse",
+  "slug": "taxbit",
+  "tags": [
+   "Crypto tax"
+  ]
+ },
+ {
+  "name": "Underdog",
+  "ats": "greenhouse",
+  "slug": "underdog",
+  "tags": [
+   "Fantasy sports"
+  ]
+ },
+ {
+  "name": "Vise",
+  "ats": "greenhouse",
+  "slug": "viseai",
+  "tags": [
+   "Wealth AI fintech"
+  ]
+ },
+ {
+  "name": "Capsule",
+  "ats": "ashby",
+  "slug": "capsule",
+  "tags": [
+   "Digital pharmacy"
+  ]
+ },
+ {
+  "name": "Sfcompute",
+  "ats": "ashby",
+  "slug": "sfcompute",
+  "tags": [
+   "GPU compute market"
+  ]
+ },
+ {
+  "name": "Unlearn",
+  "ats": "ashby",
+  "slug": "unlearn",
+  "tags": [
+   "AI clinical trials"
+  ]
+ },
+ {
+  "name": "Highnote",
+  "ats": "greenhouse",
+  "slug": "highnote",
+  "tags": [
+   "card issuing fintech"
+  ]
+ },
+ {
+  "name": "Knock",
+  "ats": "ashby",
+  "slug": "knock",
+  "tags": [
+   "Notifications infra startup"
+  ]
+ },
+ {
+  "name": "DataHub",
+  "ats": "greenhouse",
+  "slug": "acryldata",
+  "tags": [
+   "DataHub metadata platform"
+  ]
+ },
+ {
+  "name": "Airship",
+  "ats": "greenhouse",
+  "slug": "airship",
+  "tags": [
+   "Mobile engagement platform"
+  ]
+ },
+ {
+  "name": "Soros Fund Management",
+  "ats": "greenhouse",
+  "slug": "familyoffice",
+  "tags": [
+   "Investment firm"
+  ]
+ },
+ {
+  "name": "Grayscale Investments",
+  "ats": "greenhouse",
+  "slug": "grayscaleinvestments",
+  "tags": [
+   "Crypto asset manager"
+  ]
+ },
+ {
+  "name": "Litmus",
+  "ats": "ashby",
+  "slug": "litmus",
+  "tags": [
+   "Email testing"
+  ]
+ },
+ {
+  "name": "WellSaid",
+  "ats": "greenhouse",
+  "slug": "wellsaidlabs",
+  "tags": [
+   "AI voice startup"
+  ]
+ },
+ {
+  "name": "Datafold",
+  "ats": "ashby",
+  "slug": "datafold",
+  "tags": [
+   "Data quality tools"
+  ]
+ },
+ {
+  "name": "Lightspark",
+  "ats": "ashby",
+  "slug": "lightspark",
+  "tags": [
+   "Bitcoin payments infra, well-funded"
+  ]
+ },
+ {
+  "name": "Matter Labs",
+  "ats": "ashby",
+  "slug": "matter-labs",
+  "tags": [
+   "zkSync blockchain developer"
+  ]
+ },
+ {
+  "name": "Readme",
+  "ats": "ashby",
+  "slug": "readme",
+  "tags": [
+   "API docs SaaS"
+  ]
+ },
+ {
+  "name": "Forma",
+  "ats": "ashby",
+  "slug": "forma",
+  "tags": [
+   "Benefits platform startup"
+  ]
+ },
+ {
+  "name": "Genies",
+  "ats": "ashby",
+  "slug": "genies",
+  "tags": [
+   "AI avatar startup"
+  ]
+ },
+ {
+  "name": "Amwell",
+  "ats": "greenhouse",
+  "slug": "amwell",
+  "tags": [
+   "Telehealth public co"
+  ]
+ },
+ {
+  "name": "Earnest",
+  "ats": "greenhouse",
+  "slug": "earnest",
+  "tags": [
+   "Student loan fintech"
+  ]
+ },
+ {
+  "name": "Flexe",
+  "ats": "greenhouse",
+  "slug": "flexe",
+  "tags": [
+   "Logistics tech"
+  ]
+ },
+ {
+  "name": "Cowboyspace",
+  "ats": "ashby",
+  "slug": "cowboyspace",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Coralai",
+  "ats": "ashby",
+  "slug": "coralai",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Horizon Industries",
+  "ats": "greenhouse",
+  "slug": "horizonindustrieslimited",
+  "tags": [
+   "Industrial firm"
+  ]
+ },
+ {
+  "name": "Whitecircle",
+  "ats": "ashby",
+  "slug": "whitecircle",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Accenture Federal Services",
+  "ats": "greenhouse",
+  "slug": "accenturefederalservices",
+  "tags": [
+   "Government consulting"
+  ]
+ },
+ {
+  "name": "Second Front Systems",
+  "ats": "ashby",
+  "slug": "second-front-systems",
+  "tags": [
+   "Gov software"
+  ]
+ },
+ {
+  "name": "Makai Labs",
+  "ats": "ashby",
+  "slug": "makai-labs",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Andotechnologies",
+  "ats": "ashby",
+  "slug": "andotechnologies",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Kindred",
+  "ats": "ashby",
+  "slug": "kindred",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Atticus",
+  "ats": "ashby",
+  "slug": "atticus",
+  "tags": [
+   "Legal services startup"
+  ]
+ },
+ {
+  "name": "Mimica",
+  "ats": "ashby",
+  "slug": "mimica",
+  "tags": [
+   "Process mining startup"
+  ]
+ },
+ {
+  "name": "Clariti Cloud Inc.",
+  "ats": "greenhouse",
+  "slug": "clariticloudinc",
+  "tags": [
+   "Small cloud firm"
+  ]
+ },
+ {
+  "name": "Fab2",
+  "ats": "ashby",
+  "slug": "fab2",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Voltai Careers",
+  "ats": "ashby",
+  "slug": "voltai.careers",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Bosch",
+  "ats": "smartrecruiters",
+  "slug": "BoschGroup",
+  "tags": [
+   "Industrial conglomerate"
+  ]
+ },
+ {
+  "name": "Havocai",
+  "ats": "ashby",
+  "slug": "havocai",
+  "tags": [
+   "Defense autonomy startup"
+  ]
+ },
+ {
+  "name": "Infinity Constellation",
+  "ats": "ashby",
+  "slug": "infinity-constellation",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Scarlet",
+  "ats": "ashby",
+  "slug": "scarlet",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Harbor",
+  "ats": "greenhouse",
+  "slug": "harborglobal",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Zeely",
+  "ats": "ashby",
+  "slug": "zeely",
+  "tags": [
+   "Small app/marketing startup"
+  ]
+ },
+ {
+  "name": "Philips",
+  "ats": "workday",
+  "slug": "philips/jobs-and-careers",
+  "url": "https://philips.wd3.myworkdayjobs.com/jobs-and-careers",
+  "tags": [
+   "Health tech conglomerate"
+  ]
+ },
+ {
+  "name": "Wynd Labs",
+  "ats": "ashby",
+  "slug": "wynd-labs",
+  "tags": [
+   "Small data/proxy startup"
+  ]
+ },
+ {
+  "name": "Featherlessai",
+  "ats": "ashby",
+  "slug": "featherlessai",
+  "tags": [
+   "Small AI inference startup"
+  ]
+ },
+ {
+  "name": "Sunnydata",
+  "ats": "ashby",
+  "slug": "sunnydata",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Blp Digital",
+  "ats": "ashby",
+  "slug": "blp-digital",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Level",
+  "ats": "ashby",
+  "slug": "level",
+  "tags": [
+   "Ambiguous name"
+  ]
+ },
+ {
+  "name": "AB InBev  | Growth Group",
+  "ats": "greenhouse",
+  "slug": "abinbev",
+  "tags": [
+   "Brewer, non-tech"
+  ]
+ },
+ {
+  "name": "Veeda Ai",
+  "ats": "ashby",
+  "slug": "veeda-ai",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Hook",
+  "ats": "greenhouse",
+  "slug": "hook",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "IFT",
+  "ats": "greenhouse",
+  "slug": "iftother",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Basata",
+  "ats": "ashby",
+  "slug": "basata",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Current Advisors",
+  "ats": "ashby",
+  "slug": "current-advisors",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Arq",
+  "ats": "ashby",
+  "slug": "arq",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Coconut Software",
+  "ats": "greenhouse",
+  "slug": "coconutsoftware",
+  "tags": [
+   "Saskatoon scheduling SaaS"
+  ]
+ },
+ {
+  "name": "Figure",
+  "ats": "greenhouse",
+  "slug": "figureai",
+  "tags": [
+   "Humanoid robotics unicorn"
+  ]
+ },
+ {
+  "name": "Edra",
+  "ats": "ashby",
+  "slug": "edra",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Fundamental",
+  "ats": "ashby",
+  "slug": "fundamental",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Gritt",
+  "ats": "ashby",
+  "slug": "gritt",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Target",
+  "ats": "workday",
+  "slug": "target/targetcareers",
+  "url": "https://target.wd5.myworkdayjobs.com/targetcareers",
+  "tags": [
+   "Retailer"
+  ]
+ },
+ {
+  "name": "Lavendo",
+  "ats": "ashby",
+  "slug": "lavendo",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Forus",
+  "ats": "ashby",
+  "slug": "forus",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Fuse",
+  "ats": "ashby",
+  "slug": "fuse",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Olix",
+  "ats": "ashby",
+  "slug": "olix",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "DensityAI",
+  "ats": "greenhouse",
+  "slug": "densityai",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Encora",
+  "ats": "greenhouse",
+  "slug": "encora10",
+  "tags": [
+   "IT outsourcing"
+  ]
+ },
+ {
+  "name": "Sash",
+  "ats": "ashby",
+  "slug": "sash",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Clarity Innovations",
+  "ats": "greenhouse",
+  "slug": "clarityinnovates",
+  "tags": [
+   "Gov contractor"
+  ]
+ },
+ {
+  "name": "Assorthealth",
+  "ats": "ashby",
+  "slug": "assorthealth",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Interface Ai",
+  "ats": "ashby",
+  "slug": "interface-ai",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Range",
+  "ats": "ashby",
+  "slug": "range",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Replit",
+  "ats": "ashby",
+  "slug": "replit",
+  "tags": [
+   "AI coding platform"
+  ]
+ },
+ {
+  "name": "Gigi",
+  "ats": "ashby",
+  "slug": "gigi",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Hiverge",
+  "ats": "ashby",
+  "slug": "hiverge",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Mirage",
+  "ats": "ashby",
+  "slug": "mirage",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Observable Space",
+  "ats": "ashby",
+  "slug": "observable-space",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Relling",
+  "ats": "ashby",
+  "slug": "relling",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Lightfield",
+  "ats": "ashby",
+  "slug": "lightfield",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Ardent",
+  "ats": "greenhouse",
+  "slug": "ardentmc",
+  "tags": [
+   "Gov contractor"
+  ]
+ },
+ {
+  "name": "NewRocket",
+  "ats": "greenhouse",
+  "slug": "highmetric",
+  "tags": [
+   "ServiceNow consultancy"
+  ]
+ },
+ {
+  "name": "Foundationhealthcareers",
+  "ats": "ashby",
+  "slug": "foundationhealthcareers",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Broccoli",
+  "ats": "ashby",
+  "slug": "broccoli",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "N1",
+  "ats": "ashby",
+  "slug": "n1",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Noda Ai",
+  "ats": "ashby",
+  "slug": "noda-ai",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Endra",
+  "ats": "ashby",
+  "slug": "endra",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Medraai",
+  "ats": "ashby",
+  "slug": "medraai",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Bankjoy",
+  "ats": "ashby",
+  "slug": "bankjoy",
+  "tags": [
+   "Digital banking for CUs"
+  ]
+ },
+ {
+  "name": "Remarcable Inc",
+  "ats": "ashby",
+  "slug": "remarcable-inc",
+  "tags": [
+   "Small construction software"
+  ]
+ },
+ {
+  "name": "Canva",
+  "ats": "smartrecruiters",
+  "slug": "Canva",
+  "tags": [
+   "Design platform"
+  ]
+ },
+ {
+  "name": "Canva",
+  "ats": "smartrecruiters",
+  "slug": "canva",
+  "tags": [
+   "Design platform"
+  ]
+ },
+ {
+  "name": "Turing",
+  "ats": "greenhouse",
+  "slug": "turing",
+  "tags": [
+   "Remote dev staffing/AI data"
+  ]
+ },
+ {
+  "name": "Feathery",
+  "ats": "ashby",
+  "slug": "feathery",
+  "tags": [
+   "Forms startup"
+  ]
+ },
+ {
+  "name": "Futurefitai",
+  "ats": "ashby",
+  "slug": "futurefitai",
+  "tags": [
+   "Small Canadian AI startup"
+  ]
+ },
+ {
+  "name": "Groundnews",
+  "ats": "ashby",
+  "slug": "groundnews",
+  "tags": [
+   "News aggregator startup"
+  ]
+ },
+ {
+  "name": "People Data Labs",
+  "ats": "ashby",
+  "slug": "people-data-labs",
+  "tags": [
+   "Data provider startup"
+  ]
+ },
+ {
+  "name": "Tiny Health",
+  "ats": "ashby",
+  "slug": "tiny-health",
+  "tags": [
+   "Microbiome health startup"
+  ]
+ },
+ {
+  "name": "Lazer",
+  "ats": "ashby",
+  "slug": "lazer",
+  "tags": [
+   "Digital agency"
+  ]
+ },
+ {
+  "name": "Federato",
+  "ats": "greenhouse",
+  "slug": "federato",
+  "tags": [
+   "Insurance AI startup"
+  ]
+ },
+ {
+  "name": "Creditgenie",
+  "ats": "ashby",
+  "slug": "creditgenie",
+  "tags": [
+   "Consumer fintech"
+  ]
+ },
+ {
+  "name": "Forma.ai",
+  "ats": "greenhouse",
+  "slug": "formaaiinc",
+  "tags": [
+   "Toronto sales comp AI"
+  ]
+ },
+ {
+  "name": "JetBrains",
+  "ats": "greenhouse",
+  "slug": "jetbrains",
+  "tags": [
+   "Developer tools"
+  ]
+ },
+ {
+  "name": "Bank of America",
+  "ats": "workday",
+  "slug": "ghr/Lateral-US",
+  "url": "https://ghr.wd1.myworkdayjobs.com/Lateral-US",
+  "tags": [
+   "Bank"
+  ]
+ },
+ {
+  "name": "Abridge",
+  "ats": "ashby",
+  "slug": "abridge",
+  "tags": [
+   "Clinical AI unicorn"
+  ]
+ },
+ {
+  "name": "DeepL",
+  "ats": "ashby",
+  "slug": "deepl",
+  "tags": [
+   "AI translation"
+  ]
+ },
+ {
+  "name": "Pivotal Health",
+  "ats": "ashby",
+  "slug": "pivotal-health",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Sygaldry Technologies",
+  "ats": "ashby",
+  "slug": "sygaldry-technologies",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Terrafirma Inc",
+  "ats": "ashby",
+  "slug": "terrafirma-inc",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Typesafe Ai",
+  "ats": "ashby",
+  "slug": "typesafe-ai",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "American Housing",
+  "ats": "ashby",
+  "slug": "american-housing",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Axiombio",
+  "ats": "ashby",
+  "slug": "axiombio",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Batoncorporation",
+  "ats": "ashby",
+  "slug": "batoncorporation",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Counsel",
+  "ats": "ashby",
+  "slug": "counsel",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Endurance Energy",
+  "ats": "ashby",
+  "slug": "endurance-energy",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Senra Systems",
+  "ats": "greenhouse",
+  "slug": "senrasystems",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Poolside",
+  "ats": "ashby",
+  "slug": "poolside",
+  "tags": [
+   "AI coding lab"
+  ]
+ },
+ {
+  "name": "Zapier",
+  "ats": "ashby",
+  "slug": "zapier",
+  "tags": [
+   "Automation SaaS"
+  ]
+ },
+ {
+  "name": "Grab",
+  "ats": "smartrecruiters",
+  "slug": "Grab",
+  "tags": [
+   "SE Asia superapp"
+  ]
+ },
+ {
+  "name": "Airapps",
+  "ats": "ashby",
+  "slug": "airapps",
+  "tags": [
+   "Mobile app maker"
+  ]
+ },
+ {
+  "name": "Eloquentai",
+  "ats": "ashby",
+  "slug": "eloquentai",
+  "tags": [
+   "Small AI startup"
+  ]
+ },
+ {
+  "name": "Aureliussystems",
+  "ats": "ashby",
+  "slug": "aureliussystems",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Basis Research",
+  "ats": "ashby",
+  "slug": "basis-research",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Hipp",
+  "ats": "ashby",
+  "slug": "hipp",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Kaizenlabs",
+  "ats": "ashby",
+  "slug": "kaizenlabs",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Latent",
+  "ats": "ashby",
+  "slug": "latent",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Monaco",
+  "ats": "ashby",
+  "slug": "monaco",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Nox Metals",
+  "ats": "ashby",
+  "slug": "nox-metals",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Thread Ai",
+  "ats": "ashby",
+  "slug": "thread-ai",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Treeswift",
+  "ats": "ashby",
+  "slug": "treeswift",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Blissway",
+  "ats": "ashby",
+  "slug": "blissway",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Eliza",
+  "ats": "ashby",
+  "slug": "eliza",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Humanarchive",
+  "ats": "ashby",
+  "slug": "humanarchive",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Kepler Ai",
+  "ats": "ashby",
+  "slug": "kepler-ai",
+  "tags": [
+   "Unknown AI startup"
+  ]
+ },
+ {
+  "name": "Kira",
+  "ats": "ashby",
+  "slug": "kira",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Lio",
+  "ats": "ashby",
+  "slug": "lio",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Invert",
+  "ats": "ashby",
+  "slug": "invert",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Plane",
+  "ats": "ashby",
+  "slug": "plane",
+  "tags": [
+   "Open-source project management"
+  ]
+ },
+ {
+  "name": "Procurify",
+  "ats": "ashby",
+  "slug": "procurify",
+  "tags": [
+   "Procurement SaaS"
+  ]
+ },
+ {
+  "name": "MrBeast",
+  "ats": "greenhouse",
+  "slug": "mrbeastyoutube",
+  "tags": [
+   "Media company"
+  ]
+ },
+ {
+  "name": "Rain",
+  "ats": "ashby",
+  "slug": "rain",
+  "tags": [
+   "Earned wage/crypto card startup"
+  ]
+ },
+ {
+  "name": "Camber",
+  "ats": "ashby",
+  "slug": "camber",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Careers Azx Io",
+  "ats": "ashby",
+  "slug": "careers.azx.io",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Engram",
+  "ats": "ashby",
+  "slug": "engram",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Forgepoint",
+  "ats": "ashby",
+  "slug": "forgepoint",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Goaly",
+  "ats": "ashby",
+  "slug": "goaly",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Manifest Os",
+  "ats": "ashby",
+  "slug": "manifest-os",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Onoshealth",
+  "ats": "ashby",
+  "slug": "onoshealth",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Orbitalindustries",
+  "ats": "ashby",
+  "slug": "orbitalindustries",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Conduct",
+  "ats": "ashby",
+  "slug": "conduct",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Melotech",
+  "ats": "ashby",
+  "slug": "melotech",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Citian",
+  "ats": "greenhouse",
+  "slug": "citian",
+  "tags": [
+   "Unknown"
+  ]
+ },
+ {
+  "name": "Eve",
+  "ats": "greenhouse",
+  "slug": "eve",
+  "tags": [
+   "Ambiguous"
+  ]
+ },
+ {
+  "name": "DoorDash Brazil",
+  "ats": "greenhouse",
+  "slug": "doordashinternational",
+  "tags": [
+   "DoorDash international"
+  ]
+ },
+ {
+  "name": "Alpha Financial Markets Consulting",
+  "ats": "greenhouse",
+  "slug": "alphafmcroles",
+  "tags": [
+   "Consulting"
+  ]
+ },
+ {
+  "name": "Wise",
+  "ats": "smartrecruiters",
+  "slug": "Wise",
+  "tags": [
+   "Fintech payments"
+  ]
+ },
+ {
+  "name": "Aleph",
+  "ats": "ashby",
+  "slug": "aleph",
+  "tags": [
+   "FP&A startup"
+  ]
+ },
+ {
+  "name": "Squads",
+  "ats": "ashby",
+  "slug": "squads",
+  "tags": [
+   "Solana multisig"
+  ]
+ },
+ {
+  "name": "C1",
+  "ats": "ashby",
+  "slug": "c1",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Verse",
+  "ats": "greenhouse",
+  "slug": "verse",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Ami",
+  "ats": "ashby",
+  "slug": "ami",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Astra",
+  "ats": "ashby",
+  "slug": "astra",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Axion",
+  "ats": "ashby",
+  "slug": "axion",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Duet",
+  "ats": "ashby",
+  "slug": "duet",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Gradient",
+  "ats": "ashby",
+  "slug": "gradient",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Psi",
+  "ats": "ashby",
+  "slug": "psi",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Revin",
+  "ats": "ashby",
+  "slug": "revin",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Sageox",
+  "ats": "ashby",
+  "slug": "sageox",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Titan",
+  "ats": "ashby",
+  "slug": "titan",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Vitalize",
+  "ats": "ashby",
+  "slug": "vitalize",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Aligned",
+  "ats": "ashby",
+  "slug": "aligned",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Artian",
+  "ats": "ashby",
+  "slug": "artian",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Conduit",
+  "ats": "ashby",
+  "slug": "conduit",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Fomo Labs",
+  "ats": "ashby",
+  "slug": "fomo-labs",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Hellyeah",
+  "ats": "ashby",
+  "slug": "hellyeah",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Kastle",
+  "ats": "ashby",
+  "slug": "kastle",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Lydian",
+  "ats": "ashby",
+  "slug": "lydian",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Elite Technology",
+  "ats": "greenhouse",
+  "slug": "elitetechnology",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Isomorphic Labs",
+  "ats": "greenhouse",
+  "slug": "isomorphiclabs",
+  "tags": [
+   "DeepMind drug discovery"
+  ]
+ },
+ {
+  "name": "Interview Engineering",
+  "ats": "greenhouse",
+  "slug": "interviewengineering",
+  "tags": [
+   "Interview/staffing"
+  ]
+ },
+ {
+  "name": "DEPT®",
+  "ats": "greenhouse",
+  "slug": "dept",
+  "tags": [
+   "Digital agency"
+  ]
+ },
+ {
+  "name": "Klue",
+  "ats": "ashby",
+  "slug": "klue",
+  "tags": [
+   "Vancouver competitive intel"
+  ]
+ },
+ {
+  "name": "GRVTY",
+  "ats": "greenhouse",
+  "slug": "grvty",
+  "tags": [
+   "Defense contractor"
+  ]
+ },
+ {
+  "name": "LinkedIn",
+  "ats": "lever",
+  "slug": "linkedin",
+  "tags": [
+   "Professional network, Microsoft"
+  ]
+ },
+ {
+  "name": "Inferact",
+  "ats": "ashby",
+  "slug": "inferact",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "MKS2 Technologies",
+  "ats": "greenhouse",
+  "slug": "mks2technologies",
+  "tags": [
+   "Defense contractor"
+  ]
+ },
+ {
+  "name": "DoorDash Mexico",
+  "ats": "greenhouse",
+  "slug": "doordashmexico",
+  "tags": [
+   "DoorDash"
+  ]
+ },
+ {
+  "name": "CSCI Consulting",
+  "ats": "greenhouse",
+  "slug": "csciconsulting",
+  "tags": [
+   "Gov IT consulting"
+  ]
+ },
+ {
+  "name": "Gc Ai",
+  "ats": "ashby",
+  "slug": "gc-ai",
+  "tags": [
+   "Legal AI startup"
+  ]
+ },
+ {
+  "name": "10a Labs",
+  "ats": "greenhouse",
+  "slug": "10alabs",
+  "tags": [
+   "Small AI consultancy"
+  ]
+ },
+ {
+  "name": "Focused",
+  "ats": "greenhouse",
+  "slug": "focused",
+  "tags": [
+   "Software consultancy"
+  ]
+ },
+ {
+  "name": "DoorDash India",
+  "ats": "greenhouse",
+  "slug": "doordashindia",
+  "tags": [
+   "DoorDash India"
+  ]
+ },
+ {
+  "name": "Adaptive",
+  "ats": "ashby",
+  "slug": "adaptive",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Boon",
+  "ats": "ashby",
+  "slug": "boon",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Constellation",
+  "ats": "ashby",
+  "slug": "constellation",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Garage",
+  "ats": "ashby",
+  "slug": "garage",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Gimlet",
+  "ats": "ashby",
+  "slug": "gimlet",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Healthleap",
+  "ats": "ashby",
+  "slug": "healthleap",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Join9am",
+  "ats": "ashby",
+  "slug": "join9am",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Onepot",
+  "ats": "ashby",
+  "slug": "onepot",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Westmag",
+  "ats": "ashby",
+  "slug": "westmag",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Zippymh",
+  "ats": "ashby",
+  "slug": "zippymh",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Instead",
+  "ats": "greenhouse",
+  "slug": "instead",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Alpacahealth",
+  "ats": "ashby",
+  "slug": "alpacahealth",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Ambrosia Energy",
+  "ats": "ashby",
+  "slug": "ambrosia-energy",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Augustus",
+  "ats": "ashby",
+  "slug": "augustus",
+  "tags": [
+   "Unclear"
+  ]
+ },
+ {
+  "name": "Extrac Ai",
+  "ats": "ashby",
+  "slug": "extrac.ai",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Farsight",
+  "ats": "ashby",
+  "slug": "farsight",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Finvari",
+  "ats": "ashby",
+  "slug": "finvari",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Hive Autonomy",
+  "ats": "ashby",
+  "slug": "hive-autonomy",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Known",
+  "ats": "ashby",
+  "slug": "known",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Knox Systems",
+  "ats": "ashby",
+  "slug": "knox-systems",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Forgen",
+  "ats": "greenhouse",
+  "slug": "forgen",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Goods & Services",
+  "ats": "greenhouse",
+  "slug": "goodsservices",
+  "tags": [
+   "Unrecognised"
+  ]
+ },
+ {
+  "name": "Holder Construction",
+  "ats": "greenhouse",
+  "slug": "holderconstruction",
+  "tags": [
+   "Construction company"
+  ]
+ },
+ {
+  "name": "Chromatic",
+  "ats": "ashby",
+  "slug": "chromatic",
+  "tags": [
+   "UI testing tool"
+  ]
+ },
+ {
+  "name": "ALTEN Technology USA",
+  "ats": "greenhouse",
+  "slug": "altentechnologyusa",
+  "tags": [
+   "Engineering staffing"
+  ]
+ },
+ {
+  "name": "Techstars",
+  "ats": "greenhouse",
+  "slug": "techstars57",
+  "tags": [
+   "Accelerator"
+  ]
+ },
+ {
+  "name": "Udacity",
+  "ats": "greenhouse",
+  "slug": "udacity",
+  "tags": [
+   "Online education"
+  ]
+ },
+ {
+  "name": "Adapty Io",
+  "ats": "ashby",
+  "slug": "adapty-io",
+  "tags": [
+   "Subscription SDK"
+  ]
+ },
+ {
+  "name": "Dandelionhealth",
+  "ats": "ashby",
+  "slug": "dandelionhealth",
+  "tags": [
+   "Clinical data startup"
+  ]
+ },
+ {
+  "name": "CIQ",
+  "ats": "greenhouse",
+  "slug": "ciq",
+  "tags": [
+   "Rocky Linux support co"
+  ]
+ },
+ {
+  "name": "GiveDirectly",
+  "ats": "greenhouse",
+  "slug": "givedirectly",
+  "tags": [
+   "Charity"
+  ]
+ },
+ {
+  "name": "Sixt",
+  "ats": "smartrecruiters",
+  "slug": "SIXT",
+  "tags": [
+   "Car rental"
+  ]
+ },
+ {
+  "name": "DoorDash ANZ",
+  "ats": "greenhouse",
+  "slug": "doordashaustralia",
+  "tags": [
+   "DoorDash"
+  ]
+ },
+ {
+  "name": "Delivery Hero",
+  "ats": "smartrecruiters",
+  "slug": "DeliveryHero",
+  "tags": [
+   "Food delivery"
+  ]
+ },
+ {
+  "name": "Heliux",
+  "ats": "ashby",
+  "slug": "heliux",
+  "tags": [
+   "Unrecognized"
+  ]
+ },
+ {
+  "name": "Deliveroo",
+  "ats": "greenhouse",
+  "slug": "deliveroo",
+  "tags": [
+   "Food delivery"
+  ]
+ },
+ {
+  "name": "Tempo",
+  "ats": "greenhouse",
+  "slug": "tempo",
+  "tags": [
+   "Ambiguous name"
+  ]
+ }
+]
