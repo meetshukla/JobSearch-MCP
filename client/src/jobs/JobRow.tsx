@@ -49,6 +49,10 @@ export function JobRowLink({ job: j, view, query, open, cursor, onFocus }: { job
         <span className="row-age tnum" data-due={due || undefined} title={`Follow up ${day(j.follow_up_at.slice(0, 10))}`}>
           {dueLabel(j.follow_up_at)}
         </span>
+      ) : view === "applied" && j.status_at ? (
+        <span className="row-age tnum" title={`${j.status === "in_process" ? "In process since" : "Applied"} ${day(j.status_at)}`}>
+          {shortAge(j.status_at) ?? "–"}
+        </span>
       ) : (
         <span className="row-age tnum" title={j.posted_at ? `Posted ${day(j.posted_at)}` : "No posting date"}>
           {shortAge(j.posted_at) ?? "–"}

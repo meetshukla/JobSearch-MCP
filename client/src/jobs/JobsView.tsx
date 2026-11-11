@@ -19,7 +19,7 @@ export function JobsView({ route, phone }: { route: JobsRoute; phone: boolean })
   const split = useMedia(SPLIT) && !phone;
   const listKey = `${view}|${query.q}|${query.remote}|${query.posted}`;
   const [paged, setPaged] = useState({ key: listKey, limit: PAGE });
-  const limit = def.limit ?? (paged.key === listKey ? paged.limit : PAGE);
+  const limit = paged.key === listKey ? paged.limit : PAGE;
 
   const list = useLoad(
     () =>
@@ -41,13 +41,11 @@ export function JobsView({ route, phone }: { route: JobsRoute; phone: boolean })
 
   const groups = useMemo<JobGroup[] | undefined>(() => {
     if (!data) return undefined;
-    let rows = def.keep ? data.jobs.filter(def.keep) : data.jobs;
-    if (def.sort) rows = [...rows].sort(def.sort);
-    return def.group ? def.group(rows) : [{ key: "all", label: "", rows }];
+    return def.group ? def.group(data.jobs) : [{ key: "all", label: "", rows: data.jobs }];
   }, [data, def]);
   const ids = useMemo(() => groups?.flatMap((g) => g.rows.map((r) => r.id)) ?? [], [groups]);
-  const total = data ? (def.keep ? ids.length : data.total) : undefined;
-  const more = data && !def.limit ? data.total - data.jobs.length : 0;
+  const total = data?.total;
+  const more = data ? data.total - data.jobs.length : 0;
 
   const [cursor, setCursor] = useState<string | null>(jobId);
   useEffect(() => {

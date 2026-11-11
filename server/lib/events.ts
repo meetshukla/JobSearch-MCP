@@ -20,6 +20,6 @@ export function pulse(since: number, from?: string) {
 }
 
 /** One line on a job's timeline. */
-export function addEvent(jobId: string | null, kind: string, text: string, by: "you" | "agent" | "hunt" = "hunt") {
-  run("INSERT INTO events (job_id, kind, text, by) VALUES (?, ?, ?, ?)", jobId, kind, text.slice(0, 2000), by);
+export function addEvent(jobId: string | null, kind: string, text: string, by: "you" | "agent" | "hunt" = "hunt", data?: Record<string, unknown>) {
+  run("INSERT INTO events (job_id, kind, text, by, data) VALUES (?, ?, ?, ?, ?)", jobId, kind, text.slice(0, 2000), by, data ? JSON.stringify(data) : null);
 }

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { Me } from "../../../shared/types.ts";
 import { tool } from "../api.ts";
 import { useLoad } from "../live.ts";
+import { todayIso } from "../format.ts";
 import { useRoute, navigate, settingsPath } from "../router.tsx";
 import { AppDataContext, type AppData, type PaletteMode } from "../data.tsx";
 import { PHONE, shortcutBlocked, useMedia } from "../ui.tsx";
@@ -15,8 +16,7 @@ import { ShortcutsDialog } from "./Shortcuts.tsx";
 export function Shell({ me, onSignOut }: { me: Me; onSignOut: () => void }) {
   const route = useRoute();
   const phone = useMedia(PHONE);
-  const counts = useLoad(() => tool("list_jobs", { view: "all", limit: 1 }).then((r) => r.counts), "counts", ["jobs", "settings"]);
-  const today = useLoad(() => tool("today", {}), "today", ["jobs", "sources", "settings"]);
+  const today = useLoad(() => tool("today", { date: todayIso() }), "today", ["jobs", "sources", "settings"]);
   const settings = useLoad(() => tool("get_settings", {}), "settings", ["settings"]);
   const [palette, setPalette] = useState<PaletteMode | null>(null);
   const [help, setHelp] = useState(false);
@@ -48,14 +48,14 @@ export function Shell({ me, onSignOut }: { me: Me; onSignOut: () => void }) {
   const data: AppData = useMemo(
     () => ({
       me,
-      counts: counts.data,
+      counts: today.data?.counts,
       today: today.data,
       settings: settings.data,
       openPalette: setPalette,
       openShortcuts: () => setHelp(true),
       signOut: onSignOut,
     }),
-    [me, counts.data, today.data, settings.data, onSignOut],
+    [me, today.data, settings.data, onSignOut],
   );
 
   const detailOpen = route.page === "jobs" && route.jobId !== null;

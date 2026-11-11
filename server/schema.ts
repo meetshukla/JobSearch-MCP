@@ -87,6 +87,7 @@ CREATE TABLE IF NOT EXISTS events (
   kind TEXT NOT NULL,
   text TEXT NOT NULL,
   by TEXT,
+  data TEXT,
   created_at TEXT NOT NULL DEFAULT ${NOW}
 );
 CREATE INDEX IF NOT EXISTS events_job ON events(job_id, id)

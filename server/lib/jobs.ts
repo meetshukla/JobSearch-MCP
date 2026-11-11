@@ -1,5 +1,5 @@
 /** Jobs: the list, one job in full, tracking, and the daily agenda. */
-import { all, get, run, tx } from "../db.ts";
+import { all, get, run, tx, parseJson } from "../db.ts";
 import { getSettings } from "../settings.ts";
 import { matches, ageDays } from "../filters.ts";
 import { isoAt, nowIso } from "../schema.ts";
@@ -36,6 +36,7 @@ function toRow(j: any): JobRow {
     first_seen_at: j.first_seen_at,
     closed: Boolean(j.closed_at),
     status: j.status,
+    status_at: j.status_at ?? null,
     verdict: j.verdict_score == null ? null : { score: j.verdict_score, note: j.verdict_note ?? "", at: j.verdict_at, by: j.verdict_by ?? null },
     follow_up_at: j.follow_up_at ?? null,
     contacts: j.contacts_n ?? 0,
@@ -61,6 +62,17 @@ function visible(f: Filters, ignoreFilters = false) {
 }
 
 const emptyCounts = (): ViewCounts => Object.fromEntries(VIEWS.map((v) => [v, 0])) as ViewCounts;
+const hasFollowUp = (j: any) => Boolean(j.follow_up_at) && (j.status === "applied" || j.status === "in_process");
+
+function countViews(rows: { j: any; view: View }[]) {
+  const counts = emptyCounts();
+  for (const { j, view } of rows) {
+    counts[view]++;
+    counts.all++;
+    if (hasFollowUp(j)) counts.follow_ups++;
+  }
+  return counts;
+}
 
 export type ListQuery = {
   view?: View;
@@ -79,14 +91,13 @@ export function listJobs(q: ListQuery = {}, filters?: Filters): ListJobsResult {
   const view = q.view ?? "to_review";
   let f = filters ?? getSettings().filters;
   if (q.posted_within_days !== undefined) f = { ...f, posted_within_days: q.posted_within_days };
-  const counts = emptyCounts();
+  const rows = visible(f, q.ignore_filters);
+  const counts = countViews(rows);
   const text = q.query?.trim().toLowerCase();
   const company = q.company?.trim().toLowerCase();
   const picked: any[] = [];
-  for (const { j, view: v } of visible(f, q.ignore_filters)) {
-    counts[v]++;
-    counts.all++;
-    if (view !== "all" && v !== view) continue;
+  for (const { j, view: v } of rows) {
+    if (view === "follow_ups" ? !hasFollowUp(j) : view !== "all" && v !== view) continue;
     if (text && !`${j.title} ${j.company} ${j.location}`.toLowerCase().includes(text)) continue;
     if (company && !j.company.toLowerCase().includes(company)) continue;
     if (q.remote_only && !j.remote && !/remote/i.test(j.location)) continue;
@@ -95,6 +106,7 @@ export function listJobs(q: ListQuery = {}, filters?: Filters): ListJobsResult {
   const sort = q.sort ?? (view === "shortlist" ? "verdict" : view === "applied" || view === "rejected" || view === "skipped" ? "updated" : "posted");
   const time = (s: string | null) => (s ? Date.parse(s) || 0 : 0);
   picked.sort((a, b) => {
+    if (view === "follow_ups" && !q.sort) return String(a.follow_up_at).localeCompare(String(b.follow_up_at));
     if (sort === "verdict") return (b.verdict_score ?? -1) - (a.verdict_score ?? -1) || time(b.posted_at) - time(a.posted_at);
     if (sort === "seen") return time(b.first_seen_at) - time(a.first_seen_at);
     if (sort === "updated") return time(b.status_at ?? b.first_seen_at) - time(a.status_at ?? a.first_seen_at);
@@ -131,7 +143,13 @@ export function getJob(id: string, opts: { html?: boolean; maxChars?: number } =
     ...(opts.html ? { description_html: j.description_html ?? null } : {}),
     filter: { ok: m.ok, reason: m.reason },
     contacts_list: contactsFor(id),
-    timeline: all<any>("SELECT kind, text, by, created_at FROM events WHERE job_id = ? ORDER BY id DESC LIMIT 60", id).map((e) => ({ kind: e.kind, text: e.text, by: e.by, at: e.created_at })),
+    timeline: all<any>("SELECT kind, text, by, data, created_at FROM events WHERE job_id = ? ORDER BY id DESC LIMIT 60", id).map((e) => ({
+      kind: e.kind,
+      text: e.text,
+      by: e.by,
+      at: e.created_at,
+      data: parseJson(e.data, null),
+    })),
   };
 }
 
@@ -179,20 +197,20 @@ export function updateJob(u: UpdateJob, by: "you" | "agent") {
   tx(() => {
     if (u.status && u.status !== j.status) {
       run("UPDATE jobs SET status = ?, status_at = ? WHERE id = ?", u.status, now, j.id);
-      addEvent(j.id, "status", `${who} marked it ${STATUS_LABEL[u.status]}`, by);
+      addEvent(j.id, "status", `${who} marked it ${STATUS_LABEL[u.status]}`, by, { status: u.status });
     }
     if (u.verdict === null) {
       run("UPDATE jobs SET verdict_score = NULL, verdict_note = NULL, verdict_at = NULL, verdict_by = NULL WHERE id = ?", j.id);
-      addEvent(j.id, "verdict", `${who} cleared the verdict`, by);
+      addEvent(j.id, "verdict", `${who} cleared the verdict`, by, { score: null });
     } else if (u.verdict) {
       const score = Math.max(0, Math.min(100, Math.round(u.verdict.score)));
       run("UPDATE jobs SET verdict_score = ?, verdict_note = ?, verdict_at = ?, verdict_by = ? WHERE id = ?", score, u.verdict.note.trim(), now, by, j.id);
-      addEvent(j.id, "verdict", `${score}/100. ${u.verdict.note.trim()}`, by);
+      addEvent(j.id, "verdict", `${score}/100. ${u.verdict.note.trim()}`, by, { score });
     }
     if (u.follow_up_at !== undefined) {
       const at = u.follow_up_at ? dayOrThrow(u.follow_up_at, "follow_up_at") : null;
       run("UPDATE jobs SET follow_up_at = ? WHERE id = ?", at, j.id);
-      addEvent(j.id, "follow_up", at ? `Follow up on ${at}` : "Follow-up cleared", by);
+      addEvent(j.id, "follow_up", at ? `Follow up on ${at}` : "Follow-up cleared", by, { date: at });
     }
     for (const c of u.contacts ?? []) {
       const name = c.name?.trim();
@@ -208,13 +226,13 @@ export function updateJob(u: UpdateJob, by: "you" | "agent") {
              email_verified = COALESCE(?, email_verified), note = COALESCE(?, note), contacted_at = COALESCE(?, contacted_at) WHERE id = ?`,
           name, c.title ?? null, li, c.email ?? null, c.email_verified == null ? null : c.email_verified ? 1 : 0, c.note ?? null, contacted, ex.id,
         );
-        if (contacted && !ex.contacted_at) addEvent(j.id, "contact", `Contacted ${name}`, by);
+        if (contacted && !ex.contacted_at) addEvent(j.id, "contact", `Contacted ${name}`, by, { name, date: contacted });
       } else {
         run(
           "INSERT INTO contacts (job_id, name, title, linkedin_url, email, email_verified, note, contacted_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
           j.id, name, c.title ?? null, li, c.email ?? null, c.email_verified == null ? null : c.email_verified ? 1 : 0, c.note ?? null, contacted,
         );
-        addEvent(j.id, "contact", contacted ? `Contacted ${name}` : `Added ${name}${c.title ? `, ${c.title}` : ""}`, by);
+        addEvent(j.id, "contact", contacted ? `Contacted ${name}` : `Added ${name}${c.title ? `, ${c.title}` : ""}`, by, { name, date: contacted });
       }
     }
     if (u.note?.trim()) addEvent(j.id, "note", u.note.trim(), by);
@@ -225,17 +243,17 @@ export function updateJob(u: UpdateJob, by: "you" | "agent") {
   return getJob(j.id, { maxChars: 0 });
 }
 
-export function today(): Today {
+/** `date` is the person's local date (YYYY-MM-DD), so "due" flips at their midnight. Defaults to UTC. */
+export function today(date?: string): Today {
   const s = getSettings();
   const f = s.filters;
   const rows = visible(f);
-  const counts = emptyCounts();
+  const counts = countViews(rows);
   const dayCounts = new Map<string, number>();
   const since24h = isoAt(Date.now() - 86_400_000);
   const since14d = isoAt(Date.now() - 13 * 86_400_000).slice(0, 10);
   let new24h = 0;
-  for (const { j, view } of rows) {
-    counts[view]++;
+  for (const { j } of rows) {
     if (j.status === "new" && j.first_seen_at >= since24h) new24h++;
     const day = String(j.first_seen_at).slice(0, 10);
     if (day >= since14d) dayCounts.set(day, (dayCounts.get(day) ?? 0) + 1);
@@ -254,6 +272,7 @@ export function today(): Today {
     missing.push({ id: "where", text: "Say where the person can work: filters.places for on-site or hybrid, filters.remote_regions for remote. Empty keeps every place." });
   return {
     setup: { ready: missing.length === 0, missing },
+    counts,
     jobs: {
       new_24h: new24h,
       to_review: counts.to_review,
@@ -263,7 +282,7 @@ export function today(): Today {
     },
     follow_ups_due: all<any>(
       "SELECT id, title, company, status, follow_up_at FROM jobs WHERE follow_up_at IS NOT NULL AND follow_up_at <= ? AND status IN ('applied','in_process') ORDER BY follow_up_at",
-      nowIso().slice(0, 10),
+      date ?? nowIso().slice(0, 10),
     ),
     sources: {
       active: st.active ?? 0,

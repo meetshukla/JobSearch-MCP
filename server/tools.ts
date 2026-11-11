@@ -73,10 +73,10 @@ export const TOOLS: Tool[] = [
   {
     name: "today",
     title: "Today",
-    description: "Start here. What's missing from setup, how many jobs wait for review, jobs on the shortlist, applications, follow-ups due, and whether the sources are being read.",
-    input: z.object({}),
+    description: "Start here. What's missing from setup, how many jobs wait for review, jobs on the shortlist, applications, follow-ups due, every view's size, and whether the sources are being read.",
+    input: z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional().describe("The person's local date, so follow-ups are due at their midnight. Defaults to UTC.") }),
     readOnly: true,
-    run: () => today(),
+    run: (a) => today(a.date),
   },
   {
     name: "get_settings",
@@ -162,7 +162,7 @@ export const TOOLS: Tool[] = [
     name: "list_jobs",
     title: "List jobs",
     description:
-      "Jobs as short rows (title, company, location, posted, verdict, status, a 240-character excerpt). Views: to_review (new, passes the filters, no verdict yet; default), shortlist (new with your verdict, best first), applied (applied and in process), skipped, rejected, all. counts gives every view's size. posted_within_days overrides the saved window for this call (null = any age); ignore_filters shows every stored job.",
+      "Jobs as short rows (title, company, location, posted, verdict, status, a 240-character excerpt). Views: to_review (new, passes the filters, no verdict yet; default), shortlist (new with your verdict, best first), applied (applied and in process), follow_ups (applications with a follow-up date, soonest first), skipped, rejected, all. counts gives every view's size. posted_within_days overrides the saved window for this call (null = any age); ignore_filters shows every stored job.",
     input: z.object({
       view: z.enum(VIEWS).optional(),
       query: z.string().optional().describe("Text in the title, company or location"),

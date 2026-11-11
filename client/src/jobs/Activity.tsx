@@ -1,7 +1,7 @@
 import { useState, type FormEvent, type ReactNode, type RefObject } from "react";
 import { Bot, CalendarClock, CircleDot, Gauge, Link2, UserPlus, UserRound } from "lucide-react";
 import type { JobDetail, Status, TimelineItem } from "../../../shared/types.ts";
-import { STATUS_LABEL, STATUS_ORDER } from "../model.ts";
+import { STATUS_LABEL } from "../model.ts";
 import { ago, byLabel, day, fullDate } from "../format.ts";
 import { Mark, StatusGlyph } from "../glyphs.tsx";
 import { Button, Keys } from "../ui.tsx";
@@ -13,18 +13,17 @@ const ICON = { size: 14, strokeWidth: 1.75 } as const;
 function describe(t: TimelineItem): { icon: ReactNode; text: string; sub?: ReactNode } {
   const who = byLabel(t.by);
   const lower = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
+  const d = t.data ?? {};
   if (t.kind === "status") {
-    const s = STATUS_ORDER.find((x) => t.text.toLowerCase().endsWith(STATUS_LABEL[x].toLowerCase())) as Status | undefined;
-    return { icon: s ? <StatusGlyph status={s} size={14} /> : <CircleDot {...ICON} />, text: t.text };
+    const s: Status | undefined = d.status;
+    return { icon: s ? <StatusGlyph status={s} size={14} /> : <CircleDot {...ICON} />, text: s ? `${who} marked it ${STATUS_LABEL[s].toLowerCase()}` : t.text };
   }
   if (t.kind === "verdict") {
-    const m = t.text.match(/^(\d+)\/100\.\s*([\s\S]*)$/);
-    if (m) return { icon: <Gauge {...ICON} />, text: `${who} scored it ${m[1]} out of 100`, sub: m[2] };
-    return { icon: <Gauge {...ICON} />, text: t.text };
+    if (d.score == null) return { icon: <Gauge {...ICON} />, text: `${who} cleared the verdict` };
+    return { icon: <Gauge {...ICON} />, text: `${who} scored it ${d.score} out of 100`, sub: t.text.replace(/^\d+\/100\.\s*/, "") };
   }
   if (t.kind === "follow_up") {
-    const m = t.text.match(/(\d{4}-\d{2}-\d{2})/);
-    return { icon: <CalendarClock {...ICON} />, text: m ? `${who} set a follow-up for ${day(m[1])}` : `${who} cleared the follow-up` };
+    return { icon: <CalendarClock {...ICON} />, text: d.date ? `${who} set a follow-up for ${day(d.date)}` : `${who} cleared the follow-up` };
   }
   if (t.kind === "contact") return { icon: <UserPlus {...ICON} />, text: `${who} ${lower(t.text)}` };
   if (t.kind === "added") return { icon: <Link2 {...ICON} />, text: t.text };

@@ -30,11 +30,7 @@ export type ViewDef = {
   icon: LucideIcon;
   /** The list_jobs view that feeds this one. */
   server: View;
-  /** Load this many rows at once instead of paging, for views the client filters. */
-  limit?: number;
-  keep?: (j: JobRow) => boolean;
   group?: (rows: JobRow[]) => JobGroup[];
-  sort?: (a: JobRow, b: JobRow) => number;
   count: (c: ViewCounts | undefined, t: Today | undefined) => number | undefined;
   empty: { title: string; text: string };
 };
@@ -110,10 +106,7 @@ export const VIEWS: Record<ViewId, ViewDef> = {
     label: "Follow-ups",
     short: "Follow-ups",
     icon: CalendarClock,
-    server: "applied",
-    limit: 200,
-    keep: (j) => j.follow_up_at != null,
-    sort: (a, b) => (a.follow_up_at ?? "").localeCompare(b.follow_up_at ?? ""),
+    server: "follow_ups",
     group: (rows) => groupBy(rows, (j) => (isDue(j.follow_up_at) ? { key: "due", label: "Due" } : { key: "later", label: "Later" }), ["due", "later"]),
     count: (_c, t) => t?.follow_ups_due.length,
     empty: { title: "No follow-ups set", text: "Give an application a follow-up date and it shows up here when it's due." },

@@ -45,7 +45,7 @@ export type ToolInfo = { name: string; title: string; description: string };
 
 /** Every tool the website calls, with its arguments and result. One table, so a call can't drift from the server. */
 type Tools = {
-  today: [Record<string, never>, Today];
+  today: [{ date?: string }, Today];
   get_settings: [Record<string, never>, SettingsResult];
   update_settings: [{ profile?: string; filters?: Partial<Filters> }, { saved: true; filters: Filters; profile_chars: number; rereading_sources: boolean }];
   add_sources: [{ items?: string[]; list?: string }, { results: AddSourceResult[] }];

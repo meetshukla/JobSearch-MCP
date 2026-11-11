@@ -3,7 +3,8 @@
 export const STATUSES = ["new", "skipped", "applied", "in_process", "rejected"] as const;
 export type Status = (typeof STATUSES)[number];
 
-export const VIEWS = ["to_review", "shortlist", "applied", "skipped", "rejected", "all"] as const;
+/** follow_ups overlaps applied: applications with a follow-up date, soonest first. */
+export const VIEWS = ["to_review", "shortlist", "applied", "follow_ups", "skipped", "rejected", "all"] as const;
 export type View = (typeof VIEWS)[number];
 
 /** What to keep. Every field has a default and every one can be changed or emptied. */
@@ -67,6 +68,8 @@ export type JobRow = {
   first_seen_at: string;
   closed: boolean;
   status: Status;
+  /** When the status last changed (for applied jobs, when they applied). */
+  status_at: string | null;
   verdict: Verdict | null;
   /** A date, YYYY-MM-DD. */
   follow_up_at: string | null;
@@ -75,7 +78,14 @@ export type JobRow = {
   excerpt: string;
 };
 
-export type TimelineItem = { kind: string; text: string; by: string | null; at: string };
+/** One line of a job's activity. `data` carries the facts behind `text` for status, verdict, follow_up and contact lines. */
+export type TimelineItem = {
+  kind: string;
+  text: string;
+  by: string | null;
+  at: string;
+  data: { status?: Status; score?: number | null; date?: string | null; name?: string } | null;
+};
 
 export type JobDetail = JobRow & {
   company_domain: string | null;
@@ -139,6 +149,8 @@ export type Today = {
     applied: number;
     in_process: number;
   };
+  /** Every view's size, the same numbers list_jobs returns. */
+  counts: ViewCounts;
   follow_ups_due: { id: string; title: string; company: string; status: Status; follow_up_at: string }[];
   sources: {
     active: number;
