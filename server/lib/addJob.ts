@@ -6,7 +6,7 @@ import { get, run } from "../db.ts";
 import { ADAPTERS, parseAtsUrl, slugCandidates, type RawJob } from "../sources/ats.ts";
 import { fetchJson, UA } from "../sources/http.ts";
 import { nowIso } from "../schema.ts";
-import { htmlToText, decodeEntities } from "./html.ts";
+import { htmlToText, decodeEntities, unescapeIfEncoded } from "./html.ts";
 import { dedupeKey } from "./collect.ts";
 import { companyKey } from "./sources.ts";
 import { addEvent, broadcast } from "./events.ts";
@@ -24,7 +24,7 @@ async function fromBoard(url: string): Promise<Found | null> {
   if (p.ats === "greenhouse") {
     const j = await fetchJson<any>(`https://boards-api.greenhouse.io/v1/boards/${p.slug}/jobs/${p.jobId}`);
     const loc = j.location?.name || "";
-    raw = { extId: String(j.id), title: j.title, location: loc, remote: /remote/i.test(loc), url: j.absolute_url, applyUrl: j.absolute_url, descriptionHtml: j.content, postedAt: j.first_published || undefined };
+    raw = { extId: String(j.id), title: j.title, location: loc, remote: /remote/i.test(loc), url: j.absolute_url, applyUrl: j.absolute_url, descriptionHtml: unescapeIfEncoded(j.content || ""), postedAt: j.first_published || undefined };
   } else if (p.ats === "workday") {
     raw = { extId: p.jobId, title: "Job", location: "", remote: false, url, applyUrl: `${url.replace(/\/$/, "")}/apply` };
     Object.assign(raw, await ADAPTERS.workday.fetchDetail!(ref, raw));

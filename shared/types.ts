@@ -38,7 +38,7 @@ export type Settings = {
   profile: string;
 };
 
-export type Verdict = { score: number; note: string; at: string };
+export type Verdict = { score: number; note: string; at: string; by: "you" | "agent" | null };
 
 export type Contact = {
   id: number;
@@ -48,6 +48,7 @@ export type Contact = {
   email: string | null;
   email_verified: boolean | null;
   note: string | null;
+  /** A date, YYYY-MM-DD. */
   contacted_at: string | null;
 };
 
@@ -67,6 +68,7 @@ export type JobRow = {
   closed: boolean;
   status: Status;
   verdict: Verdict | null;
+  /** A date, YYYY-MM-DD. */
   follow_up_at: string | null;
   contacts: number;
   /** Start of the description, for a quick read. */
@@ -128,7 +130,8 @@ export type AddSourceResult = {
 };
 
 export type Today = {
-  setup: { ready: boolean; missing: string[] };
+  /** What setup still needs. `id` names the part; `text` says what to do, written for agents. */
+  setup: { ready: boolean; missing: { id: "profile" | "sources" | "where"; text: string }[] };
   jobs: {
     new_24h: number;
     to_review: number;

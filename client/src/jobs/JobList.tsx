@@ -258,7 +258,7 @@ function ListEmpty({ list, data, today, setList }: { list: ListState; data: List
         {data.counts[list.view] > 0 ? `Try fewer words, or clear the search to see all ${data.counts[list.view].toLocaleString()}.` : "Try a broader search."}
       </Empty>
     );
-  const noBoards = today?.setup.missing.some((m) => m.includes("add_sources"));
+  const noBoards = today?.setup.missing.some((m) => m.id === "sources");
   if (data.counts.all === 0 && noBoards)
     return (
       <Empty

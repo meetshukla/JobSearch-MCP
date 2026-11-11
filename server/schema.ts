@@ -58,6 +58,7 @@ CREATE TABLE IF NOT EXISTS jobs (
   verdict_score INTEGER,
   verdict_note TEXT,
   verdict_at TEXT,
+  verdict_by TEXT,
   follow_up_at TEXT,
   updated_at TEXT NOT NULL DEFAULT ${NOW}
 );

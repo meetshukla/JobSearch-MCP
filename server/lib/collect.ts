@@ -14,7 +14,7 @@ import { readFeed } from "../sources/feeds.ts";
 import { getSettings } from "../settings.ts";
 import { matches } from "../filters.ts";
 import { isoAt, nowIso } from "../schema.ts";
-import { htmlToText, slugify } from "./html.ts";
+import { htmlToText, slugify, unescapeIfEncoded } from "./html.ts";
 import { broadcast, type Topic } from "./events.ts";
 import { resolveQueued, type SourceDb } from "./sources.ts";
 import { UNTOUCHED, sourcesVersion } from "./keep.ts";
@@ -264,11 +264,12 @@ async function fillDetails(f: Filters, limit: number) {
         { name: j.source_name, ats: j.ats, slug: j.slug, url: j.board_url },
         { extId: j.id.slice(`${j.ats}:${j.slug}:`.length), title: j.title, location: j.location, remote: !!j.remote, url: j.url },
       );
-      const text = d.descriptionHtml ? htmlToText(d.descriptionHtml) : null;
+      const html = d.descriptionHtml ? unescapeIfEncoded(d.descriptionHtml) : null;
+      const text = html ? htmlToText(html) : null;
       run(
         `UPDATE jobs SET description_html = ?, description_text = ?, posted_at = COALESCE(?, posted_at), department = COALESCE(?, department),
            salary = COALESCE(?, salary), location = COALESCE(NULLIF(?, ''), location), details = 'done', updated_at = ? WHERE id = ?`,
-        d.descriptionHtml ?? null, text, d.postedAt ?? null, d.department ?? null, d.salary ?? null, d.location ?? "", nowIso(), j.id,
+        html, text, d.postedAt ?? null, d.department ?? null, d.salary ?? null, d.location ?? "", nowIso(), j.id,
       );
       done++;
     } catch (e) {

@@ -8,7 +8,7 @@ import { passMinutes } from "./collect.ts";
 import { VIEWS, type Contact, type Filters, type JobDetail, type JobRow, type ListJobsResult, type Status, type Today, type View, type ViewCounts } from "../../shared/types.ts";
 
 const LIGHT = `id, company, company_domain, title, location, remote, department, salary, url, apply_url, source, posted_at, first_seen_at,
-  closed_at, status, status_at, verdict_score, verdict_note, verdict_at, follow_up_at, pinned, substr(description_text, 1, 400) AS head,
+  closed_at, status, status_at, verdict_score, verdict_note, verdict_at, verdict_by, follow_up_at, pinned, substr(description_text, 1, 400) AS head,
   (SELECT COUNT(*) FROM contacts c WHERE c.job_id = jobs.id) AS contacts_n`;
 
 export const STATUS_LABEL: Record<Status, string> = { new: "new", skipped: "skipped", applied: "applied", in_process: "in process", rejected: "rejected" };
@@ -36,7 +36,7 @@ function toRow(j: any): JobRow {
     first_seen_at: j.first_seen_at,
     closed: Boolean(j.closed_at),
     status: j.status,
-    verdict: j.verdict_score == null ? null : { score: j.verdict_score, note: j.verdict_note ?? "", at: j.verdict_at },
+    verdict: j.verdict_score == null ? null : { score: j.verdict_score, note: j.verdict_note ?? "", at: j.verdict_at, by: j.verdict_by ?? null },
     follow_up_at: j.follow_up_at ?? null,
     contacts: j.contacts_n ?? 0,
     excerpt: String(j.head ?? "").replace(/\s+/g, " ").trim().slice(0, 240),
@@ -162,10 +162,13 @@ function linkedin(u?: string | null) {
   return `https://www.linkedin.com/in/${v.replace(/^@/, "")}`;
 }
 
-function isoOrThrow(v: string, what: string) {
+/** Dates the person picks (follow-ups, contacted) are days, not instants, so no time zone shifts them. */
+function dayOrThrow(v: string, what: string) {
+  const m = v.trim().match(/^(\d{4}-\d{2}-\d{2})/);
+  if (m && !Number.isNaN(Date.parse(m[1]))) return m[1];
   const t = Date.parse(v);
   if (Number.isNaN(t)) throw new Error(`${what} must be a date like 2026-11-20.`);
-  return isoAt(t);
+  return isoAt(t).slice(0, 10);
 }
 
 export function updateJob(u: UpdateJob, by: "you" | "agent") {
@@ -179,17 +182,17 @@ export function updateJob(u: UpdateJob, by: "you" | "agent") {
       addEvent(j.id, "status", `${who} marked it ${STATUS_LABEL[u.status]}`, by);
     }
     if (u.verdict === null) {
-      run("UPDATE jobs SET verdict_score = NULL, verdict_note = NULL, verdict_at = NULL WHERE id = ?", j.id);
+      run("UPDATE jobs SET verdict_score = NULL, verdict_note = NULL, verdict_at = NULL, verdict_by = NULL WHERE id = ?", j.id);
       addEvent(j.id, "verdict", `${who} cleared the verdict`, by);
     } else if (u.verdict) {
       const score = Math.max(0, Math.min(100, Math.round(u.verdict.score)));
-      run("UPDATE jobs SET verdict_score = ?, verdict_note = ?, verdict_at = ? WHERE id = ?", score, u.verdict.note.trim(), now, j.id);
+      run("UPDATE jobs SET verdict_score = ?, verdict_note = ?, verdict_at = ?, verdict_by = ? WHERE id = ?", score, u.verdict.note.trim(), now, by, j.id);
       addEvent(j.id, "verdict", `${score}/100. ${u.verdict.note.trim()}`, by);
     }
     if (u.follow_up_at !== undefined) {
-      const at = u.follow_up_at ? isoOrThrow(u.follow_up_at, "follow_up_at") : null;
+      const at = u.follow_up_at ? dayOrThrow(u.follow_up_at, "follow_up_at") : null;
       run("UPDATE jobs SET follow_up_at = ? WHERE id = ?", at, j.id);
-      addEvent(j.id, "follow_up", at ? `Follow up on ${at.slice(0, 10)}` : "Follow-up cleared", by);
+      addEvent(j.id, "follow_up", at ? `Follow up on ${at}` : "Follow-up cleared", by);
     }
     for (const c of u.contacts ?? []) {
       const name = c.name?.trim();
@@ -198,7 +201,7 @@ export function updateJob(u: UpdateJob, by: "you" | "agent") {
       const ex =
         (li && get<any>("SELECT * FROM contacts WHERE job_id = ? AND linkedin_url = ?", j.id, li)) ||
         get<any>("SELECT * FROM contacts WHERE job_id = ? AND lower(name) = lower(?)", j.id, name);
-      const contacted = c.contacted_at ? isoOrThrow(c.contacted_at, "contacted_at") : null;
+      const contacted = c.contacted_at ? dayOrThrow(c.contacted_at, "contacted_at") : null;
       if (ex) {
         run(
           `UPDATE contacts SET name = ?, title = COALESCE(?, title), linkedin_url = COALESCE(?, linkedin_url), email = COALESCE(?, email),
@@ -244,11 +247,11 @@ export function today(): Today {
   }
   const st = Object.fromEntries(all<any>("SELECT state, COUNT(*) n FROM sources GROUP BY state").map((r) => [r.state, r.n]));
   const readable = get<{ n: number }>("SELECT COUNT(*) n FROM sources WHERE kind IN ('company','feed') AND state <> 'paused'")!.n;
-  const missing: string[] = [];
-  if (!s.profile.trim()) missing.push("Add the person's profile (resume, and what they want and won't accept) with update_settings.profile.");
-  if (!readable) missing.push("Add company job boards with add_sources (company names, careers page URLs, or the starter list).");
+  const missing: Today["setup"]["missing"] = [];
+  if (!s.profile.trim()) missing.push({ id: "profile", text: "Add the person's profile (resume, and what they want and won't accept) with update_settings.profile." });
+  if (!readable) missing.push({ id: "sources", text: "Add company job boards with add_sources (company names, careers page URLs, or the starter list)." });
   if ((f.onsite && !f.places.length) || (f.remote && !f.remote_regions.length))
-    missing.push("Say where the person can work: filters.places for on-site or hybrid, filters.remote_regions for remote. Empty keeps every place.");
+    missing.push({ id: "where", text: "Say where the person can work: filters.places for on-site or hybrid, filters.remote_regions for remote. Empty keeps every place." });
   return {
     setup: { ready: missing.length === 0, missing },
     jobs: {
@@ -260,7 +263,7 @@ export function today(): Today {
     },
     follow_ups_due: all<any>(
       "SELECT id, title, company, status, follow_up_at FROM jobs WHERE follow_up_at IS NOT NULL AND follow_up_at <= ? AND status IN ('applied','in_process') ORDER BY follow_up_at",
-      nowIso(),
+      nowIso().slice(0, 10),
     ),
     sources: {
       active: st.active ?? 0,

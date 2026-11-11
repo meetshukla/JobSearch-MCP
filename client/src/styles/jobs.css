@@ -1490,9 +1490,18 @@
   .select-chip {
     order: 3;
   }
+  /* A sideways-scrolling row hides the last numbers on a phone; a grid shows all of them. */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: visible;
+  }
   .stat {
-    min-width: 84px;
+    min-width: 0;
     padding: 6px 8px;
+  }
+  .stat-sub {
+    display: none;
   }
   .open-posting {
     flex: 1;

@@ -92,15 +92,16 @@ function Chart({ days }: { days: Today["days"] }) {
   );
 }
 
-/** The server phrases what's missing for agents; we map each line to the screen that fixes it. */
-const STEPS = [
-  { match: "profile", label: "Add your profile", detail: "Your resume and what you want, for your agent to judge fit.", to: "/setup/profile" },
-  { match: "add_sources", label: "Add company job boards", detail: "Company names, careers pages, or a starter list.", to: "/setup/sources" },
-  { match: "places", label: "Say where you can work", detail: "Places for on-site jobs and regions for remote ones.", to: "/setup/filters" },
+type Missing = Today["setup"]["missing"];
+
+const STEPS: { id: Missing[number]["id"]; label: string; detail: string; to: string }[] = [
+  { id: "profile", label: "Add your profile", detail: "Your resume and what you want, for your agent to judge fit.", to: "/setup/profile" },
+  { id: "sources", label: "Add company job boards", detail: "Company names, careers pages, or a starter list.", to: "/setup/sources" },
+  { id: "where", label: "Say where you can work", detail: "Places for on-site jobs and regions for remote ones.", to: "/setup/filters" },
 ];
 
-function SetupChecklist({ missing }: { missing: string[] }) {
-  const unknown = missing.filter((m) => !STEPS.some((s) => m.includes(s.match)));
+function SetupChecklist({ missing }: { missing: Missing }) {
+  const unknown = missing.filter((m) => !STEPS.some((s) => s.id === m.id));
   return (
     <section className="checklist" aria-label="Finish setting up">
       <div className="checklist-head">
@@ -109,9 +110,9 @@ function SetupChecklist({ missing }: { missing: string[] }) {
       </div>
       <ol className="checklist-items">
         {STEPS.map((s) => {
-          const done = !missing.some((m) => m.includes(s.match));
+          const done = !missing.some((m) => m.id === s.id);
           return (
-            <li key={s.match} data-done={done}>
+            <li key={s.id} data-done={done}>
               <Link to={s.to} className="check-item">
                 <span className="check-box">{done && <Check size={12} strokeWidth={2.5} />}</span>
                 <span className="check-text">
@@ -125,8 +126,8 @@ function SetupChecklist({ missing }: { missing: string[] }) {
         })}
       </ol>
       {unknown.map((m) => (
-        <p key={m} className="muted">
-          {m}
+        <p key={m.id} className="muted">
+          {m.text}
         </p>
       ))}
     </section>

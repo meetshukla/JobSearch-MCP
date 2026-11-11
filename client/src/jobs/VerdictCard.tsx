@@ -8,8 +8,7 @@ import type { SaveJob } from "./JobDetail.tsx";
 export function VerdictCard({ job, save }: { job: JobDetail; save: SaveJob }) {
   const [editing, setEditing] = useState(false);
   const v = job.verdict;
-  // The verdict doesn't record who wrote it; the newest verdict line on the timeline does.
-  const by = job.timeline.find((t) => t.kind === "verdict")?.by ?? null;
+  const by = v?.by ?? null;
 
   return (
     <section className="card">
