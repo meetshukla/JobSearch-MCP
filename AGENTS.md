@@ -4,10 +4,10 @@ You are an agent setting up Hunt for a person who is looking for a job. Hunt col
 
 ## 1. Deploy
 
-The person needs a Cloudflare account (the free plan is enough) and Node 20 or later.
+The person needs a Cloudflare account (the free plan is enough) and Node 22.18 or later.
 
 ```bash
-git clone <this repo> hunt && cd hunt
+git clone https://github.com/meetshukla/JobSearch-MCP hunt && cd hunt
 npm install
 npx wrangler login          # opens the browser once
 npm run deploy              # prints the URL, e.g. https://hunt.<their-subdomain>.workers.dev
