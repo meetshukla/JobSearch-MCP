@@ -6,9 +6,15 @@
 
 **Self-hosted AI job search for Claude Code, Codex and any MCP agent.**
 
+[![GitHub stars](https://img.shields.io/github/stars/meetshukla/JobSearch-MCP?style=social)](https://github.com/meetshukla/JobSearch-MCP/stargazers)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 Hunt collects new postings from the job boards of the companies you pick, keeps the ones that pass your filters, and tracks every application. Your agent reads the new jobs over MCP, judges the fit against your resume, applies, and records what happened. It runs in your own Cloudflare account, on the free plan.
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/meetshukla/JobSearch-MCP)
+
+If Hunt helps your job search, star the repo. Stars help other job seekers find it.
 
 </div>
 
@@ -222,7 +228,7 @@ Two optional skills in [`skills/`](skills) give your agent a routine. Copy a fol
 
 Hunt runs on Cloudflare's free plan, so it costs nothing. One Worker and one Durable Object hold everything, with your data in the Durable Object's SQLite database.
 
-The free plan allows 50 outside requests per run. Hunt works in small steps every 15 seconds: four company boards, one remote board or feed, and six job descriptions per step. That reads about 1,000 company boards an hour. With more boards, a full pass takes longer.
+On the free plan, each run of a Worker can make at most 50 requests to other websites, and reading one job board takes one request. So Hunt can't read 1,000 boards in a single run. It runs every 15 seconds instead, and each run reads four company boards, one remote board or feed, and six job descriptions. That is 240 runs an hour, enough to read about 1,000 company boards an hour. With more boards, each one is read less often.
 
 ## FAQ
 
@@ -265,11 +271,15 @@ npm run typecheck
 
 ## Contributing
 
-Pull requests are welcome. These help the most:
+Pull requests are welcome, from a one-line fix to a new job board system. [CONTRIBUTING.md](CONTRIBUTING.md) shows how to run Hunt on your machine and what to check before you open one. These help the most:
 
-- **A new job board system** such as Personio, Teamtailor or BambooHR. Add an adapter in [`server/sources/ats.ts`](server/sources/ats.ts) and its URL pattern in `parseAtsUrl`.
-- **A starter list for your region.** Add a JSON file in [`lists/`](lists) and one line in [`server/lib/lists.ts`](server/lib/lists.ts).
+- **A new job board system** such as Personio, Teamtailor or BambooHR. Add an adapter in [`server/sources/ats.ts`](server/sources/ats.ts) and teach `parseAtsUrl` its board URLs.
+- **A starter list for your region.** Add a JSON file in [`lists/`](lists) and add it to `LISTS` in [`server/lib/lists.ts`](server/lib/lists.ts).
 - **A remote job board.** Add it in [`server/sources/boards.ts`](server/sources/boards.ts).
+
+Not sure where to start? Open an issue with what you want to change, and we'll work out the shape together.
+
+If Hunt found you a job, or just saved you time, a star helps other job seekers find it.
 
 ## License
 
